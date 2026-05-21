@@ -37,7 +37,7 @@ public class AppConfig
 public class ProjectInfo
 {
     [JsonPropertyName("name")] public string Name { get; set; } = "Zapret Autosetup";
-    [JsonPropertyName("version")] public string Version { get; set; } = "2.0.0";
+    [JsonPropertyName("version")] public string Version { get; set; } = "2.3.0";
 }
 
 public class Repositories
@@ -99,4 +99,5 @@ public class FeaturesConfig
     [JsonPropertyName("parallel_downloads")] public bool ParallelDownloads { get; set; } = true;
     [JsonPropertyName("remove_cidr_overlap")] public bool RemoveCidrOverlap { get; set; } = true;
     [JsonPropertyName("verbose_logging")] public bool VerboseLogging { get; set; }
+    [JsonPropertyName("update_check_interval_hours")] public int UpdateCheckIntervalHours { get; set; } = 1;
 }

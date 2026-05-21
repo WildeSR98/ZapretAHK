@@ -41,6 +41,9 @@ desktop.ini
 *.7z
 *.rar
 
+# Original reference files
+orig/
+
 # Old scripts (replaced by C# manager)
 service.bat
 clean_lists.ps1
@@ -54,6 +57,7 @@ utils/modules/
 tg/
 tg_ws_proxy_autostart.*
 src/TgWsProxy/
+src/TgProxyLauncher/
 publish/tg-proxy/python/
 publish/tg-proxy/proxy/__pycache__/
 
@@ -61,3 +65,14 @@ publish/tg-proxy/proxy/__pycache__/
 /ipset-exclude-user.txt
 /list-exclude-user.txt
 /list-general-user.txt
+
+# Release archives
+release/
+
+# Temporary/query files
+query
+
+# Runtime-generated utils files
+publish/utils/update-check.json
+publish/utils/update_mode.txt
+publish/utils/test results/

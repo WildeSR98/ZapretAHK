@@ -92,7 +92,9 @@ public static class ConsoleMenu
     public static void StopSpinner(bool ok = true, string? result = null)
     {
         _spinCts?.Cancel();
-        _spinTask?.Wait(500);
+        try { _spinTask?.Wait(500); }
+        catch (AggregateException) { /* spinner cancelled — expected */ }
+        catch (OperationCanceledException) { }
         Console.Write("\r" + new string(' ', 70) + "\r");
         Console.CursorVisible = true;
         if (result != null)

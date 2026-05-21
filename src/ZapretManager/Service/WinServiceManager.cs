@@ -75,10 +75,10 @@ public static class WinServiceManager
             {
                 var st = new SERVICE_STATUS();
                 ControlService(old, SERVICE_CONTROL_STOP, ref st);
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(1000);
                 DeleteService(old);
                 CloseServiceHandle(old);
-                System.Threading.Thread.Sleep(300);
+                System.Threading.Thread.Sleep(2000); // Wait for Windows to fully release the service
             }
 
             var startType = autoStart ? SERVICE_AUTO_START : SERVICE_DEMAND_START;
@@ -92,10 +92,29 @@ public static class WinServiceManager
             var desc = new SERVICE_DESCRIPTIONW { Description = description };
             ChangeServiceConfig2(svc, 1, ref desc);
 
-            StartService(svc, 0, null);
+            // Start service and verify it's running
+            bool started = StartService(svc, 0, null);
+            if (!started)
+            {
+                Core.Logger.Warn($"StartService failed for {name}, error: {System.Runtime.InteropServices.Marshal.GetLastWin32Error()}");
+            }
+
+            // Wait and verify service is actually running
+            System.Threading.Thread.Sleep(2000);
+            var status = new SERVICE_STATUS();
+            QueryServiceStatus(svc, ref status);
             CloseServiceHandle(svc);
-            Core.Logger.Ok($"Служба установлена: {name}");
-            return true;
+
+            if (status.CurrentState == 4) // RUNNING
+            {
+                Core.Logger.Ok($"Служба установлена и запущена: {name}");
+                return true;
+            }
+            else
+            {
+                Core.Logger.Warn($"Служба {name} установлена, но не запущена (state={status.CurrentState}, exitCode={status.Win32ExitCode})");
+                return false;
+            }
         }
         finally { CloseServiceHandle(scm); }
     }
