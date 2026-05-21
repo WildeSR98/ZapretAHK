@@ -23,6 +23,12 @@ public class AppConfig
     [JsonPropertyName("features")]
     public FeaturesConfig Features { get; set; } = new();
 
+    [JsonPropertyName("tray")]
+    public TrayConfig Tray { get; set; } = new();
+
+    [JsonPropertyName("watchdog")]
+    public WatchdogConfig Watchdog { get; set; } = new();
+
     public static AppConfig Load(string rootDir)
     {
         var path = Path.Combine(rootDir, "config.json");
@@ -102,3 +108,20 @@ public class FeaturesConfig
     [JsonPropertyName("update_check_interval_hours")] public int UpdateCheckIntervalHours { get; set; } = 1;
     [JsonPropertyName("log_retention_days")] public int LogRetentionDays { get; set; } = 14;
 }
+
+public class TrayConfig
+{
+    [JsonPropertyName("enable_tray")] public bool EnableTray { get; set; } = false;
+    [JsonPropertyName("auto_start_tray")] public bool AutoStartTray { get; set; } = false;
+    [JsonPropertyName("status_poll_interval_sec")] public int StatusPollIntervalSec { get; set; } = 10;
+}
+
+public class WatchdogConfig
+{
+    [JsonPropertyName("check_interval_minutes")] public int CheckIntervalMinutes { get; set; } = 5;
+    [JsonPropertyName("fail_threshold")] public int FailThreshold { get; set; } = 3;
+    [JsonPropertyName("fail_percent")] public int FailPercent { get; set; } = 50;
+    [JsonPropertyName("cooldown_minutes")] public int CooldownMinutes { get; set; } = 15;
+    [JsonPropertyName("max_rotations")] public int MaxRotations { get; set; } = 3;
+}
+

@@ -14,6 +14,8 @@ class Program
     static string ListsDir = "";
     static string UtilsDir = "";
     static AppConfig Cfg = new();
+    static TrayManager? _tray;
+    static Watchdog? _watchdog;
 
     static async Task Main(string[] args)
     {
@@ -45,8 +47,19 @@ class Program
         // Запуск фоновой проверки обновлений
         UpdateChecker.StartBackground(Cfg, RootDir);
 
+        // Watchdog (если включён)
+        if (Watchdog.IsEnabledFlag(RootDir))
+        {
+            _watchdog = new Watchdog(RootDir, Cfg);
+            _watchdog.Start();
+        }
+
         // Проверка здоровья службы (ImagePath может устареть если папка перемещена)
         CheckServiceHealth();
+
+        // Запуск tray-процесса (отдельный процесс, живёт независимо от консоли)
+        if (!args.Contains("--tray") && !args.Contains("--check-updates"))
+            EnsureTrayProcess();
 
         if (args.Contains("--check-updates"))
         {
@@ -68,6 +81,7 @@ class Program
         }
 
         if (args.Contains("--menu"))        { Console.Title = "Zapret Manager"; await RunMenuAsync(); return; }
+        if (args.Contains("--tray"))         { await RunTrayMode(); return; }
         if (args.Contains("--remove"))      { await RunRemoveAsync(); return; }
         if (args.Contains("--reinstall"))   { await RunRemoveAsync(silent: true); await RunSetupAsync(args); return; }
         if (args.Contains("--test"))        { await RunTestAndInstallAsync(); return; }
@@ -85,7 +99,7 @@ class Program
             Console.Clear();
             PrintMenuHeader();
 
-            Console.Write("   Выберите вариант (0-13): ");
+            Console.Write("   Выберите вариант (0-23): ");
             var choice = Console.ReadLine()?.Trim();
 
             switch (choice)
@@ -106,6 +120,13 @@ class Program
                 case "14": MenuBackup();                   break;
                 case "15": MenuProfiles();                 break;
                 case "16": await MenuTrafficMonitor();     break;
+                case "17": MenuWatchdog();                  break;
+                case "18": await MenuSpeedTest();            break;
+                case "19": MenuStrategyEditor();             break;
+                case "20": await MenuIspDetect();             break;
+                case "21": MenuDomains();                     break;
+                case "22": MenuNicSelector();                  break;
+                case "23": MenuSettingsExport();               break;
                 case "0":  return;
             }
         }
@@ -185,6 +206,14 @@ class Program
         Console.WriteLine("      14. Бэкап / Восстановление");
         Console.WriteLine("      15. Профили");
         Console.WriteLine("      16. Мониторинг трафика");
+        var wdStatus = _watchdog?.IsEnabled == true ? "вкл" : "выкл";
+        Console.WriteLine($"      17. Watchdog (авторотация) [{wdStatus}]");
+        Console.WriteLine("      18. Speed-тест");
+        Console.WriteLine("      19. Редактор стратегий");
+        Console.WriteLine("      20. Определение провайдера");
+        Console.WriteLine("      21. Управление доменами");
+        Console.WriteLine("      22. Сетевой адаптер");
+        Console.WriteLine("      23. Экспорт/Импорт настроек");
         Console.WriteLine();
         Console.WriteLine("   ----------------------------------------");
         Console.WriteLine("      0. Выход");
@@ -1141,9 +1170,10 @@ class Program
             Console.WriteLine("    [4]  Диагностика и отчёт");
             Console.WriteLine("    [5]  Тест стратегий и установка");
             Console.WriteLine("    [6]  Сервисное меню");
+            Console.WriteLine("    [7]  Настройки");
             Console.WriteLine("    [0]  Выход");
             Console.WriteLine();
-            mainOpt = ConsoleMenu.Prompt("  Выберите (0-6, по умолчанию 1)", "1") ?? "1";
+            mainOpt = ConsoleMenu.Prompt("  Выберите (0-7, по умолчанию 1)", "1") ?? "1";
         }
 
         // ── Этап 1: Проверка обновлений zapret-manager ──
@@ -1198,6 +1228,7 @@ class Program
             case "4": await MenuDiagnostics(); MenuExportReport(); ConsoleMenu.PauseAny(); continue;
             case "5": await RunTestAndInstallAsync(); continue;
             case "6": await RunMenuAsync(); continue;
+            case "7": await MenuSettings(); continue;
         }
 
         // Инициализация пользовательских списков-заглушек
@@ -2041,4 +2072,341 @@ class Program
             WinWsSnapshot.Restore(snapshot);
         }
     }
+
+    // ── ISP DETECTION MENU ────────────────────────────────────────────────────
+    static async Task MenuIspDetect()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("ОПРЕДЕЛЕНИЕ ПРОВАЙДЕРА");
+        Console.WriteLine();
+
+        // Try cache first
+        var info = IspDetector.LoadCache(RootDir);
+        if (info == null)
+        {
+            ConsoleMenu.WriteInfo("Определение провайдера...");
+            info = await IspDetector.DetectAsync();
+        }
+
+        if (info == null)
+        {
+            ConsoleMenu.WriteError("Не удалось определить провайдера. Проверьте интернет.");
+            ConsoleMenu.PauseAny();
+            return;
+        }
+
+        IspDetector.SaveCache(RootDir, info);
+        IspDetector.Print(info);
+
+        // Show recommendations
+        var recs = await IspDetector.GetRecommendationsAsync(RootDir, info.Isp);
+        if (recs.Count > 0)
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("   ── РЕКОМЕНДУЕМЫЕ СТРАТЕГИИ ──");
+            Console.ResetColor();
+            for (int i = 0; i < recs.Count; i++)
+                Console.WriteLine($"      {i + 1}. {recs[i]}");
+        }
+        else
+        {
+            Console.WriteLine();
+            ConsoleMenu.WriteInfo("Нет специфических рекомендаций для вашего ISP.");
+            ConsoleMenu.WriteInfo("Запустите тест стратегий (п.11) для определения лучшей.");
+        }
+
+        Console.WriteLine();
+        ConsoleMenu.PauseAny();
+    }
+
+    // ── DOMAIN MANAGEMENT MENU ────────────────────────────────────────────────
+    static void MenuDomains()
+    {
+        DomainManager.Run(ListsDir);
+    }
+
+    // ── NIC SELECTOR MENU ─────────────────────────────────────────────────────
+    static void MenuNicSelector()
+    {
+        NicSelector.Run(RootDir);
+    }
+
+    // ── SETTINGS EXPORT/IMPORT MENU ───────────────────────────────────────────
+    static void MenuSettingsExport()
+    {
+        SettingsExporter.Run(RootDir, ListsDir);
+    }
+
+    // ── SPEED TEST MENU ───────────────────────────────────────────────────────
+    static async Task MenuSpeedTest()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("SPEED-ТЕСТ");
+        Console.WriteLine();
+        ConsoleMenu.WriteInfo("Сравнение скорости БЕЗ обхода и С обходом");
+        ConsoleMenu.WriteInfo("Используется Cloudflare CDN (10MB download, 1MB upload)");
+        Console.WriteLine();
+
+        if (!ConsoleMenu.Confirm("Начать тест?")) return;
+
+        // Test WITHOUT bypass
+        ConsoleMenu.WriteStep("Тест БЕЗ обхода DPI");
+        StopZapretForTest();
+        await Task.Delay(2000);
+
+        var before = await SpeedTester.RunAsync(msg => ConsoleMenu.WriteInfo(msg));
+        SpeedTester.PrintResult(before, "БЕЗ обхода");
+
+        // Restore service and test WITH bypass
+        ConsoleMenu.WriteStep("Тест С обходом DPI");
+        var svcState = WinServiceManager.GetState("zapret");
+        if (svcState == WinServiceManager.ServiceState.Stopped ||
+            svcState == WinServiceManager.ServiceState.Running)
+        {
+            WinServiceManager.Start("zapret");
+            await Task.Delay(3000);
+        }
+
+        var after = await SpeedTester.RunAsync(msg => ConsoleMenu.WriteInfo(msg));
+        SpeedTester.PrintResult(after, "С обходом");
+
+        // Comparison
+        SpeedTester.PrintComparison(before, after);
+        Console.WriteLine();
+
+        ConsoleMenu.PauseAny();
+    }
+
+    // ── STRATEGY EDITOR MENU ──────────────────────────────────────────────────
+    static void MenuStrategyEditor()
+    {
+        var strategiesDir = Path.Combine(RootDir, "strategies");
+        Directory.CreateDirectory(strategiesDir);
+        StrategyEditor.Run(strategiesDir, BinDir, ListsDir);
+    }
+
+    // ── WATCHDOG MENU ─────────────────────────────────────────────────────────
+    static void MenuWatchdog()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("WATCHDOG (АВТОРОТАЦИЯ)");
+        Console.WriteLine();
+
+        var enabled = _watchdog?.IsEnabled == true;
+        ConsoleMenu.WriteInfo($"Статус: {(enabled ? "включён" : "выключён")}");
+        if (_watchdog != null)
+        {
+            ConsoleMenu.WriteInfo($"Последняя проверка: {(_watchdog.LastCheck == DateTime.MinValue ? "не было" : _watchdog.LastCheck.ToString("HH:mm:ss"))}");
+            ConsoleMenu.WriteInfo($"Результат: {_watchdog.LastStatus}");
+        }
+        ConsoleMenu.WriteInfo($"Интервал: {Cfg.Watchdog.CheckIntervalMinutes} мин");
+        ConsoleMenu.WriteInfo($"Порог сбоев: {Cfg.Watchdog.FailThreshold} подряд");
+        ConsoleMenu.WriteInfo($"Кулдаун: {Cfg.Watchdog.CooldownMinutes} мин");
+        Console.WriteLine();
+
+        // Show ranking if available
+        var ranking = StrategyRanking.Load(RootDir);
+        if (ranking.Count > 0)
+        {
+            ConsoleMenu.WriteInfo("Рейтинг стратегий:");
+            for (int i = 0; i < Math.Min(ranking.Count, 5); i++)
+                Console.WriteLine($"      {i + 1}. {ranking[i].Name}  (score: {ranking[i].Score})");
+            Console.WriteLine();
+        }
+        else
+        {
+            ConsoleMenu.WriteWarn("Нет данных тестов. Запустите тест стратегий (п.11) для авторотации.");
+            Console.WriteLine();
+        }
+
+        if (ConsoleMenu.Confirm($"Watchdog: {(enabled ? "выключить" : "включить")}?"))
+        {
+            if (_watchdog == null)
+            {
+                _watchdog = new Watchdog(RootDir, Cfg);
+            }
+            _watchdog.Toggle();
+            ConsoleMenu.WriteOk($"Watchdog {(_watchdog.IsEnabled ? "включён" : "выключён")}");
+        }
+
+        ConsoleMenu.PauseAny();
+    }
+
+    // ── TRAY MODE (отдельный процесс) ──────────────────────────────────────────
+    static async Task RunTrayMode()
+    {
+        // Hide console window completely
+        TrayManager.HideConsole();
+        Console.Title = "Zapret Tray";
+        Logger.Info("Tray-процесс запущен");
+
+        _tray = new TrayManager(RootDir, Cfg);
+        _tray.Start();
+
+        // Watchdog в tray-процессе тоже
+        if (Watchdog.IsEnabledFlag(RootDir))
+        {
+            _watchdog = new Watchdog(RootDir, Cfg);
+            _watchdog.Start();
+        }
+
+        // Keep alive forever — tray STA thread + this wait
+        var exitEvent = new ManualResetEventSlim(false);
+        Console.CancelKeyPress += (_, e) => { e.Cancel = true; exitEvent.Set(); };
+        exitEvent.Wait();
+
+        _watchdog?.Dispose();
+        _tray.Stop();
+        Logger.Dispose();
+    }
+
+    /// <summary>
+    /// Spawn a separate tray process if not already running.
+    /// </summary>
+    static void EnsureTrayProcess()
+    {
+        try
+        {
+            // Check if tray process already exists
+            var current = System.Diagnostics.Process.GetCurrentProcess();
+            var trayProcs = System.Diagnostics.Process.GetProcessesByName(current.ProcessName)
+                .Where(p => p.Id != current.Id)
+                .ToList();
+
+            // Check by window title
+            var hasTray = trayProcs.Any(p =>
+            {
+                try { return p.MainWindowTitle == "Zapret Tray" || p.MainWindowTitle == ""; }
+                catch { return false; }
+            });
+
+            if (trayProcs.Count > 0)
+            {
+                Logger.Info("Tray-процесс уже запущен");
+                return;
+            }
+
+            var exePath = Environment.ProcessPath
+                ?? System.Reflection.Assembly.GetEntryAssembly()?.Location
+                ?? "zapret-manager.exe";
+
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = exePath,
+                Arguments = "--tray",
+                WorkingDirectory = RootDir,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+            };
+
+            System.Diagnostics.Process.Start(psi);
+            Logger.Info("Tray-процесс запущен");
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"Не удалось запустить tray: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Register tray process in Task Scheduler for autostart on login.
+    /// </summary>
+    static void RegisterTrayAutostart()
+    {
+        try
+        {
+            var exePath = Environment.ProcessPath
+                ?? System.Reflection.Assembly.GetEntryAssembly()?.Location
+                ?? Path.Combine(RootDir, "zapret-manager.exe");
+
+            var taskName = "ZapretManagerTray";
+            // schtasks /create — runs on logon
+            var args = $"/create /tn \"{taskName}\" /tr \"\\\"{exePath}\\\" --tray\" /sc ONLOGON /rl HIGHEST /f";
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "schtasks.exe",
+                Arguments = args,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true
+            };
+            var proc = System.Diagnostics.Process.Start(psi);
+            proc?.WaitForExit(5000);
+
+            if (proc?.ExitCode == 0)
+                ConsoleMenu.WriteOk("Автозапуск трея зарегистрирован в Планировщике задач");
+            else
+                ConsoleMenu.WriteWarn("Не удалось зарегистрировать автозапуск");
+        }
+        catch (Exception ex)
+        {
+            ConsoleMenu.WriteError($"Ошибка регистрации: {ex.Message}");
+        }
+    }
+
+    static void UnregisterTrayAutostart()
+    {
+        try
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "schtasks.exe",
+                Arguments = "/delete /tn \"ZapretManagerTray\" /f",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            var proc = System.Diagnostics.Process.Start(psi);
+            proc?.WaitForExit(5000);
+            ConsoleMenu.WriteOk("Автозапуск трея удалён");
+        }
+        catch { }
+    }
+
+    // ── SETTINGS SUBMENU (Main Menu п.7) ──────────────────────────────────────
+    static async Task MenuSettings()
+    {
+        while (true)
+        {
+            Console.Clear();
+            ConsoleMenu.WriteHeader("НАСТРОЙКИ");
+
+            var gf = GameFilter.StatusLabel(UtilsDir);
+            var ipset = GetIpsetStatus();
+            var updateMode = UpdateChecker.GetUpdateMode(RootDir) == "auto" ? "авто" : "ручной";
+            var updates = File.Exists(Path.Combine(UtilsDir, "check_updates.enabled")) ? "вкл" : "выкл";
+
+            Console.WriteLine();
+            Console.WriteLine($"   1. Обновления           [{updates} | {updateMode}]");
+            Console.WriteLine($"   2. Игровой фильтр       [{gf}]");
+            Console.WriteLine($"   3. IPSet фильтр         [{ipset}]");
+            Console.WriteLine( "   4. Бэкап / Восстановление");
+            Console.WriteLine( "   5. Профили");
+            Console.WriteLine( "   6. Автозапуск трея при старте системы");
+            Console.WriteLine();
+            Console.WriteLine( "   0. Назад");
+            Console.WriteLine();
+
+            var ch = ConsoleMenu.Prompt("Выберите (0-6)", "0");
+            switch (ch)
+            {
+                case "1": MenuToggleUpdates(); break;
+                case "2": MenuGameFilter(); break;
+                case "3": MenuIpsetSwitch(); break;
+                case "4": MenuBackup(); break;
+                case "5": MenuProfiles(); break;
+                case "6":
+                    if (ConsoleMenu.Confirm("Зарегистрировать автозапуск трея в Планировщике задач?"))
+                        RegisterTrayAutostart();
+                    else
+                        UnregisterTrayAutostart();
+                    ConsoleMenu.PauseAny();
+                    break;
+                case "0": return;
+            }
+        }
+    }
 }
+
