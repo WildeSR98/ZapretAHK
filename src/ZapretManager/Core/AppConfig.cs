@@ -100,4 +100,5 @@ public class FeaturesConfig
     [JsonPropertyName("remove_cidr_overlap")] public bool RemoveCidrOverlap { get; set; } = true;
     [JsonPropertyName("verbose_logging")] public bool VerboseLogging { get; set; }
     [JsonPropertyName("update_check_interval_hours")] public int UpdateCheckIntervalHours { get; set; } = 1;
+    [JsonPropertyName("log_retention_days")] public int LogRetentionDays { get; set; } = 14;
 }

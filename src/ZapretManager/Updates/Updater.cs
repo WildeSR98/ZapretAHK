@@ -126,42 +126,54 @@ public static class GitHubUpdater
             // Generate update.bat
             var batPath = Path.Combine(Path.GetTempPath(), $"zapret_update_{Guid.NewGuid():N}.bat");
             var exePath = Path.Combine(rootDir, "zapret-manager.exe");
+            var versionFile = Path.Combine(rootDir, "utils", "manager_version.txt");
 
-            // Build exclusion list for xcopy
+            // Create exclusion file for robocopy
+            var excludeFile = Path.Combine(Path.GetTempPath(), "zapret_exclude.txt");
+            File.WriteAllLines(excludeFile, new[]
+            {
+                "config.json", "*-user.txt", "game_filter.enabled",
+                "check_updates.enabled", "manager_version.txt"
+            });
+
             var batContent = $"""
                 @echo off
                 chcp 65001 >nul
+                setlocal EnableDelayedExpansion
+                
                 echo Ожидание завершения zapret-manager...
-                timeout /t 3 /nobreak >nul
-
+                :waitloop
+                tasklist /fi "imagename eq zapret-manager.exe" 2>nul | find /i "zapret-manager.exe" >nul
+                if not errorlevel 1 (
+                    timeout /t 1 /nobreak >nul
+                    goto waitloop
+                )
+                
                 echo Копирование файлов обновления...
                 
-                rem Copy files from publish source, skip protected files
-                for /r "{publishSrc}" %%f in (*) do (
-                    set "relpath=%%f"
-                    set "relpath=!relpath:{publishSrc}\=!"
+                rem Copy all files except protected ones
+                for %%f in ("{publishSrc}\*.dll" "{publishSrc}\*.exe" "{publishSrc}\*.json" "{publishSrc}\*.deps.json" "{publishSrc}\*.runtimeconfig.json" "{publishSrc}\*.pdb") do (
+                    set "fname=%%~nxf"
                     set "skip=0"
-                    echo %%~nxf | findstr /i "config.json" >nul && set "skip=1"
-                    echo %%~nxf | findstr /i "\-user.txt" >nul && set "skip=1"
-                    echo %%~nxf | findstr /i "game_filter.enabled" >nul && set "skip=1"
-                    echo %%~nxf | findstr /i "check_updates.enabled" >nul && set "skip=1"
-                    echo %%~nxf | findstr /i "manager_version.txt" >nul && set "skip=1"
-                    if !skip!==0 (
+                    if /i "!fname!"=="config.json" set "skip=1"
+                    if "!skip!"=="0" (
                         copy /y "%%f" "{rootDir}\%%~nxf" >nul 2>&1
                     )
                 )
-
+                
                 rem Update version file
-                echo {newVersion}> "{Path.Combine(rootDir, "utils", "manager_version.txt")}"
+                echo {newVersion}> "{versionFile}"
                 
                 echo Обновление завершено. Перезапуск...
                 timeout /t 1 /nobreak >nul
-                start "" "{exePath}" --menu
+                start "" "{exePath}"
                 
                 rem Cleanup
+                timeout /t 5 /nobreak >nul
                 rd /s /q "{tempDir}" >nul 2>&1
                 del /q "{zipPath}" >nul 2>&1
-                del "%~f0"
+                del /q "{excludeFile}" >nul 2>&1
+                (goto) 2>nul & del "%~f0"
                 """;
 
             await File.WriteAllTextAsync(batPath, batContent, System.Text.Encoding.UTF8);

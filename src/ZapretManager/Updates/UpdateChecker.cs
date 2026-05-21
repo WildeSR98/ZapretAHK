@@ -58,7 +58,7 @@ public static class UpdateChecker
                                 parts.Add($"Manager v{result.ManagerRemote}");
                             if (result.CoreUpdateAvailable)
                                 parts.Add($"Core {result.CoreRemote}");
-                            ShowToast("Zapret — доступно обновление",
+                            UI.ToastNotifier.Show("Zapret — доступно обновление",
                                 $"Новая версия: {string.Join(" | ", parts)}. Советуем обновить через меню п.9");
 
                             // Auto-update if enabled
@@ -70,7 +70,7 @@ public static class UpdateChecker
                         }
                         else
                         {
-                            ShowToast("Zapret Manager",
+                            UI.ToastNotifier.Show("Zapret Manager",
                                 "Обновления не требуются. Все версии актуальны.");
                         }
                         firstRun = false;
@@ -85,7 +85,7 @@ public static class UpdateChecker
                                 parts.Add($"Manager v{result.ManagerRemote}");
                             if (result.CoreUpdateAvailable)
                                 parts.Add($"Core {result.CoreRemote}");
-                            ShowToast("Zapret — доступно обновление",
+                            UI.ToastNotifier.Show("Zapret — доступно обновление",
                                 $"Новая версия: {string.Join(" | ", parts)}. Советуем обновить через меню п.9");
 
                             if (GetUpdateMode(rootDir) == "auto")
@@ -209,8 +209,8 @@ public static class UpdateChecker
 
         coreLocal = ReadLocalCoreVersion(rootDir);
 
-        var mgrUpdate = mgrRemote != null && mgrRemote != mgrLocal;
-        var coreUpdate = coreRemote != null && coreRemote != coreLocal;
+        var mgrUpdate = IsNewerVersion(mgrRemote, mgrLocal);
+        var coreUpdate = IsNewerVersion(coreRemote, coreLocal);
 
         return new UpdateCheckResult(
             mgrRemote, mgrLocal, mgrDownloadUrl,
@@ -230,7 +230,7 @@ public static class UpdateChecker
             if (result.CoreUpdateAvailable)
             {
                 Logger.Info("Автообновление zapret core...");
-                ShowToast("Zapret", "Автообновление zapret core...");
+                UI.ToastNotifier.Show("Zapret", "Автообновление zapret core...");
                 var ok = await GitHubUpdater.UpdateZapretCoreFilesAsync(cfg, rootDir);
                 if (ok)
                 {
@@ -242,9 +242,9 @@ public static class UpdateChecker
                     await Task.Delay(2000);
                     var state = Service.WinServiceManager.GetState("zapret");
                     if (state == Service.WinServiceManager.ServiceState.Running)
-                        ShowToast("Zapret", "Core обновлён и служба перезапущена");
+                        UI.ToastNotifier.Show("Zapret", "Core обновлён и служба перезапущена");
                     else
-                        ShowToast("Zapret", "Core обновлён, но служба не запустилась. Проверьте через п.3");
+                        UI.ToastNotifier.Show("Zapret", "Core обновлён, но служба не запустилась. Проверьте через п.3");
                 }
             }
 
@@ -252,7 +252,7 @@ public static class UpdateChecker
             if (result.ManagerUpdateAvailable && result.ManagerDownloadUrl != null)
             {
                 Logger.Info("Автообновление manager...");
-                ShowToast("Zapret", "Автообновление менеджера, приложение будет перезапущено...");
+                UI.ToastNotifier.Show("Zapret", "Автообновление менеджера, приложение будет перезапущено...");
                 await Task.Delay(2000);
                 var updated = await GitHubUpdater.UpdateManagerAsync(
                     result.ManagerDownloadUrl, rootDir, result.ManagerRemote!);
@@ -263,7 +263,7 @@ public static class UpdateChecker
         catch (Exception ex)
         {
             Logger.Error($"Автообновление не удалось: {ex}");
-            ShowToast("Zapret — ошибка", $"Автообновление не удалось: {ex.Message}");
+            UI.ToastNotifier.Show("Zapret — ошибка", $"Автообновление не удалось: {ex.Message}");
         }
     }
 
@@ -292,6 +292,47 @@ public static class UpdateChecker
     {
         var vf = Path.Combine(rootDir, "bin", "version.txt");
         return File.Exists(vf) ? File.ReadAllText(vf).Trim() : null;
+    }
+
+    /// <summary>True if remote version is strictly newer than local (semantic comparison).</summary>
+    public static bool IsNewerVersion(string? remote, string? local)
+    {
+        if (string.IsNullOrWhiteSpace(remote) || string.IsNullOrWhiteSpace(local))
+            return false;
+
+        // Strip common prefixes like "v", "V"
+        remote = remote.TrimStart('v', 'V');
+        local = local.TrimStart('v', 'V');
+
+        // Try System.Version first (handles 2.3.0 vs 2.4.0)
+        if (Version.TryParse(remote, out var remoteVer) && Version.TryParse(local, out var localVer))
+            return remoteVer > localVer;
+
+        // Fallback: segment-by-segment comparison for non-standard versions like "1.9.8c"
+        var remoteParts = remote.Split('.', '-', '_');
+        var localParts = local.Split('.', '-', '_');
+        var maxLen = Math.Max(remoteParts.Length, localParts.Length);
+
+        for (int i = 0; i < maxLen; i++)
+        {
+            var rp = i < remoteParts.Length ? remoteParts[i] : "0";
+            var lp = i < localParts.Length ? localParts[i] : "0";
+
+            // Try numeric comparison first
+            if (int.TryParse(rp, out var rn) && int.TryParse(lp, out var ln))
+            {
+                if (rn > ln) return true;
+                if (rn < ln) return false;
+                continue;
+            }
+
+            // String comparison for segments like "8c" vs "8b"
+            var cmp = string.Compare(rp, lp, StringComparison.OrdinalIgnoreCase);
+            if (cmp > 0) return true;
+            if (cmp < 0) return false;
+        }
+
+        return false; // Equal
     }
 
     private static void SaveCache(string rootDir, UpdateCheckResult result)
@@ -323,27 +364,7 @@ public static class UpdateChecker
         catch { return null; }
     }
 
-    private static void ShowToast(string title, string text)
-    {
-        try
-        {
-            var t = new System.Threading.Thread(() =>
-            {
-                using var icon = new System.Windows.Forms.NotifyIcon();
-                icon.Icon = System.Drawing.SystemIcons.Information;
-                icon.Visible = true;
-                icon.BalloonTipTitle = title;
-                icon.BalloonTipText = text;
-                icon.ShowBalloonTip(5000);
-                System.Threading.Thread.Sleep(6000);
-                icon.Visible = false;
-            });
-            t.SetApartmentState(System.Threading.ApartmentState.STA);
-            t.IsBackground = true;
-            t.Start();
-        }
-        catch { }
-    }
+
 }
 
 /// <summary>Result of an update check.</summary>

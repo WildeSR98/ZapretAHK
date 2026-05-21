@@ -27,11 +27,45 @@ class Program
         Directory.CreateDirectory(UtilsDir);
 
         Cfg = AppConfig.Load(RootDir);
-        Logger.Init(RootDir, Cfg.Features.VerboseLogging);
+        Logger.Init(RootDir, Cfg.Features.VerboseLogging, Cfg.Features.LogRetentionDays);
         AdminHelper.RequireAdmin();
+
+        // Graceful shutdown
+        Console.CancelKeyPress += (_, e) =>
+        {
+            e.Cancel = true;
+            UpdateChecker.Stop();
+            Console.CursorVisible = true;
+            Console.ResetColor();
+            Logger.Info("=== Завершение по Ctrl+C ===");
+            Logger.Dispose();
+            Environment.Exit(0);
+        };
 
         // Запуск фоновой проверки обновлений
         UpdateChecker.StartBackground(Cfg, RootDir);
+
+        // Проверка здоровья службы (ImagePath может устареть если папка перемещена)
+        CheckServiceHealth();
+
+        if (args.Contains("--check-updates"))
+        {
+            // Silent check for Task Scheduler — toast only, no console
+            try
+            {
+                var result = await UpdateChecker.CheckNowAsync(Cfg, RootDir);
+                if (result.ManagerUpdateAvailable || result.CoreUpdateAvailable)
+                {
+                    var parts = new List<string>();
+                    if (result.ManagerUpdateAvailable) parts.Add($"Manager v{result.ManagerRemote}");
+                    if (result.CoreUpdateAvailable) parts.Add($"Core {result.CoreRemote}");
+                    ToastNotifier.Show("Zapret — доступно обновление",
+                        $"Новая версия: {string.Join(" | ", parts)}");
+                }
+            }
+            catch { }
+            return;
+        }
 
         if (args.Contains("--menu"))        { Console.Title = "Zapret Manager"; await RunMenuAsync(); return; }
         if (args.Contains("--remove"))      { await RunRemoveAsync(); return; }
@@ -69,6 +103,9 @@ class Program
                 case "11": await MenuRunTests();          break;
                 case "12": MenuExportReport();            break;
                 case "13": MenuTgProxy();                 break;
+                case "14": MenuBackup();                   break;
+                case "15": MenuProfiles();                 break;
+                case "16": await MenuTrafficMonitor();     break;
                 case "0":  return;
             }
         }
@@ -87,11 +124,30 @@ class Program
         var tgState  = IsTgProxyRunning() ? "запущен" : "остановлен";
 
         Console.WriteLine();
-        Console.WriteLine($"   МЕНЕДЖЕР СЛУЖБЫ ZAPRET v{mgrVer}");
-        Console.WriteLine($"   {(strategy != "?" && strategy != "не установлена" ? $"Стратегия: {strategy}" : "")}");
+
+        var upd = UpdateChecker.LastResult ?? UpdateChecker.LoadCache(RootDir);
+
+        // Цветное отображение версий
+        Console.Write("   Manager: ");
+        Console.ForegroundColor = (upd != null && upd.ManagerUpdateAvailable) ? ConsoleColor.Yellow : ConsoleColor.Green;
+        Console.Write($"v{mgrVer}");
+        Console.ResetColor();
+        Console.Write("  Core: ");
+        Console.ForegroundColor = coreVer == "не установлен" ? ConsoleColor.Red
+            : (upd != null && upd.CoreUpdateAvailable) ? ConsoleColor.Yellow : ConsoleColor.Green;
+        Console.WriteLine(coreVer);
+        Console.ResetColor();
+
+        Console.Write($"   Служба: ");
+        Console.ForegroundColor = state == WinServiceManager.ServiceState.Running ? ConsoleColor.Green
+            : state == WinServiceManager.ServiceState.NotInstalled ? ConsoleColor.Red : ConsoleColor.Yellow;
+        Console.WriteLine(state);
+        Console.ResetColor();
+
+        if (strategy != "?" && strategy != "не установлена")
+            Console.WriteLine($"   Стратегия: {strategy}");
 
         // Индикатор обновлений
-        var upd = UpdateChecker.LastResult ?? UpdateChecker.LoadCache(RootDir);
         if (upd != null && (upd.ManagerUpdateAvailable || upd.CoreUpdateAvailable))
         {
             var parts = new List<string>();
@@ -124,6 +180,11 @@ class Program
         Console.WriteLine("      11. Тест стратегий");
         Console.WriteLine("      12. Экспорт отчёта");
         Console.WriteLine($"      13. TG WS Proxy         [{tgState}]");
+        Console.WriteLine();
+        Console.WriteLine("   :: СЕРВИС");
+        Console.WriteLine("      14. Бэкап / Восстановление");
+        Console.WriteLine("      15. Профили");
+        Console.WriteLine("      16. Мониторинг трафика");
         Console.WriteLine();
         Console.WriteLine("   ----------------------------------------");
         Console.WriteLine("      0. Выход");
@@ -543,7 +604,12 @@ class Program
             ConsoleMenu.WriteOk("Все критичные файлы на месте");
         Console.WriteLine();
 
-        // 5. Очистка кэша Discord
+        // 5. Проверка DNS
+        ConsoleMenu.WriteStep("Проверка DNS-резолвинга...");
+        var dnsResults = await DnsChecker.CheckAllAsync(Cfg.Diagnostics.CheckTargets);
+        DnsChecker.PrintResults(dnsResults);
+
+        // 6. Очистка кэша Discord
         if (ConsoleMenu.Confirm("Очистить кэш Discord?"))
         {
             var (closed, deleted, failed) = DiscordCacheCleaner.Clean();
@@ -553,6 +619,129 @@ class Program
             if (deleted.Count == 0 && failed.Count == 0)
                 ConsoleMenu.WriteInfo("Кэш Discord не найден");
         }
+
+        ConsoleMenu.PauseAny();
+    }
+
+    // ── BACKUP ────────────────────────────────────────────────────────────────
+    static void MenuBackup()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("БЭКАП / ВОССТАНОВЛЕНИЕ");
+
+        var backups = Service.BackupManager.ListBackups(RootDir);
+        Console.WriteLine($"\n   Существующие бэкапы: {backups.Length}");
+        for (int i = 0; i < backups.Length; i++)
+        {
+            var b = backups[i];
+            Console.WriteLine($"     [{i + 1}] {b.Name}  ({b.Length / 1024} KB, {b.CreationTime:dd.MM.yyyy HH:mm})");
+        }
+
+        Console.WriteLine("\n   [C] Создать новый бэкап");
+        if (backups.Length > 0) Console.WriteLine("   [R] Восстановить из бэкапа");
+        Console.WriteLine("   [0] Назад");
+
+        var ch = ConsoleMenu.Prompt("\n   Выбор", "0");
+        switch (ch?.ToUpper())
+        {
+            case "C":
+                Service.BackupManager.CreateBackup(RootDir, Cfg.Backup.KeepCount);
+                ConsoleMenu.PauseAny();
+                break;
+            case "R":
+                if (backups.Length == 0) break;
+                var pickStr = ConsoleMenu.Prompt("   Номер бэкапа");
+                if (int.TryParse(pickStr, out var pick) && pick >= 1 && pick <= backups.Length)
+                {
+                    if (ConsoleMenu.Confirm($"Восстановить из {backups[pick - 1].Name}? Текущие файлы будут перезаписаны."))
+                    {
+                        Service.BackupManager.RestoreBackup(RootDir, backups[pick - 1].FullName);
+                        ConsoleMenu.WriteInfo("Перезапустите менеджер для применения изменений.");
+                    }
+                }
+                ConsoleMenu.PauseAny();
+                break;
+        }
+    }
+
+    // ── PROFILES ──────────────────────────────────────────────────────────────
+    static void MenuProfiles()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("ПРОФИЛИ");
+
+        var profiles = ProfileManager.ListProfiles(RootDir);
+        Console.WriteLine($"\n   Сохранённые профили: {profiles.Length}");
+        for (int i = 0; i < profiles.Length; i++)
+        {
+            var p = profiles[i];
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write($"     [{i + 1}] {p.Name}");
+            Console.ResetColor();
+            Console.WriteLine($"  (стратегия: {p.Strategy}, ipset: {p.IpsetMode}, обновления: {p.UpdateMode})");
+        }
+
+        Console.WriteLine("\n   [S] Сохранить текущий профиль");
+        if (profiles.Length > 0)
+        {
+            Console.WriteLine("   [A] Применить профиль");
+            Console.WriteLine("   [D] Удалить профиль");
+        }
+        Console.WriteLine("   [0] Назад");
+
+        var ch = ConsoleMenu.Prompt("\n   Выбор", "0");
+        switch (ch?.ToUpper())
+        {
+            case "S":
+                var name = ConsoleMenu.Prompt("   Имя профиля");
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    ProfileManager.SaveProfile(RootDir, name);
+                    ConsoleMenu.WriteOk($"Профиль '{name}' сохранён");
+                }
+                ConsoleMenu.PauseAny();
+                break;
+            case "A":
+                if (profiles.Length == 0) break;
+                var applyStr = ConsoleMenu.Prompt("   Номер профиля");
+                if (int.TryParse(applyStr, out var applyIdx) && applyIdx >= 1 && applyIdx <= profiles.Length)
+                {
+                    var prof = profiles[applyIdx - 1];
+                    if (ConsoleMenu.Confirm($"Применить профиль '{prof.Name}'?"))
+                    {
+                        ConsoleMenu.StartSpinner("Применение профиля...");
+                        ProfileManager.ApplyProfile(prof, RootDir, BinDir, ListsDir, UtilsDir);
+                        ConsoleMenu.StopSpinner(true, $"Профиль '{prof.Name}' применён");
+                    }
+                }
+                ConsoleMenu.PauseAny();
+                break;
+            case "D":
+                if (profiles.Length == 0) break;
+                var delStr = ConsoleMenu.Prompt("   Номер профиля для удаления");
+                if (int.TryParse(delStr, out var delIdx) && delIdx >= 1 && delIdx <= profiles.Length)
+                {
+                    ProfileManager.DeleteProfile(RootDir, profiles[delIdx - 1].Name);
+                    ConsoleMenu.WriteOk("Профиль удалён");
+                }
+                ConsoleMenu.PauseAny();
+                break;
+        }
+    }
+
+    // ── TRAFFIC MONITOR ───────────────────────────────────────────────────────
+    static async Task MenuTrafficMonitor()
+    {
+        Console.Clear();
+        ConsoleMenu.WriteHeader("МОНИТОРИНГ ТРАФИКА");
+
+        // Show zapret processes
+        ConsoleMenu.WriteStep("Процессы zapret");
+        TrafficMonitor.ShowZapretProcesses();
+        Console.WriteLine();
+
+        // Live monitor
+        await TrafficMonitor.RunLiveMonitorAsync(60);
 
         ConsoleMenu.PauseAny();
     }
@@ -623,7 +812,7 @@ class Program
                     Console.WriteLine("  " + new string('─', 56));
                     Console.ResetColor();
 
-                    Service.ProcessManager.KillAll();
+                    StopZapretForTest();
                     await Task.Delay(500);
 
                     // Start config via cmd.exe
@@ -636,7 +825,7 @@ class Program
                     DpiChecker.PrintResults(dpiResults);
                     allDpiResults.Add((file.Name, dpiResults));
 
-                    Service.ProcessManager.KillAll();
+                    StopZapretForTest();
                     if (proc != null && !proc.HasExited) try { proc.Kill(); } catch { }
                     await Task.Delay(500);
                 }
@@ -708,9 +897,9 @@ class Program
                 IpsetTestHelper.RemoveFlag(RootDir);
             }
 
-            // Restore winws snapshot
-            Service.ProcessManager.KillAll();
-            WinWsSnapshot.Restore(winwsSnapshot);
+            // Restore winws — restart service if it was running, else restore processes
+            StopZapretForTest();
+            await RestoreZapretAfterTestAsync(winwsSnapshot);
         }
 
         ConsoleMenu.PauseAny();
@@ -961,7 +1150,7 @@ class Program
         try
         {
             var (mgrRemote, mgrLocal, mgrDownloadUrl) = await managerUpdateTask;
-            if (mgrRemote != null && mgrRemote != mgrLocal)
+            if (UpdateChecker.IsNewerVersion(mgrRemote, mgrLocal))
             {
                 ConsoleMenu.WriteWarn($"Доступна новая версия zapret-manager: v{mgrRemote} (у вас: v{mgrLocal ?? "не определена"})");
                 if (!silent && mgrDownloadUrl != null && ConsoleMenu.Confirm("Обновить zapret-manager?"))
@@ -986,7 +1175,7 @@ class Program
         try
         {
             var (remote, local) = await coreUpdateTask;
-            if (remote != null && remote != local)
+            if (UpdateChecker.IsNewerVersion(remote, local))
             {
                 ConsoleMenu.WriteWarn($"Доступна новая версия zapret core: {remote} (у вас: {local ?? "не установлена"})");
                 if (!silent && ConsoleMenu.Confirm("Обновить файлы zapret core (bin, strategies, lists)?"))
@@ -1193,7 +1382,7 @@ class Program
 
         // Проверка доступности БЕЗ обхода
         ConsoleMenu.WriteStep("Проверка доступности сайтов БЕЗ обхода");
-        ProcessManager.KillAll();
+        StopZapretForTest();
         var preResults = await AccessChecker.CheckAllAsync(Cfg.Diagnostics.CheckTargets);
         bool allOk = preResults.All(r => r.Reachable);
         foreach (var r in preResults)
@@ -1305,7 +1494,7 @@ class Program
                             Console.WriteLine("  " + new string('─', 56));
                             Console.ResetColor();
 
-                            ProcessManager.KillAll();
+                            StopZapretForTest();
                             await Task.Delay(500);
 
                             // Launch strategy via bat file
@@ -1319,14 +1508,14 @@ class Program
                             // Детальный вывод результатов для этого конфига
                             DpiChecker.PrintResults(dpiResults);
 
-                            ProcessManager.KillAll();
+                            StopZapretForTest();
                             await Task.Delay(500);
                         }
 
                         // Restore
                         IpsetTestHelper.Restore(ListsDir);
                         IpsetTestHelper.RemoveFlag(RootDir);
-                        WinWsSnapshot.Restore(winwsSnapshot);
+                        await RestoreZapretAfterTestAsync(winwsSnapshot);
 
                         // Аналитика и выбор лучшего
                         var bestDpiConfig = DpiChecker.PrintDpiAnalytics(allDpiResults);
@@ -1453,7 +1642,7 @@ class Program
             else if (okCnt > 0)           ConsoleMenu.WriteWarn($"Частично: {okCnt}/{post.Count}. Попробуйте другую стратегию.");
             else                          ConsoleMenu.WriteError("Ни один ресурс не работает. Запустите --menu → 11 (тест стратегий).");
 
-            ShowBalloon("Zapret", $"Служба установлена: {Path.GetFileNameWithoutExtension(chosenBat)}");
+            ToastNotifier.Show("Zapret", $"Служба установлена: {Path.GetFileNameWithoutExtension(chosenBat)}");
             ConsoleMenu.PauseAny("Нажмите любую клавишу для возврата в меню...");
         }
         Logger.Info("=== Установка завершена ===");
@@ -1465,6 +1654,20 @@ class Program
     {
         Console.Clear();
         ConsoleMenu.WriteHeader("УДАЛЕНИЕ ZAPRET");
+
+        // Подтверждение перед удалением
+        if (!silent)
+        {
+            ConsoleMenu.WriteWarn("Будут удалены ВСЕ службы zapret, WinDivert, WinDivert14.");
+            ConsoleMenu.WriteInfo("Ваши списки в папке lists/ сохранены.");
+            if (!ConsoleMenu.Confirm("Продолжить удаление?"))
+            {
+                ConsoleMenu.WriteInfo("Удаление отменено");
+                ConsoleMenu.PauseAny();
+                return;
+            }
+        }
+
         ProcessManager.KillAll();
         foreach (var svc in new[] { "zapret", "WinDivert", "WinDivert14" })
         {
@@ -1472,7 +1675,7 @@ class Program
             if (WinServiceManager.Remove(svc)) ConsoleMenu.WriteOk($"Служба удалена: {svc}");
             else ConsoleMenu.WriteInfo($"{svc}: не установлена");
         }
-        ConsoleMenu.WriteOk("Ваши списки в папке lists/ сохранены.");
+        ConsoleMenu.WriteOk("Готово. Списки в папке lists/ сохранены.");
         if (!silent) ConsoleMenu.PauseAny();
         await Task.CompletedTask;
     }
@@ -1555,7 +1758,7 @@ class Program
                 Console.WriteLine("  " + new string('─', 56));
                 Console.ResetColor();
 
-                ProcessManager.KillAll();
+                StopZapretForTest();
                 await Task.Delay(500);
 
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd.exe",
@@ -1568,13 +1771,13 @@ class Program
                 // Детальный вывод результатов для этого конфига
                 DpiChecker.PrintResults(dpiResults);
 
-                ProcessManager.KillAll();
+                StopZapretForTest();
                 await Task.Delay(500);
             }
 
             IpsetTestHelper.Restore(ListsDir);
             IpsetTestHelper.RemoveFlag(RootDir);
-            WinWsSnapshot.Restore(winwsSnapshot);
+            await RestoreZapretAfterTestAsync(winwsSnapshot);
 
             // Аналитика и выбор лучшего
             bestConfig = DpiChecker.PrintDpiAnalytics(allDpiResults);
@@ -1614,27 +1817,7 @@ class Program
         ConsoleMenu.PauseAny();
     }
 
-    static void ShowBalloon(string title, string text)
-    {
-        try
-        {
-            var t = new System.Threading.Thread(() =>
-            {
-                using var icon = new System.Windows.Forms.NotifyIcon();
-                icon.Icon = System.Drawing.SystemIcons.Information;
-                icon.Visible = true;
-                icon.BalloonTipTitle = title;
-                icon.BalloonTipText  = text;
-                icon.ShowBalloonTip(5000);
-                System.Threading.Thread.Sleep(5500);
-                icon.Visible = false;
-            });
-            t.SetApartmentState(System.Threading.ApartmentState.STA);
-            t.IsBackground = true;
-            t.Start();
-        }
-        catch { }
-    }
+
 
     static bool IsInPath(string exe)
     {
@@ -1646,6 +1829,63 @@ class Program
             return r?.ExitCode == 0;
         }
         catch { return false; }
+    }
+
+    // ── SERVICE HEALTH ────────────────────────────────────────────────────────
+    static void CheckServiceHealth()
+    {
+        try
+        {
+            var state = WinServiceManager.GetState("zapret");
+            if (state == WinServiceManager.ServiceState.NotInstalled) return;
+
+            var (isHealthy, message) = WinServiceManager.VerifyServiceHealth("zapret", BinDir);
+            if (isHealthy) return;
+
+            // ImagePath points to wrong directory
+            var imagePath = WinServiceManager.GetImagePath("zapret");
+            if (imagePath != null && !imagePath.Contains(BinDir, StringComparison.OrdinalIgnoreCase))
+            {
+                ConsoleMenu.WriteWarn($"Служба zapret указывает на другую папку.");
+                ConsoleMenu.WriteInfo($"  Текущий путь: {imagePath[..Math.Min(80, imagePath.Length)]}...");
+                ConsoleMenu.WriteInfo($"  Ожидаемый:    {BinDir}\\winws.exe");
+                if (ConsoleMenu.Confirm("Исправить путь службы?"))
+                {
+                    // Extract args from old ImagePath, replace exe path
+                    var winws = Path.Combine(BinDir, "winws.exe");
+                    var oldArgs = ExtractArgsFromImagePath(imagePath);
+                    var newBinPath = $"\"{winws}\" {oldArgs}";
+                    if (WinServiceManager.RepairBinPath("zapret", newBinPath))
+                    {
+                        ConsoleMenu.WriteOk("Путь службы исправлен");
+                        // Restart service with new path
+                        WinServiceManager.Stop("zapret");
+                        Thread.Sleep(1000);
+                        WinServiceManager.Start("zapret");
+                        Thread.Sleep(2000);
+                        if (WinServiceManager.GetState("zapret") == WinServiceManager.ServiceState.Running)
+                            ConsoleMenu.WriteOk("Служба перезапущена");
+                        else
+                            ConsoleMenu.WriteWarn("Служба не запустилась. Переустановите через меню.");
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"CheckServiceHealth: {ex.Message}");
+        }
+    }
+
+    static string ExtractArgsFromImagePath(string imagePath)
+    {
+        // ImagePath format: "C:\...\winws.exe" --arg1 --arg2 ...
+        // or: C:\...\winws.exe --arg1 --arg2 ...
+        var idx = imagePath.IndexOf("winws.exe", StringComparison.OrdinalIgnoreCase);
+        if (idx < 0) return "";
+        idx += "winws.exe".Length;
+        if (idx < imagePath.Length && imagePath[idx] == '"') idx++;
+        return imagePath[idx..].Trim();
     }
 
     // ── HELPERS ───────────────────────────────────────────────────────────────
@@ -1769,5 +2009,36 @@ class Program
             Logger.Info("publish/lists/ синхронизирован с lists/");
         }
         catch (Exception ex) { Logger.Warn($"Синхронизация publish/lists не удалась: {ex.Message}"); }
+    }
+    // ── TEST HELPERS: Service-aware stop/restore ────────────────────────────
+    /// <summary>Stop zapret service and kill winws.exe before running a test.</summary>
+    static void StopZapretForTest()
+    {
+        var state = WinServiceManager.GetState("zapret");
+        if (state == WinServiceManager.ServiceState.Running)
+            WinServiceManager.Stop("zapret");
+        ProcessManager.KillAll();
+    }
+
+    /// <summary>Restore zapret after test: restart service if installed, else restore processes.</summary>
+    static async Task RestoreZapretAfterTestAsync(List<WinWsSnapshot.WinWsInstance> snapshot)
+    {
+        ProcessManager.KillAll();
+        var state = WinServiceManager.GetState("zapret");
+        if (state == WinServiceManager.ServiceState.Stopped)
+        {
+            ConsoleMenu.WriteInfo("Перезапуск службы zapret...");
+            WinServiceManager.Start("zapret");
+            await Task.Delay(2000);
+            var newState = WinServiceManager.GetState("zapret");
+            if (newState == WinServiceManager.ServiceState.Running)
+                ConsoleMenu.WriteOk("Служба zapret перезапущена");
+            else
+                ConsoleMenu.WriteWarn("Служба не запустилась. Запустите вручную через п.3");
+        }
+        else if (snapshot.Count > 0)
+        {
+            WinWsSnapshot.Restore(snapshot);
+        }
     }
 }

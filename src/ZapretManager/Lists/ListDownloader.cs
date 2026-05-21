@@ -5,11 +5,8 @@ namespace ZapretManager.Lists;
 
 public static class ListDownloader
 {
-    private static readonly HttpClient _http = new(new HttpClientHandler
-    {
-        AllowAutoRedirect = true,
-        ServerCertificateCustomValidationCallback = (_, _, _, _) => true
-    }) { Timeout = TimeSpan.FromSeconds(30) };
+    private static readonly HttpClient _http = new()
+    { Timeout = TimeSpan.FromSeconds(30) };
 
     public static async Task DownloadAllAsync(
         IList<ListFileEntry> entries,
