@@ -34,7 +34,7 @@ public static class SpeedTester
                 sw.Stop();
                 latencies.Add(sw.Elapsed.TotalMilliseconds);
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[SpeedTester] {ex.GetType().Name}: {ex.Message}"); }
         }
         var latency = latencies.Count > 0
             ? latencies.OrderBy(x => x).Skip(1).Take(3).Average()

@@ -1,3 +1,4 @@
+using ZapretManager.Core;
 namespace ZapretManager.UI;
 
 /// <summary>Windows toast (balloon) notifications via NotifyIcon.</summary>
@@ -22,6 +23,6 @@ public static class ToastNotifier
             t.IsBackground = true;
             t.Start();
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[ToastNotifier] {ex.GetType().Name}: {ex.Message}"); }
     }
 }

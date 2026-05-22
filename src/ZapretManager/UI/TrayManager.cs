@@ -105,7 +105,7 @@ public sealed class TrayManager : IDisposable
                 _icon.Text = tooltip;
             }
         }
-        catch { /* silent */ }
+        catch (Exception ex) { Logger.Error($"[TrayManager] {ex.GetType().Name}: {ex.Message}"); /* silent */ }
     }
 
     // ── Context Menu ────────────────────────────────────────────────────────
@@ -219,7 +219,7 @@ public sealed class TrayManager : IDisposable
                     key?.SetValue("zapret-discord-youtube",
                         Path.GetFileNameWithoutExtension(batPath));
                 }
-                catch { }
+                catch (Exception ex) { Logger.Error($"[TrayManager] {ex.GetType().Name}: {ex.Message}"); }
 
                 WinServiceManager.Start("zapret");
                 ToastNotifier.Show("Zapret",
@@ -292,7 +292,7 @@ public sealed class TrayManager : IDisposable
             var val = key?.GetValue("zapret-discord-youtube")?.ToString();
             return string.IsNullOrEmpty(val) ? "не установлена" : val;
         }
-        catch { return "?"; }
+        catch (Exception ex) { Logger.Error($"[TrayManager] {ex.GetType().Name}: {ex.Message}"); return "?"; }
     }
 
     /// <summary>Create a simple colored square icon for the tray.</summary>

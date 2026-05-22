@@ -340,10 +340,15 @@ public static class StrategyTester
     {
         try
         {
-            using var ping = new System.Net.NetworkInformation.Ping();
-            var tasks = new List<Task<System.Net.NetworkInformation.PingReply>>();
-            for (int i = 0; i < 3; i++)
-                tasks.Add(ping.SendPingAsync(host, 3000));
+            // Ping is NOT thread-safe — each concurrent attempt needs its own instance.
+            const int attempts = 3;
+            const int timeoutMs = 3000;
+
+            var tasks = Enumerable.Range(0, attempts).Select(_ =>
+            {
+                var p = new System.Net.NetworkInformation.Ping();
+                return p.SendPingAsync(host, timeoutMs);
+            }).ToList();
 
             var replies = await Task.WhenAll(tasks);
             var successReplies = replies
@@ -355,8 +360,9 @@ public static class StrategyTester
             var avg = successReplies.Average(r => r.RoundtripTime);
             return $"{avg:N0} ms";
         }
-        catch
+        catch (Exception ex)
         {
+            Logger.Error($"[RunPingAsync] {host}: {ex.GetType().Name}: {ex.Message}");
             return "Timeout";
         }
     }
@@ -530,7 +536,7 @@ public static class StrategyTester
             p?.WaitForExit(1000);
             if (p?.ExitCode == 0) return "curl.exe";
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[StrategyTester] {ex.GetType().Name}: {ex.Message}"); }
 
         return "curl.exe"; // Hope for the best
     }

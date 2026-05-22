@@ -33,7 +33,7 @@ public static class TrafficMonitor
 
             return ParseNetstat(output);
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[TrafficMonitor] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     /// <summary>Run live monitoring for durationSeconds, updating every second.</summary>
@@ -150,7 +150,7 @@ public static class TrafficMonitor
 
             return new TrafficSnapshot(bytesRx, bytesTx, pktsRx, pktsTx, DateTime.Now);
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[TrafficMonitor] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     private static string FormatBytes(long bytes)

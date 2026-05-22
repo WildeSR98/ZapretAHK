@@ -1,3 +1,4 @@
+using ZapretManager.Core;
 using System.Diagnostics;
 
 namespace ZapretManager.Service;
@@ -12,7 +13,7 @@ public static class ProcessManager
         foreach (var p in Process.GetProcessesByName(processName))
         {
             try { p.Kill(); p.WaitForExit(2000); }
-            catch { /* ignore */ }
+            catch (Exception ex) { Logger.Error($"[ProcessManager] {ex.GetType().Name}: {ex.Message}"); /* ignore */ }
         }
         Thread.Sleep(500);
     }

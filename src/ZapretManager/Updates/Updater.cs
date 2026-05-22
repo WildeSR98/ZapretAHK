@@ -197,8 +197,10 @@ public static class GitHubUpdater
             Logger.Error($"UpdateManagerAsync failed: {ex}");
 
             // Cleanup on failure
-            try { if (File.Exists(zipPath)) File.Delete(zipPath); } catch { }
-            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); } catch { }
+            try { if (File.Exists(zipPath)) File.Delete(zipPath); }
+            catch (Exception cleanEx) { Logger.Warn($"Cleanup zip failed: {cleanEx.Message}"); }
+            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); }
+            catch (Exception cleanEx) { Logger.Warn($"Cleanup tempDir failed: {cleanEx.Message}"); }
 
             return false;
         }
@@ -393,8 +395,10 @@ public static class GitHubUpdater
         }
         finally
         {
-            try { if (File.Exists(zipPath)) File.Delete(zipPath); } catch { }
-            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); } catch { }
+            try { if (File.Exists(zipPath)) File.Delete(zipPath); }
+            catch (Exception cleanEx) { Logger.Warn($"Cleanup zip failed: {cleanEx.Message}"); }
+            try { if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true); }
+            catch (Exception cleanEx) { Logger.Warn($"Cleanup tempDir failed: {cleanEx.Message}"); }
         }
     }
 
@@ -525,7 +529,7 @@ public static class BackupManager
         foreach (var d in dirs)
         {
             try { d.Delete(recursive: true); Logger.Info($"Старый backup удалён: {d.Name}"); }
-            catch { }
+            catch (Exception ex) { Logger.Warn($"Не удалось удалить backup {d.Name}: {ex.Message}"); }
         }
     }
 }

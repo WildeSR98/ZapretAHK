@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ZapretManager.Core;
 
 namespace ZapretManager.Service;
 
@@ -180,7 +181,10 @@ public static class TgProxyManager
                 p.Kill(entireProcessTree: true);
                 Core.Logger.Info($"Killed {ProcessName} (PID: {p.Id})");
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Core.Logger.Warn($"Failed to kill {ProcessName} (PID: {p.Id}): {ex.Message}");
+            }
         }
     }
 
@@ -220,7 +224,7 @@ public static class TgProxyManager
                     return settings;
                 }
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[TgProxyManager] {ex.GetType().Name}: {ex.Message}"); }
         }
 
         // Default settings with generated secret

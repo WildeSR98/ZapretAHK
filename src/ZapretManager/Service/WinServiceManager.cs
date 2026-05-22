@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using ZapretManager.Core;
 
 namespace ZapretManager.Service;
 
@@ -239,7 +240,7 @@ public static class WinServiceManager
                 $@"System\CurrentControlSet\Services\{name}");
             return key?.GetValue("ImagePath")?.ToString();
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[WinServiceManager] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     /// <summary>Update the ImagePath if the install directory has moved.</summary>

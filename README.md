@@ -1,9 +1,20 @@
 # Zapret Manager
 
-Программа для обхода блокировок Discord, YouTube и других сайтов на Windows.
+<div align="center">
+
+[![CI](https://github.com/WildeSR98/12345/actions/workflows/ci.yml/badge.svg)](https://github.com/WildeSR98/12345/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/WildeSR98/12345?label=release&color=brightgreen)](https://github.com/WildeSR98/12345/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/WildeSR98/12345/total?color=blue)](https://github.com/WildeSR98/12345/releases)
+[![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/download/dotnet/8.0)
+[![Windows](https://img.shields.io/badge/Windows-10%2F11-0078d4?logo=windows)](https://www.microsoft.com/windows)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
+
+**Менеджер для обхода блокировок Discord, YouTube и других сайтов на Windows**
+
+</div>
 
 > **Важно**: Discord работает, а YouTube — нет? Включите **Secure DNS** в браузере:
-> - **Chrome/Edge**: Настройки → Конфиденциальность → Безопасность → Использовать безопасный DNS → Google (Public DNS)
+> - **Chrome/Edge**: Настройки → Конфиденциальность → Безопасность → Использовать безопасный DNS → Google
 > - **Firefox**: Настройки → Параметры сети → DNS через HTTPS → Максимальная защита → Google
 
 ---
@@ -14,34 +25,106 @@
 
 | Архив | Размер | Описание |
 |-------|--------|----------|
-| `zapret-manager-v2.5.0-standalone.zip` | ~84 MB | **Рекомендуется.** Работает из коробки, не требует установки .NET |
-| `zapret-manager-v2.5.0-net8-required.zip` | ~21 MB | Легковесный, но требует установленного [.NET 8 Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) |
+| `zapret-manager-v*-standalone.zip` | ~84 MB | **Рекомендуется.** Работает из коробки, не требует .NET |
+| `zapret-manager-v*-net8-required.zip` | ~21 MB | Лёгкий, требует [.NET 8 Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) |
 
 ---
 
-## 🚀 Как установить
+## 🚀 Быстрый старт
 
-### Шаг 1. Скачайте и распакуйте
-Распакуйте архив в любую папку (например, `C:\zapret\`).
+```
+1. Распакуйте архив в любую папку (например, C:\zapret\)
+2. Запустите zapret-manager.exe от имени администратора
+3. Следуйте подсказкам — менеджер сам всё настроит
+```
 
-### Шаг 2. Запустите
-Откройте папку `publish` и запустите **`zapret-manager.exe`** от имени администратора:
-- Правой кнопкой мыши → **«Запуск от имени администратора»**
+> Папку можно перемещать — менеджер работает из любого расположения.
 
-### Шаг 3. Следуйте подсказкам
-Менеджер сам всё сделает:
-1. Проверит обновления менеджера и ядра
-2. Покажет **главное меню** — выберите нужное действие
-3. Если выбрали установку — протестирует стратегии и установит лучшую
-4. В трей (рядом с часами) появится иконка со статусом
+---
 
-> **Папку можно перемещать** — менеджер работает из любого расположения
+## 🗺 Архитектура
+
+```mermaid
+flowchart TD
+    User(["👤 Пользователь"]) --> Manager
+
+    subgraph Manager ["🖥 zapret-manager.exe"]
+        Main["Program.cs\n(точка входа)"]
+        Menu["Главное меню\n(RunMenuAsync)"]
+
+        subgraph Menus["📁 Menus/"]
+            SM["ServiceMenu\n(пп.1-3)"]
+            StM["SettingsMenu\n(п.6)"]
+        end
+
+        subgraph Core["📁 Core/"]
+            Cfg["AppConfig"]
+            Log["Logger"]
+            Guard["HttpDomainGuard"]
+            Admin["AdminHelper"]
+        end
+
+        subgraph UI["📁 UI/"]
+            CM["ConsoleMenu\n(Spectre.Console)"]
+            Tray["TrayManager"]
+            Toast["ToastNotifier"]
+        end
+
+        subgraph Service["📁 Service/"]
+            WinSvc["WinServiceManager"]
+            Backup["BackupManager"]
+            Watchdog["Watchdog"]
+            Profiles["ProfileManager"]
+            TaskSched["TaskSchedulerHelper"]
+        end
+
+        subgraph Updates["📁 Updates/"]
+            Checker["UpdateChecker"]
+            GHUp["GitHubUpdater"]
+            Hash["HashVerifier"]
+        end
+
+        subgraph Diag["📁 Diagnostics/"]
+            Full["FullDiagnostics"]
+            Tester["StrategyTester"]
+            Speed["SpeedTest"]
+        end
+    end
+
+    subgraph External ["🌐 Внешние сервисы"]
+        GitHub["GitHub API\ngithub.com"]
+        CF["Cloudflare\nspeed.cloudflare.com"]
+        DPI["DPI Checkers\nhyperion-cs.github.io"]
+    end
+
+    subgraph OS ["💻 Windows"]
+        WinDivert["WinDivert\n(драйвер)"]
+        winws["winws.exe\n(ядро zapret)"]
+        Registry["Реестр"]
+        Sched["Планировщик задач"]
+    end
+
+    Main --> Menu
+    Menu --> SM & StM
+    Main --> Core & UI & Service & Updates & Diag
+
+    Checker -->|"HTTPS whitelist"| Guard --> GitHub
+    GHUp --> Guard
+    GHUp --> Hash
+    Speed --> CF
+    Full --> DPI
+
+    WinSvc --> WinDivert --> winws
+    SM --> WinSvc
+    TaskSched --> Sched
+    Cfg --> Registry
+```
 
 ---
 
 ## 🖥 Системный трей
 
-При запуске менеджера автоматически появляется иконка в трее (рядом с часами):
+При запуске автоматически появляется иконка в трее (рядом с часами):
 - 🟢 — служба запущена
 - 🟡 — служба остановлена
 - 🔴 — служба не установлена
@@ -51,99 +134,71 @@
 - Переключить стратегию (без открытия консоли)
 - Перезапустить / Остановить службу
 - Открыть консоль → полное меню
-- Выход → завершить процесс
+- Выход
 
-> Трей работает как отдельный процесс — закрытие консоли не убивает его.  
-> Для автозапуска трея при старте Windows: Настройки → п.6
+> Трей работает как отдельный процесс — закрытие консоли не убивает его.
 
 ---
 
 ## 🏠 Главное меню
 
 ```
-  ══════════════════════════════════════════════════════
-  ГЛАВНОЕ МЕНЮ
-  ══════════════════════════════════════════════════════
-    [1]  Установить / Обновить конфигурацию
-    [2]  Удалить zapret
-    [3]  Переустановить
-    [4]  Диагностика и отчёт
-    [5]  Тест стратегий и установка
-    [6]  Сервисное меню
-    [7]  Настройки
+  ════════════════════════ Zapret Manager v2.5.x ════════════════════════
+    Manager   v2.5.0          Core  2024-12-01
+    Служба    запущена         Стратегия  general_ALT
+    ────────────────────────────────────────────────────────────────────
+    :: СЛУЖБА
+       1.  Установить службу      (Spectre SelectionPrompt)
+       2.  Удалить службы
+       3.  Проверить статус       (rich table)
+    :: НАСТРОЙКИ
+       4.  Игровой фильтр         [выкл]
+       5.  IPSet фильтр           [loaded]
+       6.  Обновления             [вкл | авто]
+    ...
+    :: СЕРВИС (пп.14-23 — расширенные функции)
+       17. Watchdog (авторотация) [выкл]
+       18. Speed-тест
+       19. Редактор стратегий
+       20. Определение провайдера
+       ...
 ```
-
-| Пункт | Что делает |
-|-------|-----------|
-| **[1] Установить** | Проверяет обновления, скачивает списки, тестирует и устанавливает стратегию |
-| **[2] Удалить** | Полностью удаляет все службы zapret |
-| **[3] Переустановить** | Удаляет и устанавливает заново |
-| **[4] Диагностика** | Проверяет доступность сайтов, сохраняет отчёт |
-| **[5] Тест стратегий** | Тестирует все стратегии и ставит лучшую |
-| **[6] Сервисное меню** | Расширенное меню (23 пункта) |
-| **[7] Настройки** | Обновления, фильтры, бэкап, профили, автозапуск трея |
 
 ---
 
-## 🔧 Сервисное меню
+## 🔧 Сервисное меню (полная таблица)
 
-Доступ: из главного меню [6], или `zapret-manager.exe --menu`.
-
-### Служба (п.1-3)
-| Пункт | Что делает |
-|-------|-----------|
-| 1. Установить службу | Выбор стратегии и установка как службы Windows |
-| 2. Удалить службы | Удаление всех служб zapret |
-| 3. Проверить статус | Статус службы, стратегия, версии |
-
-### Настройки (п.4-6)
-| Пункт | Что делает |
-|-------|-----------|
-| 4. Игровой фильтр | Фильтрация игрового трафика (если лагают игры) |
-| 5. IPSet фильтр | Режим фильтрации IP |
-| 6. Обновления | Вкл/выкл автопроверка |
-
-### Обновления (п.7-9)
-| Пункт | Что делает |
-|-------|-----------|
-| 7. Обновить IPSet | Свежий список IP-адресов |
-| 8. Обновить Hosts | Свежий файл hosts |
-| 9. Проверить обновления | Проверка новых версий менеджера и ядра |
-
-### Инструменты (п.10-13)
-| Пункт | Что делает |
-|-------|-----------|
-| 10. Диагностика | Проверка доступности сайтов |
-| 11. Тест стратегий | Поиск лучшей стратегии |
-| 12. Экспорт отчёта | Отчёт о системе (для техподдержки) |
-| 13. TG WS Proxy | Прокси для Telegram |
-
-### Сервис (п.14-16)
-| Пункт | Что делает |
-|-------|-----------|
-| 14. Бэкап | Создание и восстановление резервных копий |
-| 15. Профили | Сохранение/загрузка комбинаций настроек |
-| 16. Мониторинг трафика | Live rx/tx скорость + информация о winws |
-
-### Продвинутые (п.17-23) — NEW в v2.5.0
-| Пункт | Что делает |
-|-------|-----------|
-| 17. Watchdog | Фоновый мониторинг + авторотация стратегий |
-| 18. Speed-тест | Скорость до/после обхода (Cloudflare) |
-| 19. Редактор стратегий | Создание/редактирование .bat файлов |
-| 20. Определение провайдера | ISP + рекомендуемые стратегии |
-| 21. Управление доменами | Whitelist/Blacklist доменов |
-| 22. Сетевой адаптер | Выбор NIC для winws |
-| 23. Экспорт/Импорт настроек | Полный бэкап настроек в ZIP |
+| № | Что делает |
+|---|-----------|
+| 1 | Установить службу — SelectionPrompt выбора стратегии |
+| 2 | Удалить все службы zapret |
+| 3 | Статус служб (rich Spectre Table) |
+| 4 | Игровой фильтр TCP/UDP |
+| 5 | Переключение IPSet (loaded / none / any) |
+| 6 | Настройки обновлений + задача планировщика |
+| 7 | Обновить список IPSet |
+| 8 | Обновить файл Hosts |
+| 9 | Проверить обновления (Manager + Core) |
+| 10 | Диагностика доступности сайтов |
+| 11 | Тест стратегий и установка лучшей |
+| 12 | Экспорт системного отчёта |
+| 13 | TG WS Proxy (управление прокси для Telegram) |
+| 14 | Бэкап / Восстановление конфигурации |
+| 15 | Профили настроек |
+| 16 | Мониторинг трафика (live rx/tx) |
+| 17 | Watchdog — авторотация стратегий при сбоях |
+| 18 | Speed-тест (Cloudflare) |
+| 19 | Редактор стратегий |
+| 20 | Определение провайдера ISP |
+| 21 | Управление доменами (whitelist/blacklist) |
+| 22 | Выбор сетевого адаптера |
+| 23 | Экспорт/Импорт всех настроек (ZIP) |
 
 ---
 
 ## 🧪 Тестирование стратегий
 
-Доступно при установке и через пункт **[11]**. Два режима:
-
-### Стандартный тест
-Запускает каждую стратегию и проверяет доступность сайтов:
+Доступно при установке и через пункт **[11]**:
 
 ```
 [1/19] general (ALT).bat
@@ -152,30 +207,36 @@
   YouTube Web         HTTP:OK    TLS1.2:OK    TLS1.3:UNSUP | Ping: 38 ms
 ```
 
-### DPI тест
-Проверяет **режет ли провайдер трафик** — отправляет 64KB данных на тестовые серверы:
-
+### DPI тест (провайдер)
 ```
   [🇷🇺]MTS       HTTP:OK    TLS1.2:BLOCK TLS1.3:OK    ⚠ 16-20KB freeze
 ```
 
 ---
 
+## 🔐 Безопасность
+
+- **SHA256 верификация** — все скачиваемые архивы проверяются по хешам перед распаковкой
+- **Domain whitelist** — HTTP-запросы разрешены только к `github.com`, `raw.githubusercontent.com`, `speed.cloudflare.com` и партнёрам
+- **Требование UAC** — менеджер всегда запускается с проверкой прав администратора
+
+---
+
 ## ❓ Частые вопросы
 
 ### YouTube не работает после установки
-1. Запустите **п.10 (Диагностика)** — посмотрите что не работает
+1. **п.10 (Диагностика)** — посмотрите что не работает
 2. Включите **Secure DNS** в браузере
-3. Запустите **п.11 (Тест стратегий)** — найдёт рабочую стратегию
+3. **п.11 (Тест стратегий)** — найдёт рабочую стратегию
 
 ### Лагают онлайн-игры
-Включите **п.4 (Игровой фильтр)** — обход будет работать только для нужных сайтов.
+Включите **п.4 (Игровой фильтр)** — обход работает только для нужных сайтов.
 
 ### Перестало работать через время
 1. **п.9** — проверьте обновления
 2. **п.7** — обновите IPSet
 3. **п.11** — протестируйте стратегии
-4. **п.17** — включите Watchdog для автопереключения
+4. **п.17** — включите Watchdog
 
 ### Как полностью удалить?
 1. **п.2 (Удалить службы)**
@@ -185,17 +246,18 @@
 
 ## ⚙️ Для продвинутых
 
-### Параметры командной строки
+### CLI-аргументы
 
 ```
-zapret-manager.exe              — мастер установки
-zapret-manager.exe --menu       — сервисное меню
-zapret-manager.exe --tray       — только трей (фоновый режим)
-zapret-manager.exe --remove     — удаление служб
-zapret-manager.exe --reinstall  — переустановка
-zapret-manager.exe --test       — тест стратегий
-zapret-manager.exe --diagnostics — диагностика
-zapret-manager.exe --silent --strategy "FAKE TLS AUTO" — тихая установка
+zapret-manager.exe                         — мастер установки (по умолчанию)
+zapret-manager.exe --menu                  — сервисное меню (23 пункта)
+zapret-manager.exe --tray                  — только трей (фоновый режим)
+zapret-manager.exe --remove               — удаление служб
+zapret-manager.exe --reinstall            — переустановка
+zapret-manager.exe --test                 — тест стратегий
+zapret-manager.exe --diagnostics          — диагностика + экспорт отчёта
+zapret-manager.exe --check-updates        — тихая проверка обновлений (для Task Scheduler)
+zapret-manager.exe --silent --strategy "FAKE TLS AUTO"  — тихая установка
 ```
 
 ### Структура папок
@@ -203,25 +265,36 @@ zapret-manager.exe --silent --strategy "FAKE TLS AUTO" — тихая устан
 ```
 📁 publish/                ← Основная папка
 │  zapret-manager.exe      ← Менеджер
-│  config.json             ← Настройки
-│  
-├─ bin/                    ← Ядро zapret (winws.exe)
-├─ strategies/             ← Стратегии обхода (general*.bat)
-├─ lists/                  ← Списки доменов и IP
-├─ utils/                  ← Служебные файлы
+│  config.json             ← Настройки (AppConfig)
+│  CHANGELOG.md            ← История версий
+│
+├─ bin/                    ← Ядро zapret (winws.exe + WinDivert)
+├─ strategies/             ← Стратегии обхода (*.bat)
+├─ lists/                  ← Списки доменов и IP (ipset-all.txt, ...)
+├─ utils/                  ← Служебные флаги и состояние
 ├─ profiles/               ← Профили настроек
 ├─ logs/                   ← Логи (авторотация 14 дней)
-└─ backups/                ← Бэкапы
+└─ backups/                ← Резервные копии (keepCount настраивается)
 ```
 
 ### Сборка из исходников
 
 ```bash
-cd src/ZapretManager
-dotnet publish -c Release -r win-x64 --self-contained false -o publish
-```
+# Требуется .NET 8 SDK
 
-Требуется [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+# Standalone (не требует .NET Runtime у пользователя, ~84 MB)
+dotnet publish src/ZapretManager/ZapretManager.csproj \
+  -c Release -r win-x64 --self-contained true \
+  -p:PublishSingleFile=true -o publish-standalone
+
+# Требует .NET 8 Runtime (~21 MB)
+dotnet publish src/ZapretManager/ZapretManager.csproj \
+  -c Release -r win-x64 --self-contained false \
+  -p:PublishSingleFile=true -o publish-net8
+
+# Запуск тестов
+dotnet test src/ZapretManager.Tests/
+```
 
 ---
 
@@ -230,6 +303,7 @@ dotnet publish -c Release -r win-x64 --self-contained false -o publish
 - [zapret](https://github.com/bol-van/zapret) — ядро обхода DPI
 - [zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube) — стратегии и списки
 - [dpi-checkers](https://github.com/hyperion-cs/dpi-checkers) — тесты DPI блокировок
+- [Spectre.Console](https://spectreconsole.net/) — богатый консольный UI
 
 ## ⚠️ Дисклеймер
 

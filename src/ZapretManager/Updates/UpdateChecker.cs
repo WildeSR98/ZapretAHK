@@ -361,7 +361,7 @@ public static class UpdateChecker
             return JsonSerializer.Deserialize<UpdateCheckResult>(json,
                 new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[UpdateChecker] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
 

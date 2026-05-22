@@ -48,7 +48,7 @@ public static class AccessChecker
             }
             return success > 0 ? (true, total / success) : (false, 0);
         }
-        catch { return (false, 0); }
+        catch (Exception ex) { Logger.Error($"[AccessChecker] {ex.GetType().Name}: {ex.Message}"); return (false, 0); }
     }
 
     public static async Task<(bool Ok, int Code)> HttpCheckAsync(string url)
@@ -60,6 +60,6 @@ public static class AccessChecker
             var code = (int)resp.StatusCode;
             return (code is >= 200 and < 400, code);
         }
-        catch { return (false, 0); }
+        catch (Exception ex) { Logger.Error($"[AccessChecker] {ex.GetType().Name}: {ex.Message}"); return (false, 0); }
     }
 }

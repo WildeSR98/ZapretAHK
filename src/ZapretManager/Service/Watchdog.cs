@@ -152,7 +152,7 @@ public sealed class Watchdog : IDisposable
                 @"System\CurrentControlSet\Services\zapret");
             currentStrategy = key?.GetValue("zapret-discord-youtube")?.ToString();
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[Watchdog] {ex.GetType().Name}: {ex.Message}"); }
 
         var maxAttempts = Math.Min(_cfg.Watchdog.MaxRotations, ranking.Count);
 
@@ -210,7 +210,7 @@ public sealed class Watchdog : IDisposable
                         var r = await http.SendAsync(new HttpRequestMessage(HttpMethod.Head, t.Url));
                         if (r.IsSuccessStatusCode) quickOk++;
                     }
-                    catch { }
+                    catch (Exception ex) { Logger.Error($"[Watchdog] {ex.GetType().Name}: {ex.Message}"); }
                 }
 
                 if (quickOk > 0)

@@ -33,10 +33,18 @@ public class AppConfig
     {
         var path = Path.Combine(rootDir, "config.json");
         if (!File.Exists(path)) return new AppConfig();
-        var json = File.ReadAllText(path, System.Text.Encoding.UTF8);
-        return JsonSerializer.Deserialize<AppConfig>(json,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
-            ?? new AppConfig();
+        try
+        {
+            var json = File.ReadAllText(path, System.Text.Encoding.UTF8);
+            return JsonSerializer.Deserialize<AppConfig>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                ?? new AppConfig();
+        }
+        catch
+        {
+            // Broken JSON — return safe defaults
+            return new AppConfig();
+        }
     }
 }
 

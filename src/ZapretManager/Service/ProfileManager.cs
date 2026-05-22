@@ -144,7 +144,7 @@ public static class ProfileManager
                 @"System\CurrentControlSet\Services\zapret");
             return key?.GetValue("zapret-discord-youtube")?.ToString() ?? "unknown";
         }
-        catch { return "unknown"; }
+        catch (Exception ex) { Logger.Error($"[ProfileManager] {ex.GetType().Name}: {ex.Message}"); return "unknown"; }
     }
 
     private static string GetIpsetMode(string rootDir)

@@ -44,7 +44,7 @@ public static class BackupManager
 
                         var entryName = Path.GetRelativePath(rootDir, file).Replace('\\', '/');
                         try { zip.CreateEntryFromFile(file, entryName, CompressionLevel.Optimal); }
-                        catch { /* skip locked files */ }
+                        catch (Exception ex) { Logger.Error($"[BackupManager] {ex.GetType().Name}: {ex.Message}"); /* skip locked files */ }
                     }
                 }
 
@@ -97,7 +97,7 @@ public static class BackupManager
                 if (targetDir != null) Directory.CreateDirectory(targetDir);
 
                 try { entry.ExtractToFile(targetPath, overwrite: true); }
-                catch { /* skip locked files */ }
+                catch (Exception ex) { Logger.Error($"[BackupManager] {ex.GetType().Name}: {ex.Message}"); /* skip locked files */ }
             }
 
             ConsoleMenu.StopSpinner(true, "Восстановление завершено");
@@ -139,6 +139,6 @@ public static class BackupManager
                 Logger.Info($"Старый бэкап удалён: {f.Name}");
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[BackupManager] {ex.GetType().Name}: {ex.Message}"); }
     }
 }

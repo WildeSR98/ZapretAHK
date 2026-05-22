@@ -1,0 +1,72 @@
+name: CI — Build & Test
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build-and-test:
+    name: Build & Test (windows-latest)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Restore dependencies
+        run: dotnet restore src/Zapret.sln
+
+      - name: Build (Release)
+        run: dotnet build src/Zapret.sln -c Release --no-restore
+
+      - name: Run Tests with coverage
+        run: |
+          dotnet test src/ZapretManager.Tests/ZapretManager.Tests.csproj `
+            -c Release --no-build `
+            --collect:"XPlat Code Coverage" `
+            --results-directory ./TestResults `
+            -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          directory: ./TestResults
+          flags: unittests
+          fail_ci_if_error: false
+
+      - name: Publish (net8-required, for artifact check)
+        run: |
+          dotnet publish src/ZapretManager/ZapretManager.csproj `
+            -c Release -r win-x64 --self-contained false `
+            -p:PublishSingleFile=true `
+            -o ./publish-check
+
+      - name: Verify published exe exists
+        run: |
+          if (!(Test-Path ".\publish-check\zapret-manager.exe")) {
+            Write-Error "zapret-manager.exe was not produced!"
+            exit 1
+          }
+          Write-Host "zapret-manager.exe OK"
+        shell: pwsh

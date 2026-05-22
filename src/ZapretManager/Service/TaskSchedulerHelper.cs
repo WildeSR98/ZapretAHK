@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using ZapretManager.Core;
 
 namespace ZapretManager.Service;
 
@@ -71,7 +72,7 @@ public static class TaskSchedulerHelper
             proc?.WaitForExit(5000);
             return proc?.ExitCode == 0;
         }
-        catch { return false; }
+        catch (Exception ex) { Logger.Error($"[TaskSchedulerHelper] {ex.GetType().Name}: {ex.Message}"); return false; }
     }
 
     /// <summary>Check if the update task exists.</summary>
@@ -91,7 +92,7 @@ public static class TaskSchedulerHelper
             proc?.WaitForExit(5000);
             return proc?.ExitCode == 0;
         }
-        catch { return false; }
+        catch (Exception ex) { Logger.Error($"[TaskSchedulerHelper] {ex.GetType().Name}: {ex.Message}"); return false; }
     }
 
     private static string GenerateTaskXml(string exePath)
@@ -138,5 +139,37 @@ public static class TaskSchedulerHelper
     </Exec>
   </Actions>
 </Task>";
+    }
+
+    /// <summary>Get the next scheduled run time, or null if task not found.</summary>
+    public static DateTime? GetNextRunTime() => QueryTaskTime("Next Run Time", "\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f");
+
+    /// <summary>Get the last run time, or null if task not found.</summary>
+    public static DateTime? GetLastRunTime() => QueryTaskTime("Last Run Time", "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f");
+
+    private static DateTime? QueryTaskTime(string enKey, string ruKey)
+    {
+        try
+        {
+            var psi = new ProcessStartInfo("schtasks",
+                $"/query /tn \"{TaskName}\" /fo LIST /v")
+            {
+                CreateNoWindow = true, UseShellExecute = false,
+                RedirectStandardOutput = true, RedirectStandardError = true
+            };
+            using var proc = Process.Start(psi);
+            var output = proc?.StandardOutput.ReadToEnd() ?? "";
+            proc?.WaitForExit(5000);
+            foreach (var line in output.Split('\n'))
+            {
+                if (!line.Contains(enKey) && !line.Contains(ruKey)) continue;
+                var idx = line.IndexOf(':');
+                if (idx < 0) continue;
+                var raw = line[(idx + 1)..].Trim();
+                if (DateTime.TryParse(raw, out var dt)) return dt;
+            }
+            return null;
+        }
+        catch (Exception ex) { Logger.Error($"[TaskSchedulerHelper] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 }

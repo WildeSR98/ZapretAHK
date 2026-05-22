@@ -1,4 +1,4 @@
-# Logs and runtime data
+﻿# Logs and runtime data
 logs/
 *.log
 
@@ -76,3 +76,6 @@ query
 publish/utils/update-check.json
 publish/utils/update_mode.txt
 publish/utils/test results/
+
+# Test results
+src/ZapretManager.Tests/TestResults/

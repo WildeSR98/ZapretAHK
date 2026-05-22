@@ -4,6 +4,8 @@ using ZapretManager.Service;
 using ZapretManager.Lists;
 using ZapretManager.Diagnostics;
 using ZapretManager.Updates;
+using ZapretManager.Menus;
+using Spectre.Console;
 
 namespace ZapretManager;
 
@@ -55,7 +57,7 @@ class Program
         }
 
         // Проверка здоровья службы (ImagePath может устареть если папка перемещена)
-        CheckServiceHealth();
+        await CheckServiceHealth();
 
         // Запуск tray-процесса (отдельный процесс, живёт независимо от консоли)
         if (!args.Contains("--tray") && !args.Contains("--check-updates"))
@@ -76,7 +78,7 @@ class Program
                         $"Новая версия: {string.Join(" | ", parts)}");
                 }
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
             return;
         }
 
@@ -116,17 +118,17 @@ class Program
                 case "10": await MenuDiagnostics();       break;
                 case "11": await MenuRunTests();          break;
                 case "12": MenuExportReport();            break;
-                case "13": MenuTgProxy();                 break;
+                case "13": await MenuTgProxy();                 break;
                 case "14": MenuBackup();                   break;
                 case "15": MenuProfiles();                 break;
                 case "16": await MenuTrafficMonitor();     break;
                 case "17": MenuWatchdog();                  break;
                 case "18": await MenuSpeedTest();            break;
                 case "19": MenuStrategyEditor();             break;
-                case "20": await MenuIspDetect();             break;
-                case "21": MenuDomains();                     break;
-                case "22": MenuNicSelector();                  break;
-                case "23": MenuSettingsExport();               break;
+                case "20": await MenuIspDetect();           break;
+                case "21": MenuDomains();                   break;
+                case "22": MenuNicSelector();               break;
+                case "23": MenuSettingsExport();            break;
                 case "0":  return;
             }
         }
@@ -134,646 +136,125 @@ class Program
 
     static void PrintMenuHeader()
     {
-        var version = Cfg.Project.Version;
-        var mgrVer  = GitHubUpdater.ReadManagerVersion(RootDir) ?? version;
-        var coreVer = ReadLocalCoreVersion();
-        var state   = WinServiceManager.GetState("zapret");
+        var version  = Cfg.Project.Version;
+        var mgrVer   = GitHubUpdater.ReadManagerVersion(RootDir) ?? version;
+        var coreVer  = ReadLocalCoreVersion();
+        var state    = WinServiceManager.GetState("zapret");
         var strategy = GetCurrentStrategy();
         var gf       = GameFilter.StatusLabel(UtilsDir);
         var ipset    = GetIpsetStatus();
         var updates  = File.Exists(Path.Combine(UtilsDir, "check_updates.enabled")) ? "вкл" : "выкл";
-        var tgState  = IsTgProxyRunning() ? "запущен" : "остановлен";
+        var tgState  = IsTgProxyRunning() ? "[green]запущен[/]" : "[dim]остановлен[/]";
+        var upd      = UpdateChecker.LastResult ?? UpdateChecker.LoadCache(RootDir);
+        var updateMode = UpdateChecker.GetUpdateMode(RootDir) == "auto" ? "авто" : "ручной";
+        var wdStatus = _watchdog?.IsEnabled == true ? "[green]вкл[/]" : "[dim]выкл[/]";
 
-        Console.WriteLine();
+        // ── Header banner ────────────────────────────────────────────────────
+        AnsiConsole.Write(new Rule($"[bold cyan]Zapret Manager[/] [dim]v{Markup.Escape(mgrVer)}[/]")
+            .RuleStyle("cyan dim"));
 
-        var upd = UpdateChecker.LastResult ?? UpdateChecker.LoadCache(RootDir);
+        // ── Status table ─────────────────────────────────────────────────────
+        var (stateLabel, stateColour) = state switch
+        {
+            WinServiceManager.ServiceState.Running      => ("запущена",      "green"),
+            WinServiceManager.ServiceState.Stopped      => ("остановлена",   "yellow"),
+            WinServiceManager.ServiceState.NotInstalled => ("не установлена","red"),
+            _                                           => ("неизвестно",    "grey"),
+        };
+        var mgrColour  = (upd != null && upd.ManagerUpdateAvailable) ? "yellow" : "green";
+        var coreColour = coreVer == "не установлен" ? "red"
+            : (upd != null && upd.CoreUpdateAvailable) ? "yellow" : "green";
 
-        // Цветное отображение версий
-        Console.Write("   Manager: ");
-        Console.ForegroundColor = (upd != null && upd.ManagerUpdateAvailable) ? ConsoleColor.Yellow : ConsoleColor.Green;
-        Console.Write($"v{mgrVer}");
-        Console.ResetColor();
-        Console.Write("  Core: ");
-        Console.ForegroundColor = coreVer == "не установлен" ? ConsoleColor.Red
-            : (upd != null && upd.CoreUpdateAvailable) ? ConsoleColor.Yellow : ConsoleColor.Green;
-        Console.WriteLine(coreVer);
-        Console.ResetColor();
+        ConsoleMenu.WriteStatusTable(new[]
+        {
+            ("Manager",   $"[{mgrColour}]v{Markup.Escape(mgrVer)}[/]"),
+            ("Core",      $"[{coreColour}]{Markup.Escape(coreVer)}[/]"),
+            ("Служба",    $"[{stateColour}]{Markup.Escape(stateLabel)}[/]"),
+            ("Стратегия", $"[cyan]{Markup.Escape(strategy)}[/]"),
+            ("Обновления",$"{Markup.Escape(updates)} [dim]{Markup.Escape(updateMode)}[/]"),
+            ("TG Proxy",  tgState),
+            ("Watchdog",  wdStatus),
+        });
 
-        Console.Write($"   Служба: ");
-        Console.ForegroundColor = state == WinServiceManager.ServiceState.Running ? ConsoleColor.Green
-            : state == WinServiceManager.ServiceState.NotInstalled ? ConsoleColor.Red : ConsoleColor.Yellow;
-        Console.WriteLine(state);
-        Console.ResetColor();
-
-        if (strategy != "?" && strategy != "не установлена")
-            Console.WriteLine($"   Стратегия: {strategy}");
-
-        // Индикатор обновлений
+        // ── Update banner ─────────────────────────────────────────────────────
         if (upd != null && (upd.ManagerUpdateAvailable || upd.CoreUpdateAvailable))
         {
             var parts = new List<string>();
             if (upd.ManagerUpdateAvailable) parts.Add($"Manager v{upd.ManagerRemote}");
-            if (upd.CoreUpdateAvailable) parts.Add($"Core {upd.CoreRemote}");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"   ⚠ Доступно: {string.Join(" | ", parts)}  →  п.9");
-            Console.ResetColor();
+            if (upd.CoreUpdateAvailable)    parts.Add($"Core {upd.CoreRemote}");
+            AnsiConsole.MarkupLine($"  [bold yellow]⚠ Доступно обновление: {Markup.Escape(string.Join(" | ", parts))}  →  п.9[/]");
         }
-        Console.WriteLine("   ----------------------------------------");
-        Console.WriteLine();
-        Console.WriteLine("   :: СЛУЖБА");
-        Console.WriteLine("      1. Установить службу");
-        Console.WriteLine("      2. Удалить службы");
-        Console.WriteLine("      3. Проверить статус");
-        Console.WriteLine();
-        Console.WriteLine("   :: НАСТРОЙКИ");
-        Console.WriteLine($"      4. Игровой фильтр       [{gf}]");
-        Console.WriteLine($"      5. IPSet фильтр         [{ipset}]");
-        var updateMode = UpdateChecker.GetUpdateMode(RootDir) == "auto" ? "авто" : "ручной";
-        Console.WriteLine($"      6. Обновления           [{updates} | {updateMode}]");
-        Console.WriteLine();
-        Console.WriteLine("   :: ОБНОВЛЕНИЯ");
-        Console.WriteLine("      7. Обновить список IPSet");
-        Console.WriteLine("      8. Обновить файл Hosts");
-        Console.WriteLine("      9. Проверить обновления");
-        Console.WriteLine();
-        Console.WriteLine("   :: ИНСТРУМЕНТЫ");
-        Console.WriteLine("      10. Диагностика");
-        Console.WriteLine("      11. Тест стратегий");
-        Console.WriteLine("      12. Экспорт отчёта");
-        Console.WriteLine($"      13. TG WS Proxy         [{tgState}]");
-        Console.WriteLine();
-        Console.WriteLine("   :: СЕРВИС");
-        Console.WriteLine("      14. Бэкап / Восстановление");
-        Console.WriteLine("      15. Профили");
-        Console.WriteLine("      16. Мониторинг трафика");
-        var wdStatus = _watchdog?.IsEnabled == true ? "вкл" : "выкл";
-        Console.WriteLine($"      17. Watchdog (авторотация) [{wdStatus}]");
-        Console.WriteLine("      18. Speed-тест");
-        Console.WriteLine("      19. Редактор стратегий");
-        Console.WriteLine("      20. Определение провайдера");
-        Console.WriteLine("      21. Управление доменами");
-        Console.WriteLine("      22. Сетевой адаптер");
-        Console.WriteLine("      23. Экспорт/Импорт настроек");
-        Console.WriteLine();
-        Console.WriteLine("   ----------------------------------------");
-        Console.WriteLine("      0. Выход");
-        Console.WriteLine();
+
+        // ── Menu items ────────────────────────────────────────────────────────
+        AnsiConsole.Write(new Rule().RuleStyle("grey dim"));
+        AnsiConsole.MarkupLine("  [bold]:: СЛУЖБА[/]");
+        AnsiConsole.MarkupLine("      [cyan]1.[/] Установить службу");
+        AnsiConsole.MarkupLine("      [cyan]2.[/] Удалить службы");
+        AnsiConsole.MarkupLine("      [cyan]3.[/] Проверить статус");
+        AnsiConsole.WriteLine();
+        AnsiConsole.MarkupLine("  [bold]:: НАСТРОЙКИ[/]");
+        AnsiConsole.MarkupLine($"      [cyan]4.[/] Игровой фильтр       [dim]{Markup.Escape(gf)}[/]");
+        AnsiConsole.MarkupLine($"      [cyan]5.[/] IPSet фильтр         [dim]{Markup.Escape(ipset)}[/]");
+        AnsiConsole.MarkupLine($"      [cyan]6.[/] Обновления           [dim]{Markup.Escape(updates)} | {Markup.Escape(updateMode)}[/]");
+        AnsiConsole.WriteLine();
+        AnsiConsole.MarkupLine("  [bold]:: ОБНОВЛЕНИЯ[/]");
+        AnsiConsole.MarkupLine("      [cyan]7.[/] Обновить список IPSet");
+        AnsiConsole.MarkupLine("      [cyan]8.[/] Обновить файл Hosts");
+        AnsiConsole.MarkupLine("      [cyan]9.[/] Проверить обновления");
+        AnsiConsole.WriteLine();
+        AnsiConsole.MarkupLine("  [bold]:: ИНСТРУМЕНТЫ[/]");
+        AnsiConsole.MarkupLine("     [cyan]10.[/] Диагностика");
+        AnsiConsole.MarkupLine("     [cyan]11.[/] Тест стратегий");
+        AnsiConsole.MarkupLine("     [cyan]12.[/] Экспорт отчёта");
+        AnsiConsole.MarkupLine($"     [cyan]13.[/] TG WS Proxy         {tgState}");
+        AnsiConsole.WriteLine();
+        AnsiConsole.MarkupLine("  [bold]:: СЕРВИС[/]");
+        AnsiConsole.MarkupLine("     [cyan]14.[/] Бэкап / Восстановление");
+        AnsiConsole.MarkupLine("     [cyan]15.[/] Профили");
+        AnsiConsole.MarkupLine("     [cyan]16.[/] Мониторинг трафика");
+        AnsiConsole.MarkupLine($"     [cyan]17.[/] Watchdog (авторотация) {wdStatus}");
+        AnsiConsole.MarkupLine("     [cyan]18.[/] Speed-тест");
+        AnsiConsole.MarkupLine("     [cyan]19.[/] Редактор стратегий");
+        AnsiConsole.MarkupLine("     [cyan]20.[/] Определение провайдера");
+        AnsiConsole.MarkupLine("     [cyan]21.[/] Управление доменами");
+        AnsiConsole.MarkupLine("     [cyan]22.[/] Сетевой адаптер");
+        AnsiConsole.MarkupLine("     [cyan]23.[/] Экспорт/Импорт настроек");
+        AnsiConsole.Write(new Rule().RuleStyle("grey dim"));
+        AnsiConsole.MarkupLine("      [dim]0.[/] Выход");
+        AnsiConsole.WriteLine();
     }
 
     // ── MENU ACTIONS ──────────────────────────────────────────────────────────
 
-    static async Task MenuInstallService()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("УСТАНОВКА СЛУЖБЫ");
+    // ── Delegate to ServiceMenu ──────────────────────────────────────────────
+    static async Task MenuInstallService()  => await ServiceMenu.InstallAsync(RootDir, BinDir, ListsDir, UtilsDir);
+    static async Task MenuRemoveServices()  => await ServiceMenu.RemoveAsync();
+    static void      MenuServiceStatus()    =>       ServiceMenu.Status(BinDir, UtilsDir, RootDir);
 
-        var files = StrategyReader.GetStrategyFiles(RootDir);
-        if (files.Length == 0)
-        {
-            ConsoleMenu.WriteError("Стратегии не найдены в папке strategies/");
-            ConsoleMenu.PauseAny(); return;
-        }
 
-        Console.WriteLine("\n   Выберите стратегию:\n");
-        for (int i = 0; i < files.Length; i++)
-            Console.WriteLine($"     {i + 1,2}. {files[i].Name}");
+    static void MenuGameFilter() => SettingsMenu.ConfigureGameFilter(UtilsDir);
 
-        var input = ConsoleMenu.Prompt("\n   Номер стратегии");
-        if (!int.TryParse(input, out var idx) || idx < 1 || idx > files.Length)
-        { ConsoleMenu.WriteError("Неверный выбор"); ConsoleMenu.PauseAny(); return; }
+    static void MenuIpsetSwitch() => SettingsMenu.IpsetSwitch(ListsDir);
 
-        var bat    = files[idx - 1];
-        var gf     = GameFilter.Get(UtilsDir);
-        var winws  = Path.Combine(BinDir, "winws.exe");
-        var batArgs = StrategyReader.ParseArgs(bat.FullName, BinDir, ListsDir, gf.Tcp, gf.Udp);
+    static void MenuToggleUpdates() => SettingsMenu.ToggleUpdates(RootDir, UtilsDir);
 
-        ConsoleMenu.WriteStep($"Устанавливаю службу: {bat.Name}");
 
-        // Enable TCP timestamps
-        RunNetsh("interface tcp set global timestamps=enabled");
+    static async Task MenuUpdateIpset() => await UpdateMenu.UpdateIpsetAsync(ListsDir, Cfg.Repositories.ZapretCore.IpsetService ?? "");
 
-        var binPath = $"\"{winws}\" {batArgs}";
-        var ok = WinServiceManager.Install("zapret", "zapret", "Zapret DPI bypass", binPath);
+    static async Task MenuUpdateHosts() => await UpdateMenu.UpdateHostsAsync(Cfg.Repositories.ZapretCore.HostsService ?? "");
 
-        // Сохраняем имя стратегии в реестр (до проверки результата)
-        try
-        {
-            using var key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(
-                @"System\CurrentControlSet\Services\zapret");
-            key?.SetValue("zapret-discord-youtube",
-                Path.GetFileNameWithoutExtension(bat.Name));
-        }
-        catch { }
+    static async Task MenuCheckUpdates() => await UpdateMenu.CheckUpdatesAsync(Cfg, RootDir, BinDir);
 
-        if (ok)
-        {
-            ConsoleMenu.WriteOk($"Служба zapret установлена и запущена: {bat.Name}");
-        }
-        else
-        {
-            var state = WinServiceManager.GetState("zapret");
-            if (state == WinServiceManager.ServiceState.NotInstalled)
-            {
-                ConsoleMenu.WriteError("Не удалось создать службу. Проверьте права администратора.");
-            }
-            else
-            {
-                ConsoleMenu.WriteError("Служба создана, но НЕ запустилась (winws.exe упал)");
-                if (!File.Exists(Path.Combine(BinDir, "WinDivert64.sys")))
-                    ConsoleMenu.WriteError("  ✗ WinDivert64.sys НЕ найден");
-                if (!File.Exists(Path.Combine(BinDir, "WinDivert.dll")))
-                    ConsoleMenu.WriteError("  ✗ WinDivert.dll НЕ найден");
-                if (!File.Exists(Path.Combine(BinDir, "cygwin1.dll")))
-                    ConsoleMenu.WriteError("  ✗ cygwin1.dll НЕ найден");
-                ConsoleMenu.WriteInfo("Добавьте папку bin/ в исключения антивируса и попробуйте снова");
-            }
-        }
-
-        ConsoleMenu.PauseAny();
-    }
-
-    static async Task MenuRemoveServices()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("УДАЛЕНИЕ СЛУЖБ");
-        ProcessManager.KillAll();
-        foreach (var svc in new[] { "zapret", "WinDivert", "WinDivert14" })
-        {
-            WinServiceManager.Stop(svc);
-            if (WinServiceManager.Remove(svc))
-                ConsoleMenu.WriteOk($"Служба удалена: {svc}");
-        }
-        ConsoleMenu.PauseAny();
-        await Task.CompletedTask;
-    }
-
-    static void MenuServiceStatus()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("СТАТУС СЛУЖБ");
-        foreach (var svc in new[] { "zapret", "WinDivert" })
-        {
-            var st = WinServiceManager.GetState(svc);
-            var stName = st switch
-            {
-                WinServiceManager.ServiceState.Running => "запущена",
-                WinServiceManager.ServiceState.Stopped => "остановлена",
-                WinServiceManager.ServiceState.Starting => "запускается",
-                WinServiceManager.ServiceState.Stopping => "останавливается",
-                WinServiceManager.ServiceState.NotInstalled => "не установлена",
-                _ => "неизвестно"
-            };
-            if (st == WinServiceManager.ServiceState.Running)
-                ConsoleMenu.WriteOk($"{svc}: {stName}");
-            else if (st == WinServiceManager.ServiceState.NotInstalled)
-                ConsoleMenu.WriteInfo($"{svc}: {stName}");
-            else
-                ConsoleMenu.WriteWarn($"{svc}: {stName}");
-
-            // Для остановленной zapret — показать exit code
-            if (svc == "zapret" && st == WinServiceManager.ServiceState.Stopped)
-            {
-                try
-                {
-                    var psi = new System.Diagnostics.ProcessStartInfo("cmd", $"/c sc query \"{svc}\" | findstr WIN32_EXIT_CODE")
-                    {
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    };
-                    var proc = System.Diagnostics.Process.Start(psi);
-                    var output = proc?.StandardOutput.ReadToEnd()?.Trim() ?? "";
-                    proc?.WaitForExit(3000);
-                    if (!string.IsNullOrEmpty(output))
-                        ConsoleMenu.WriteInfo($"  {output}");
-                    if (output.Contains("1067"))
-                        ConsoleMenu.WriteInfo("  Код 1067 = процесс завершился неожиданно. Переустановите через п.1");
-                }
-                catch { }
-            }
-        }
-
-        // WinDivert14 — показываем только если установлена (старая версия, нужно удалить)
-        var wd14 = WinServiceManager.GetState("WinDivert14");
-        if (wd14 != WinServiceManager.ServiceState.NotInstalled)
-            ConsoleMenu.WriteWarn($"WinDivert14: {wd14} (устаревшая, можно удалить через п.2)");
-        Console.WriteLine();
-
-        // Проверка WinDivert64.sys
-        if (!File.Exists(Path.Combine(BinDir, "WinDivert64.sys")))
-            ConsoleMenu.WriteError("WinDivert64.sys НЕ найден в bin/");
-        else
-            ConsoleMenu.WriteOk("WinDivert64.sys найден");
-
-        // Проверка процесса winws.exe
-        if (ProcessManager.IsRunning("winws"))
-            ConsoleMenu.WriteOk("Bypass (winws.exe) запущен");
-        else
-            ConsoleMenu.WriteWarn("Bypass (winws.exe) НЕ запущен");
-
-        Console.WriteLine();
-        var strategy = GetCurrentStrategy();
-        ConsoleMenu.WriteInfo($"Стратегия: {strategy}");
-
-        // Показать путь ImagePath из реестра
-        try
-        {
-            using var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
-                @"System\CurrentControlSet\Services\zapret");
-            var imagePath = key?.GetValue("ImagePath")?.ToString();
-            if (!string.IsNullOrEmpty(imagePath))
-            {
-                // Show just the exe path (first quoted segment), not all args
-                var exePath = imagePath;
-                if (exePath.StartsWith("\""))
-                {
-                    var endQuote = exePath.IndexOf('"', 1);
-                    if (endQuote > 0) exePath = exePath[1..endQuote];
-                }
-                ConsoleMenu.WriteInfo($"Путь winws: {exePath}");
-            }
-        }
-        catch { }
-
-        ConsoleMenu.PauseAny();
-    }
-
-    static void MenuGameFilter()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ИГРОВОЙ ФИЛЬТР");
-        Console.WriteLine("   0. Отключить");
-        Console.WriteLine("   1. TCP + UDP");
-        Console.WriteLine("   2. Только TCP");
-        Console.WriteLine("   3. Только UDP");
-        var ch = ConsoleMenu.Prompt("Выберите вариант (0-3)", "0");
-        var mode = ch switch { "1" => "all", "2" => "tcp", "3" => "udp", _ => "disabled" };
-        GameFilter.Set(UtilsDir, mode);
-        ConsoleMenu.WriteOk($"Игровой фильтр: {GameFilter.StatusLabel(UtilsDir)}");
-        ConsoleMenu.WriteWarn("Перезапустите zapret для применения изменений");
-        ConsoleMenu.PauseAny();
-    }
-
-    static void MenuIpsetSwitch()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("IPSET ФИЛЬТР");
-        var listFile   = Path.Combine(ListsDir, "ipset-all.txt");
-        var backupFile = listFile + ".backup";
-        var status     = GetIpsetStatus();
-        ConsoleMenu.WriteInfo($"Текущий режим: {status}");
-        Console.WriteLine("   Переключение: loaded → none → any → loaded");
-
-        switch (status)
-        {
-            case "loaded":
-                if (File.Exists(backupFile)) File.Delete(backupFile);
-                File.Move(listFile, backupFile);
-                File.WriteAllText(listFile, "203.0.113.113/32\r\n");
-                ConsoleMenu.WriteOk("Переключено в режим 'none'");
-                break;
-            case "none":
-                File.WriteAllText(listFile, "\r\n");
-                ConsoleMenu.WriteOk("Переключено в режим 'any'");
-                break;
-            case "any":
-                if (File.Exists(backupFile))
-                {
-                    File.Delete(listFile);
-                    File.Move(backupFile, listFile);
-                    ConsoleMenu.WriteOk("Переключено в режим 'loaded'");
-                }
-                else ConsoleMenu.WriteError("Нет резервной копии. Сначала обновите список IPSet.");
-                break;
-        }
-        ConsoleMenu.PauseAny();
-    }
-
-    static void MenuToggleUpdates()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("НАСТРОЙКА ОБНОВЛЕНИЙ");
-        var flag = Path.Combine(UtilsDir, "check_updates.enabled");
-        var enabled = File.Exists(flag);
-        var mode = UpdateChecker.GetUpdateMode(RootDir);
-        ConsoleMenu.WriteInfo($"Проверка: {(enabled ? "включена" : "выключена")}");
-        ConsoleMenu.WriteInfo($"Режим: {(mode == "auto" ? "автоматический" : "ручной")}");
-        Console.WriteLine();
-        Console.WriteLine("   [1] Включить/выключить проверку");
-        Console.WriteLine("   [2] Переключить режим (ручной/авто)");
-        Console.WriteLine("   [0] Назад");
-        var ch = ConsoleMenu.Prompt("Выберите", "0");
-        switch (ch)
-        {
-            case "1":
-                if (enabled) { File.Delete(flag); ConsoleMenu.WriteOk("Автопроверка отключена"); }
-                else { File.WriteAllText(flag, "ВКЛЮЧЕНО"); ConsoleMenu.WriteOk("Автопроверка включена"); }
-                break;
-            case "2":
-                var newMode = mode == "auto" ? "manual" : "auto";
-                UpdateChecker.SetUpdateMode(RootDir, newMode);
-                ConsoleMenu.WriteOk($"Режим обновлений: {(newMode == "auto" ? "автоматический" : "ручной")}");
-                break;
-        }
-        ConsoleMenu.PauseAny();
-    }
-
-    static async Task MenuUpdateIpset()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ОБНОВЛЕНИЕ IPSET");
-        var url      = Cfg.Repositories.ZapretCore.IpsetService ?? "";
-        var listFile = Path.Combine(ListsDir, "ipset-all.txt");
-        ConsoleMenu.StartSpinner("Скачивание ipset-all.txt...");
-        try
-        {
-            using var http = new System.Net.Http.HttpClient();
-            var content = await http.GetStringAsync(url);
-            var newLines = content.Split('\n').Select(l => l.TrimEnd('\r'));
-            var merged   = ListMerger.Merge(listFile, newLines);
-            ListMerger.WriteUtf8(listFile, merged);
-            ConsoleMenu.StopSpinner(true, $"ipset-all.txt обновлён ({merged.Length} строк)");
-        }
-        catch (Exception ex)
-        {
-            ConsoleMenu.StopSpinner(false, $"Ошибка: {ex.Message}");
-        }
-        ConsoleMenu.PauseAny();
-    }
-
-    static async Task MenuUpdateHosts()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ОБНОВЛЕНИЕ HOSTS");
-        var url = Cfg.Repositories.ZapretCore.HostsService ?? "";
-        ConsoleMenu.StartSpinner("Проверка файла hosts...");
-        try
-        {
-            var needsUpdate = await HostsUpdater.CheckAndUpdate(url);
-            ConsoleMenu.StopSpinner(!needsUpdate, needsUpdate
-                ? "Требуется обновление — открыт в Блокноте"
-                : "Файл hosts актуален");
-        }
-        catch (Exception ex)
-        {
-            ConsoleMenu.StopSpinner(false, $"Ошибка: {ex.Message}");
-        }
-        ConsoleMenu.PauseAny();
-    }
-
-    static async Task MenuCheckUpdates()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ПРОВЕРКА ОБНОВЛЕНИЙ");
-        ConsoleMenu.WriteInfo($"Текущие версии: Manager v{GitHubUpdater.ReadManagerVersion(RootDir) ?? "не определена"} | Zapret Core {ReadLocalCoreVersion()}");
-        ConsoleMenu.WriteInfo($"Режим: {(UpdateChecker.GetUpdateMode(RootDir) == "auto" ? "автоматический" : "ручной")}");
-        Console.WriteLine();
-
-        ConsoleMenu.StartSpinner("Запрос к GitHub...");
-        var result = await UpdateChecker.CheckNowAsync(Cfg, RootDir);
-        ConsoleMenu.StopSpinner();
-
-        // Manager
-        ConsoleMenu.WriteStep("Zapret Manager (WildeSR98/12345)");
-        if (result.ManagerRemote == null)
-            ConsoleMenu.WriteInfo("Не удалось проверить (нет релизов или ошибка сети)");
-        else if (!result.ManagerUpdateAvailable)
-            ConsoleMenu.WriteOk($"Актуален: v{result.ManagerLocal}");
-        else
-        {
-            ConsoleMenu.WriteWarn($"Доступна v{result.ManagerRemote} (у вас: v{result.ManagerLocal ?? "?"}).");
-            if (result.ManagerDownloadUrl != null && ConsoleMenu.Confirm("Обновить менеджер?"))
-            {
-                var ok = await GitHubUpdater.UpdateManagerAsync(result.ManagerDownloadUrl, RootDir, result.ManagerRemote);
-                if (ok) { ConsoleMenu.WriteOk("Перезапуск..."); Environment.Exit(0); return; }
-            }
-        }
-
-        // Core
-        ConsoleMenu.WriteStep("Zapret Core (Flowseal/zapret-discord-youtube)");
-        if (result.CoreRemote == null)
-            ConsoleMenu.WriteInfo("Не удалось проверить (ошибка сети)");
-        else if (!result.CoreUpdateAvailable)
-            ConsoleMenu.WriteOk($"Актуален: {result.CoreLocal}");
-        else
-        {
-            ConsoleMenu.WriteWarn($"Доступна {result.CoreRemote} (у вас: {result.CoreLocal ?? "?"}).");
-            if (ConsoleMenu.Confirm("Обновить zapret core (bin, strategies, lists)?"))
-            {
-                await GitHubUpdater.UpdateZapretCoreFilesAsync(Cfg, RootDir);
-                // Перезапуск службы
-                ConsoleMenu.WriteStep("Перезапуск службы zapret...");
-                WinServiceManager.Stop("zapret");
-                await Task.Delay(2000);
-                WinServiceManager.Start("zapret");
-                await Task.Delay(2000);
-                var state = WinServiceManager.GetState("zapret");
-                if (state == WinServiceManager.ServiceState.Running)
-                    ConsoleMenu.WriteOk("Служба zapret перезапущена");
-                else
-                    ConsoleMenu.WriteWarn("Служба не запустилась. Переустановите через п.1");
-            }
-        }
-
-        ConsoleMenu.PauseAny();
-    }
-
-    static async Task MenuDiagnostics()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ДИАГНОСТИКА");
-
-        // 1. Полная диагностика (все проверки из оригинала service.bat)
-        ConsoleMenu.WriteStep("Запуск полной диагностики...");
-        var diagResults = await FullDiagnostics.RunAllAsync(BinDir);
-        foreach (var r in diagResults)
-        {
-            switch (r.Level)
-            {
-                case DiagLevel.Ok:      ConsoleMenu.WriteOk(r.Message); break;
-                case DiagLevel.Warning: ConsoleMenu.WriteWarn(r.Message); break;
-                case DiagLevel.Error:   ConsoleMenu.WriteError(r.Message); break;
-            }
-            if (r.HelpUrl != null)
-                ConsoleMenu.WriteInfo($"  → {r.HelpUrl}");
-        }
-        Console.WriteLine();
-
-        // 2. Конфликтующие службы
-        var conflicts = ConflictDetector.FindConflicts(Cfg.Diagnostics.ConflictingServices);
-        if (conflicts.Count > 0)
-        {
-            ConsoleMenu.WriteWarn($"Конфликтующие службы: {string.Join(", ", conflicts)}");
-            if (ConsoleMenu.Confirm("Удалить конфликтующие службы?"))
-                ConflictDetector.RemoveConflicts(conflicts);
-        }
-        else
-            ConsoleMenu.WriteOk("Конфликтующих служб не найдено");
-        Console.WriteLine();
-
-        // 3. HTTP/ping тесты доступности
-        ConsoleMenu.WriteStep("Проверка доступности ресурсов...");
-        var accessResults = await AccessChecker.CheckAllAsync(Cfg.Diagnostics.CheckTargets);
-        foreach (var r in accessResults)
-        {
-            if (r.Reachable) ConsoleMenu.WriteOk($"{r.Name}: {r.Detail}");
-            else             ConsoleMenu.WriteWarn($"{r.Name}: недоступен");
-        }
-        Console.WriteLine();
-
-        // 4. Проверка файлов (антивирус мог удалить)
-        var missing = AntivirusExcluder.CheckMissingFiles(BinDir, RootDir);
-        if (missing.Count > 0)
-        {
-            ConsoleMenu.WriteError($"Отсутствуют файлы (возможно удалены антивирусом): {string.Join(", ", missing)}");
-            if (ConsoleMenu.Confirm("Добавить папку в исключения Windows Defender?"))
-                AntivirusExcluder.AddFolderExclusion(RootDir);
-        }
-        else
-            ConsoleMenu.WriteOk("Все критичные файлы на месте");
-        Console.WriteLine();
-
-        // 5. Проверка DNS
-        ConsoleMenu.WriteStep("Проверка DNS-резолвинга...");
-        var dnsResults = await DnsChecker.CheckAllAsync(Cfg.Diagnostics.CheckTargets);
-        DnsChecker.PrintResults(dnsResults);
-
-        // 6. Очистка кэша Discord
-        if (ConsoleMenu.Confirm("Очистить кэш Discord?"))
-        {
-            var (closed, deleted, failed) = DiscordCacheCleaner.Clean();
-            if (closed) ConsoleMenu.WriteOk("Discord закрыт");
-            foreach (var d in deleted) ConsoleMenu.WriteOk($"Удалено: {d}");
-            foreach (var f in failed)  ConsoleMenu.WriteError($"Не удалось удалить: {f}");
-            if (deleted.Count == 0 && failed.Count == 0)
-                ConsoleMenu.WriteInfo("Кэш Discord не найден");
-        }
-
-        ConsoleMenu.PauseAny();
-    }
+    static async Task MenuDiagnostics() => await DiagnosticsMenu.DiagnosticsAsync(BinDir, RootDir, Cfg);
 
     // ── BACKUP ────────────────────────────────────────────────────────────────
-    static void MenuBackup()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("БЭКАП / ВОССТАНОВЛЕНИЕ");
-
-        var backups = Service.BackupManager.ListBackups(RootDir);
-        Console.WriteLine($"\n   Существующие бэкапы: {backups.Length}");
-        for (int i = 0; i < backups.Length; i++)
-        {
-            var b = backups[i];
-            Console.WriteLine($"     [{i + 1}] {b.Name}  ({b.Length / 1024} KB, {b.CreationTime:dd.MM.yyyy HH:mm})");
-        }
-
-        Console.WriteLine("\n   [C] Создать новый бэкап");
-        if (backups.Length > 0) Console.WriteLine("   [R] Восстановить из бэкапа");
-        Console.WriteLine("   [0] Назад");
-
-        var ch = ConsoleMenu.Prompt("\n   Выбор", "0");
-        switch (ch?.ToUpper())
-        {
-            case "C":
-                Service.BackupManager.CreateBackup(RootDir, Cfg.Backup.KeepCount);
-                ConsoleMenu.PauseAny();
-                break;
-            case "R":
-                if (backups.Length == 0) break;
-                var pickStr = ConsoleMenu.Prompt("   Номер бэкапа");
-                if (int.TryParse(pickStr, out var pick) && pick >= 1 && pick <= backups.Length)
-                {
-                    if (ConsoleMenu.Confirm($"Восстановить из {backups[pick - 1].Name}? Текущие файлы будут перезаписаны."))
-                    {
-                        Service.BackupManager.RestoreBackup(RootDir, backups[pick - 1].FullName);
-                        ConsoleMenu.WriteInfo("Перезапустите менеджер для применения изменений.");
-                    }
-                }
-                ConsoleMenu.PauseAny();
-                break;
-        }
-    }
+    static void MenuBackup() => BackupMenu.Backup(RootDir, Cfg.Backup.KeepCount);
 
     // ── PROFILES ──────────────────────────────────────────────────────────────
-    static void MenuProfiles()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ПРОФИЛИ");
-
-        var profiles = ProfileManager.ListProfiles(RootDir);
-        Console.WriteLine($"\n   Сохранённые профили: {profiles.Length}");
-        for (int i = 0; i < profiles.Length; i++)
-        {
-            var p = profiles[i];
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write($"     [{i + 1}] {p.Name}");
-            Console.ResetColor();
-            Console.WriteLine($"  (стратегия: {p.Strategy}, ipset: {p.IpsetMode}, обновления: {p.UpdateMode})");
-        }
-
-        Console.WriteLine("\n   [S] Сохранить текущий профиль");
-        if (profiles.Length > 0)
-        {
-            Console.WriteLine("   [A] Применить профиль");
-            Console.WriteLine("   [D] Удалить профиль");
-        }
-        Console.WriteLine("   [0] Назад");
-
-        var ch = ConsoleMenu.Prompt("\n   Выбор", "0");
-        switch (ch?.ToUpper())
-        {
-            case "S":
-                var name = ConsoleMenu.Prompt("   Имя профиля");
-                if (!string.IsNullOrWhiteSpace(name))
-                {
-                    ProfileManager.SaveProfile(RootDir, name);
-                    ConsoleMenu.WriteOk($"Профиль '{name}' сохранён");
-                }
-                ConsoleMenu.PauseAny();
-                break;
-            case "A":
-                if (profiles.Length == 0) break;
-                var applyStr = ConsoleMenu.Prompt("   Номер профиля");
-                if (int.TryParse(applyStr, out var applyIdx) && applyIdx >= 1 && applyIdx <= profiles.Length)
-                {
-                    var prof = profiles[applyIdx - 1];
-                    if (ConsoleMenu.Confirm($"Применить профиль '{prof.Name}'?"))
-                    {
-                        ConsoleMenu.StartSpinner("Применение профиля...");
-                        ProfileManager.ApplyProfile(prof, RootDir, BinDir, ListsDir, UtilsDir);
-                        ConsoleMenu.StopSpinner(true, $"Профиль '{prof.Name}' применён");
-                    }
-                }
-                ConsoleMenu.PauseAny();
-                break;
-            case "D":
-                if (profiles.Length == 0) break;
-                var delStr = ConsoleMenu.Prompt("   Номер профиля для удаления");
-                if (int.TryParse(delStr, out var delIdx) && delIdx >= 1 && delIdx <= profiles.Length)
-                {
-                    ProfileManager.DeleteProfile(RootDir, profiles[delIdx - 1].Name);
-                    ConsoleMenu.WriteOk("Профиль удалён");
-                }
-                ConsoleMenu.PauseAny();
-                break;
-        }
-    }
+    static void MenuProfiles() => BackupMenu.Profiles(RootDir, BinDir, ListsDir, UtilsDir);
 
     // ── TRAFFIC MONITOR ───────────────────────────────────────────────────────
-    static async Task MenuTrafficMonitor()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("МОНИТОРИНГ ТРАФИКА");
-
-        // Show zapret processes
-        ConsoleMenu.WriteStep("Процессы zapret");
-        TrafficMonitor.ShowZapretProcesses();
-        Console.WriteLine();
-
-        // Live monitor
-        await TrafficMonitor.RunLiveMonitorAsync(60);
-
-        ConsoleMenu.PauseAny();
-    }
+    static async Task MenuTrafficMonitor() => await MonitorMenu.TrafficMonitorAsync();
 
     static async Task MenuRunTests()
     {
@@ -934,200 +415,12 @@ class Program
         ConsoleMenu.PauseAny();
     }
 
-    static void MenuExportReport()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ЭКСПОРТ ОТЧЁТА");
-        var path = ReportExporter.Export(RootDir);
-        ConsoleMenu.WriteOk($"Отчёт: {path}");
-        if (ConsoleMenu.Confirm("Открыть файл?"))
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true });
-        ConsoleMenu.PauseAny();
-    }
+    static void MenuExportReport() => DiagnosticsMenu.ExportReport(RootDir);
 
-    static void MenuTgProxy()
-    {
-        while (true)
-        {
-            Console.Clear();
-            ConsoleMenu.WriteHeader("TG WS PROXY");
+    static async Task MenuTgProxy() => await TgProxyMenu.RunAsync(RootDir);
 
-            var exePath = TgProxyManager.FindExePath(RootDir);
-            if (exePath == null)
-            {
-                ConsoleMenu.WriteError("TgWsProxy_windows.exe не найден");
-                ConsoleMenu.WriteInfo("Ожидается в корне проекта или в orig/");
-                ConsoleMenu.PauseAny(); return;
-            }
 
-            var settings = TgProxyManager.LoadSettings(RootDir);
-            var running = TgProxyManager.IsRunning();
 
-            Console.ForegroundColor = running ? ConsoleColor.Green : ConsoleColor.DarkGray;
-            Console.WriteLine($"  Статус: {(running ? "ЗАПУЩЕН" : "ОСТАНОВЛЕН")}");
-            Console.ResetColor();
-            Console.WriteLine($"  Порт: {settings.Port}  Secret: {settings.Secret[..Math.Min(8, settings.Secret.Length)]}...");
-            Console.WriteLine($"  Путь: {exePath}");
-
-            Console.WriteLine("\n  [1] Запустить прокси");
-            Console.WriteLine("  [2] Остановить прокси");
-            Console.WriteLine("  [3] Показать ссылку для Telegram");
-            Console.WriteLine("  [4] Настройки");
-            Console.WriteLine("  [5] Подробный статус");
-            Console.WriteLine("  [0] Назад");
-
-            var ch = ConsoleMenu.Prompt("\n  Выбор", "0");
-
-            switch (ch)
-            {
-                case "1":
-                    if (running)
-                    {
-                        ConsoleMenu.WriteWarn("Прокси уже запущен");
-                    }
-                    else
-                    {
-                        var proc = TgProxyManager.Start(RootDir, settings);
-                        Thread.Sleep(1500);
-                        if (proc != null && !proc.HasExited)
-                        {
-                            ConsoleMenu.WriteOk($"Прокси запущен (PID: {proc.Id})");
-                            Console.WriteLine();
-                            ShowTgProxyLink(settings);
-                        }
-                        else
-                            ConsoleMenu.WriteError("Не удалось запустить прокси");
-                    }
-                    ConsoleMenu.PauseAny();
-                    break;
-
-                case "2":
-                    TgProxyManager.Stop();
-                    ConsoleMenu.WriteOk("Прокси остановлен");
-                    ConsoleMenu.PauseAny();
-                    break;
-
-                case "3":
-                    ShowTgProxyLink(settings);
-                    ConsoleMenu.PauseAny();
-                    break;
-
-                case "4":
-                    EditTgProxySettings(settings);
-                    TgProxyManager.SaveSettings(RootDir, settings);
-                    break;
-
-                case "5":
-                    ShowTgProxyStatus(settings, exePath);
-                    ConsoleMenu.PauseAny();
-                    break;
-
-                case "0":
-                    return;
-            }
-        }
-    }
-
-    static void ShowTgProxyLink(TgProxySettings settings)
-    {
-        var link = TgProxyManager.GenerateLink(settings);
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("  ═══════════ ССЫЛКА ДЛЯ TELEGRAM ═══════════");
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"\n  {link}");
-        Console.ResetColor();
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("\n  Скопируйте ссылку и вставьте в Telegram.");
-        Console.ResetColor();
-    }
-
-    static void ShowTgProxyStatus(TgProxySettings settings, string exePath)
-    {
-        Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n  ═══════════ СТАТУС TG PROXY ═══════════");
-        Console.ResetColor();
-
-        var running = TgProxyManager.IsRunning();
-        Console.Write("  Прокси: ");
-        Console.ForegroundColor = running ? ConsoleColor.Green : ConsoleColor.Red;
-        Console.WriteLine(running ? "ЗАПУЩЕН" : "ОСТАНОВЛЕН");
-        Console.ResetColor();
-
-        Console.WriteLine($"  Путь:         {exePath}");
-        Console.WriteLine($"  Хост:         {settings.Host}");
-        Console.WriteLine($"  Порт:         {settings.Port}");
-        Console.WriteLine($"  Secret:       {settings.Secret}");
-        Console.WriteLine($"  Fake TLS:     {(string.IsNullOrEmpty(settings.FakeTlsDomain) ? "выключен" : settings.FakeTlsDomain)}");
-        Console.WriteLine($"  CF Proxy:     {(settings.CfProxyEnabled ? "включён" : "выключен")}");
-        Console.WriteLine($"  Pool size:    {settings.PoolSize}");
-        Console.WriteLine($"  Buffer:       {settings.BufKb} KB");
-        Console.WriteLine($"  DC IPs:       {string.Join(", ", settings.DcIps)}");
-        Console.WriteLine($"  Verbose:      {(settings.Verbose ? "да" : "нет")}");
-
-        var logFile = Path.Combine(RootDir, "logs", "tg-proxy.log");
-        if (File.Exists(logFile))
-        {
-            var fi = new FileInfo(logFile);
-            Console.WriteLine($"  Лог:          {logFile} ({fi.Length / 1024} KB)");
-        }
-        Console.WriteLine();
-    }
-
-    static void EditTgProxySettings(TgProxySettings settings)
-    {
-        Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n  ═══════════ НАСТРОЙКИ TG PROXY ═══════════");
-        Console.ResetColor();
-
-        Console.WriteLine($"\n  Текущие значения:");
-        Console.WriteLine($"    [1] Порт:         {settings.Port}");
-        Console.WriteLine($"    [2] Secret:       {settings.Secret}");
-        Console.WriteLine($"    [3] Fake TLS:     {(string.IsNullOrEmpty(settings.FakeTlsDomain) ? "выключен" : settings.FakeTlsDomain)}");
-        Console.WriteLine($"    [4] CF Proxy:     {(settings.CfProxyEnabled ? "вкл" : "выкл")}");
-        Console.WriteLine($"    [5] Pool size:    {settings.PoolSize}");
-        Console.WriteLine($"    [6] Verbose:      {(settings.Verbose ? "вкл" : "выкл")}");
-        Console.WriteLine($"    [7] Новый secret  (сгенерировать)");
-        Console.WriteLine($"    [0] Назад");
-
-        var ch = ConsoleMenu.Prompt("\n  Параметр", "0");
-
-        switch (ch)
-        {
-            case "1":
-                var portStr = ConsoleMenu.Prompt("  Новый порт", settings.Port.ToString());
-                if (int.TryParse(portStr, out var port) && port > 0 && port < 65536)
-                    settings.Port = port;
-                break;
-            case "2":
-                var sec = ConsoleMenu.Prompt("  Новый secret (32 hex)", settings.Secret);
-                if (sec.Length == 32 && sec.All(c => "0123456789abcdefABCDEF".Contains(c)))
-                    settings.Secret = sec.ToLower();
-                else ConsoleMenu.WriteError("Secret должен быть 32 hex-символа");
-                break;
-            case "3":
-                settings.FakeTlsDomain = ConsoleMenu.Prompt("  Домен для Fake TLS (пусто = выключить)", settings.FakeTlsDomain);
-                break;
-            case "4":
-                settings.CfProxyEnabled = !settings.CfProxyEnabled;
-                ConsoleMenu.WriteOk($"CF Proxy: {(settings.CfProxyEnabled ? "вкл" : "выкл")}");
-                break;
-            case "5":
-                var psStr = ConsoleMenu.Prompt("  Pool size (1-16)", settings.PoolSize.ToString());
-                if (int.TryParse(psStr, out var ps) && ps >= 1 && ps <= 16)
-                    settings.PoolSize = ps;
-                break;
-            case "6":
-                settings.Verbose = !settings.Verbose;
-                ConsoleMenu.WriteOk($"Verbose: {(settings.Verbose ? "вкл" : "выкл")}");
-                break;
-            case "7":
-                settings.Secret = Guid.NewGuid().ToString("N")[..32];
-                ConsoleMenu.WriteOk($"Новый secret: {settings.Secret}");
-                break;
-        }
-    }
 
     // ── SETUP WIZARD (mirrors autosetup.ps1 flow) ─────────────────────────────
     static async Task RunSetupAsync(string[]? args = null)
@@ -1199,7 +492,7 @@ class Program
                 ConsoleMenu.WriteOk($"Manager актуален: v{mgrLocal}");
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
 
         // ── Этап 2: Проверка обновлений zapret core ──
         try
@@ -1218,7 +511,7 @@ class Program
                 ConsoleMenu.WriteOk($"Zapret core актуален: {local}");
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
 
         switch (mainOpt.ToLower())
         {
@@ -1601,7 +894,7 @@ class Program
                 using var key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"System\CurrentControlSet\Services\zapret");
                 key?.SetValue("zapret-discord-youtube", Path.GetFileNameWithoutExtension(chosenBat));
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
 
             if (svcOk)
             {
@@ -1636,9 +929,9 @@ class Program
                     if (!silent && ConsoleMenu.Confirm("Попробовать перезапустить службу?"))
                     {
                         WinServiceManager.Stop("zapret");
-                        Thread.Sleep(1000);
+                        await Task.Delay(1000);
                         var retryOk = WinServiceManager.Start("zapret");
-                        Thread.Sleep(2000);
+                        await Task.Delay(2000);
                         var retryState = WinServiceManager.GetState("zapret");
                         if (retryState == WinServiceManager.ServiceState.Running)
                             ConsoleMenu.WriteOk("Служба запущена после повторного старта!");
@@ -1859,11 +1152,11 @@ class Program
             r?.WaitForExit(1000);
             return r?.ExitCode == 0;
         }
-        catch { return false; }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); return false; }
     }
 
     // ── SERVICE HEALTH ────────────────────────────────────────────────────────
-    static void CheckServiceHealth()
+    static async Task CheckServiceHealth()
     {
         try
         {
@@ -1891,9 +1184,9 @@ class Program
                         ConsoleMenu.WriteOk("Путь службы исправлен");
                         // Restart service with new path
                         WinServiceManager.Stop("zapret");
-                        Thread.Sleep(1000);
+                        await Task.Delay(1000);
                         WinServiceManager.Start("zapret");
-                        Thread.Sleep(2000);
+                        await Task.Delay(2000);
                         if (WinServiceManager.GetState("zapret") == WinServiceManager.ServiceState.Running)
                             ConsoleMenu.WriteOk("Служба перезапущена");
                         else
@@ -1955,7 +1248,7 @@ class Program
 
             return "не установлена";
         }
-        catch { return "?"; }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); return "?"; }
     }
 
     static string GetIpsetStatus()
@@ -1979,7 +1272,7 @@ class Program
                 { CreateNoWindow = true, UseShellExecute = false };
             System.Diagnostics.Process.Start(psi)?.WaitForExit(3000);
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
     }
 
     /// <summary>
@@ -2074,164 +1367,25 @@ class Program
     }
 
     // ── ISP DETECTION MENU ────────────────────────────────────────────────────
-    static async Task MenuIspDetect()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("ОПРЕДЕЛЕНИЕ ПРОВАЙДЕРА");
-        Console.WriteLine();
-
-        // Try cache first
-        var info = IspDetector.LoadCache(RootDir);
-        if (info == null)
-        {
-            ConsoleMenu.WriteInfo("Определение провайдера...");
-            info = await IspDetector.DetectAsync();
-        }
-
-        if (info == null)
-        {
-            ConsoleMenu.WriteError("Не удалось определить провайдера. Проверьте интернет.");
-            ConsoleMenu.PauseAny();
-            return;
-        }
-
-        IspDetector.SaveCache(RootDir, info);
-        IspDetector.Print(info);
-
-        // Show recommendations
-        var recs = await IspDetector.GetRecommendationsAsync(RootDir, info.Isp);
-        if (recs.Count > 0)
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("   ── РЕКОМЕНДУЕМЫЕ СТРАТЕГИИ ──");
-            Console.ResetColor();
-            for (int i = 0; i < recs.Count; i++)
-                Console.WriteLine($"      {i + 1}. {recs[i]}");
-        }
-        else
-        {
-            Console.WriteLine();
-            ConsoleMenu.WriteInfo("Нет специфических рекомендаций для вашего ISP.");
-            ConsoleMenu.WriteInfo("Запустите тест стратегий (п.11) для определения лучшей.");
-        }
-
-        Console.WriteLine();
-        ConsoleMenu.PauseAny();
-    }
+    static async Task MenuIspDetect() => await AdvancedMenu.IspDetectAsync(RootDir);
 
     // ── DOMAIN MANAGEMENT MENU ────────────────────────────────────────────────
-    static void MenuDomains()
-    {
-        DomainManager.Run(ListsDir);
-    }
+    static void MenuDomains() => AdvancedMenu.Domains(ListsDir);
 
     // ── NIC SELECTOR MENU ─────────────────────────────────────────────────────
-    static void MenuNicSelector()
-    {
-        NicSelector.Run(RootDir);
-    }
+    static void MenuNicSelector() => AdvancedMenu.NicSelector(RootDir);
 
     // ── SETTINGS EXPORT/IMPORT MENU ───────────────────────────────────────────
-    static void MenuSettingsExport()
-    {
-        SettingsExporter.Run(RootDir, ListsDir);
-    }
+    static void MenuSettingsExport() => AdvancedMenu.SettingsExport(RootDir, ListsDir);
 
     // ── SPEED TEST MENU ───────────────────────────────────────────────────────
-    static async Task MenuSpeedTest()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("SPEED-ТЕСТ");
-        Console.WriteLine();
-        ConsoleMenu.WriteInfo("Сравнение скорости БЕЗ обхода и С обходом");
-        ConsoleMenu.WriteInfo("Используется Cloudflare CDN (10MB download, 1MB upload)");
-        Console.WriteLine();
-
-        if (!ConsoleMenu.Confirm("Начать тест?")) return;
-
-        // Test WITHOUT bypass
-        ConsoleMenu.WriteStep("Тест БЕЗ обхода DPI");
-        StopZapretForTest();
-        await Task.Delay(2000);
-
-        var before = await SpeedTester.RunAsync(msg => ConsoleMenu.WriteInfo(msg));
-        SpeedTester.PrintResult(before, "БЕЗ обхода");
-
-        // Restore service and test WITH bypass
-        ConsoleMenu.WriteStep("Тест С обходом DPI");
-        var svcState = WinServiceManager.GetState("zapret");
-        if (svcState == WinServiceManager.ServiceState.Stopped ||
-            svcState == WinServiceManager.ServiceState.Running)
-        {
-            WinServiceManager.Start("zapret");
-            await Task.Delay(3000);
-        }
-
-        var after = await SpeedTester.RunAsync(msg => ConsoleMenu.WriteInfo(msg));
-        SpeedTester.PrintResult(after, "С обходом");
-
-        // Comparison
-        SpeedTester.PrintComparison(before, after);
-        Console.WriteLine();
-
-        ConsoleMenu.PauseAny();
-    }
+    static async Task MenuSpeedTest() => await AdvancedMenu.SpeedTestAsync(StopZapretForTest);
 
     // ── STRATEGY EDITOR MENU ──────────────────────────────────────────────────
-    static void MenuStrategyEditor()
-    {
-        var strategiesDir = Path.Combine(RootDir, "strategies");
-        Directory.CreateDirectory(strategiesDir);
-        StrategyEditor.Run(strategiesDir, BinDir, ListsDir);
-    }
+    static void MenuStrategyEditor() => AdvancedMenu.StrategyEditor(RootDir, BinDir, ListsDir);
 
     // ── WATCHDOG MENU ─────────────────────────────────────────────────────────
-    static void MenuWatchdog()
-    {
-        Console.Clear();
-        ConsoleMenu.WriteHeader("WATCHDOG (АВТОРОТАЦИЯ)");
-        Console.WriteLine();
-
-        var enabled = _watchdog?.IsEnabled == true;
-        ConsoleMenu.WriteInfo($"Статус: {(enabled ? "включён" : "выключён")}");
-        if (_watchdog != null)
-        {
-            ConsoleMenu.WriteInfo($"Последняя проверка: {(_watchdog.LastCheck == DateTime.MinValue ? "не было" : _watchdog.LastCheck.ToString("HH:mm:ss"))}");
-            ConsoleMenu.WriteInfo($"Результат: {_watchdog.LastStatus}");
-        }
-        ConsoleMenu.WriteInfo($"Интервал: {Cfg.Watchdog.CheckIntervalMinutes} мин");
-        ConsoleMenu.WriteInfo($"Порог сбоев: {Cfg.Watchdog.FailThreshold} подряд");
-        ConsoleMenu.WriteInfo($"Кулдаун: {Cfg.Watchdog.CooldownMinutes} мин");
-        Console.WriteLine();
-
-        // Show ranking if available
-        var ranking = StrategyRanking.Load(RootDir);
-        if (ranking.Count > 0)
-        {
-            ConsoleMenu.WriteInfo("Рейтинг стратегий:");
-            for (int i = 0; i < Math.Min(ranking.Count, 5); i++)
-                Console.WriteLine($"      {i + 1}. {ranking[i].Name}  (score: {ranking[i].Score})");
-            Console.WriteLine();
-        }
-        else
-        {
-            ConsoleMenu.WriteWarn("Нет данных тестов. Запустите тест стратегий (п.11) для авторотации.");
-            Console.WriteLine();
-        }
-
-        if (ConsoleMenu.Confirm($"Watchdog: {(enabled ? "выключить" : "включить")}?"))
-        {
-            if (_watchdog == null)
-            {
-                _watchdog = new Watchdog(RootDir, Cfg);
-            }
-            _watchdog.Toggle();
-            ConsoleMenu.WriteOk($"Watchdog {(_watchdog.IsEnabled ? "включён" : "выключён")}");
-        }
-
-        ConsoleMenu.PauseAny();
-    }
+    static void MenuWatchdog() => AdvancedMenu.Watchdog(ref _watchdog, RootDir, Cfg);
 
     // ── TRAY MODE (отдельный процесс) ──────────────────────────────────────────
     static async Task RunTrayMode()
@@ -2278,7 +1432,7 @@ class Program
             var hasTray = trayProcs.Any(p =>
             {
                 try { return p.MainWindowTitle == "Zapret Tray" || p.MainWindowTitle == ""; }
-                catch { return false; }
+                catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); return false; }
             });
 
             if (trayProcs.Count > 0)
@@ -2362,7 +1516,7 @@ class Program
             proc?.WaitForExit(5000);
             ConsoleMenu.WriteOk("Автозапуск трея удалён");
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[Program] {ex.GetType().Name}: {ex.Message}"); }
     }
 
     // ── SETTINGS SUBMENU (Main Menu п.7) ──────────────────────────────────────

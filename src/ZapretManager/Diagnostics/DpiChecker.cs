@@ -157,7 +157,7 @@ public static class DpiChecker
 
             return ("ERR", 0, 0, 0, proc.ExitCode);
         }
-        catch { return ("ERR", 0, 0, 0, -1); }
+        catch (Exception ex) { Logger.Error($"[DpiChecker] {ex.GetType().Name}: {ex.Message}"); return ("ERR", 0, 0, 0, -1); }
     }
 
     public static void PrintResults(List<DpiTargetResult> results)
@@ -396,10 +396,10 @@ public static class WinWsSnapshot
                     var exePath = proc.MainModule?.FileName ?? "";
                     instances.Add(new WinWsInstance(proc.Id, cmdLine, exePath));
                 }
-                catch { }
+                catch (Exception ex) { Logger.Error($"[DpiChecker] {ex.GetType().Name}: {ex.Message}"); }
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[DpiChecker] {ex.GetType().Name}: {ex.Message}"); }
 
         if (instances.Count > 0)
             Logger.Info($"Сохранён snapshot {instances.Count} запущенных winws.exe");
@@ -424,7 +424,7 @@ public static class WinWsSnapshot
                 if (current.Any(p => GetCommandLine(p.Id) == inst.CommandLine))
                     continue;
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[DpiChecker] {ex.GetType().Name}: {ex.Message}"); }
 
             // Restore
             try
@@ -474,7 +474,7 @@ public static class WinWsSnapshot
                     return line["CommandLine=".Length..].Trim();
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[DpiChecker] {ex.GetType().Name}: {ex.Message}"); }
         return "";
     }
 }

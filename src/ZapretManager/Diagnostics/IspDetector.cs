@@ -74,7 +74,7 @@ public static class IspDetector
             var json = JsonSerializer.Serialize(info, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, json);
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[IspDetector] {ex.GetType().Name}: {ex.Message}"); }
     }
 
     /// <summary>Load cached ISP info.</summary>
@@ -91,7 +91,7 @@ public static class IspDetector
             var json = File.ReadAllText(path);
             return JsonSerializer.Deserialize<IspInfo>(json);
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[IspDetector] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     /// <summary>Get recommended strategies for ISP.</summary>
@@ -125,7 +125,7 @@ public static class IspDetector
                 var json = File.ReadAllText(localPath);
                 localMap = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json) ?? new();
             }
-            catch { }
+            catch (Exception ex) { Logger.Error($"[IspDetector] {ex.GetType().Name}: {ex.Message}"); }
         }
 
         // Try to download and merge remote map
@@ -156,7 +156,7 @@ public static class IspDetector
                 File.WriteAllText(localPath, merged);
             }
         }
-        catch { /* offline — use local only */ }
+        catch (Exception ex) { Logger.Error($"[IspDetector] {ex.GetType().Name}: {ex.Message}"); /* offline — use local only */ }
 
         return localMap;
     }

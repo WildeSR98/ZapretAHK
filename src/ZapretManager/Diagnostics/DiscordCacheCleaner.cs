@@ -2,6 +2,7 @@ using System.Diagnostics;
 
 namespace ZapretManager.Diagnostics;
 
+
 /// <summary>
 /// Discord cache cleaner — mirrors the functionality from original service.bat (lines 667-700).
 /// </summary>
@@ -13,7 +14,7 @@ public static class DiscordCacheCleaner
     /// Closes Discord if running and clears cache directories.
     /// Returns whether Discord was closed, list of deleted paths, and list of failed paths.
     /// </summary>
-    public static (bool Closed, List<string> Deleted, List<string> Failed) Clean()
+    public static async Task<(bool Closed, List<string> Deleted, List<string> Failed)> Clean()
     {
         bool closed = false;
         var deleted = new List<string>();
@@ -27,7 +28,7 @@ public static class DiscordCacheCleaner
             {
                 try { p.Kill(); } catch { }
             }
-            Thread.Sleep(1000); // Wait for process to fully exit
+            await Task.Delay(1000); // Wait for process to fully exit
             closed = true;
         }
 

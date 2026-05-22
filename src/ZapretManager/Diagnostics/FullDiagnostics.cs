@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.ServiceProcess;
 using Microsoft.Win32;
+using ZapretManager.Core;
 
 namespace ZapretManager.Diagnostics;
 
@@ -375,7 +376,7 @@ public static class FullDiagnostics
                 windivertActive = sc.Status == ServiceControllerStatus.Running ||
                                   sc.Status == ServiceControllerStatus.StopPending;
             }
-            catch { /* service not found — OK */ }
+            catch (Exception ex) { Logger.Error($"[FullDiagnostics] {ex.GetType().Name}: {ex.Message}"); /* service not found — OK */ }
 
             if (!winwsRunning && windivertActive)
             {
@@ -391,7 +392,7 @@ public static class FullDiagnostics
                     _ = sc.Status;
                     stillActive = true;
                 }
-                catch { }
+                catch (Exception ex) { Logger.Error($"[FullDiagnostics] {ex.GetType().Name}: {ex.Message}"); }
 
                 if (stillActive)
                     return new("WinDivert Conflict", DiagLevel.Error,

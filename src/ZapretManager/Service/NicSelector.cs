@@ -109,7 +109,7 @@ public static class NicSelector
             var doc = JsonDocument.Parse(json);
             return doc.RootElement.GetProperty("name").GetString();
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[NicSelector] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     private static string? LoadSelection(string rootDir)
@@ -122,7 +122,7 @@ public static class NicSelector
             var doc = JsonDocument.Parse(json);
             return doc.RootElement.GetProperty("id").GetString();
         }
-        catch { return null; }
+        catch (Exception ex) { Logger.Error($"[NicSelector] {ex.GetType().Name}: {ex.Message}"); return null; }
     }
 
     private static void SaveSelection(string rootDir, NicInfo nic)
@@ -144,6 +144,6 @@ public static class NicSelector
             var path = Path.Combine(rootDir, "utils", ConfigFile);
             if (File.Exists(path)) File.Delete(path);
         }
-        catch { }
+        catch (Exception ex) { Logger.Error($"[NicSelector] {ex.GetType().Name}: {ex.Message}"); }
     }
 }

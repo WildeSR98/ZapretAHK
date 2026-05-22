@@ -35,7 +35,11 @@ public static class Logger
         lock (_lock)
         {
             try { _writer.WriteLine(line); }
-            catch { /* ignore log errors */ }
+            catch (Exception ex)
+            {
+                // Last-resort: write to stderr so it is not fully lost
+                Console.Error.WriteLine($"[Logger] Write failed: {ex.Message}");
+            }
         }
     }
 
@@ -57,7 +61,10 @@ public static class Logger
                 _writer?.Dispose();
                 _writer = null;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"[Logger] Dispose failed: {ex.Message}");
+            }
         }
     }
 
@@ -72,11 +79,13 @@ public static class Logger
             {
                 var fi = new FileInfo(file);
                 if (fi.LastWriteTime < cutoff)
-                {
                     fi.Delete();
-                }
             }
         }
-        catch { /* ignore rotation errors */ }
+        catch (Exception ex)
+        {
+            // Non-critical: rotation failure should not crash the app
+            Console.Error.WriteLine($"[Logger] Log rotation failed: {ex.Message}");
+        }
     }
 }
