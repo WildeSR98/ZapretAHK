@@ -22,22 +22,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup AutoHotkey v2
+      - name: Setup AutoHotkey v2 (via Chocolatey)
         run: |
-          $url = "https://www.autohotkey.com/download/2.0/AutoHotkey_2.0.18.zip"
-          Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\ahk.zip"
-          Expand-Archive -Path "$env:TEMP\ahk.zip" -DestinationPath "$env:TEMP\ahk"
-          Copy-Item -Path "$env:TEMP\ahk\AutoHotkey64.exe" -Destination "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe" -Force
-          New-Item -ItemType Directory -Force -Path "C:\Program Files\AutoHotkey\v2"
-          Copy-Item -Path "$env:TEMP\ahk\*.exe" -Destination "C:\Program Files\AutoHotkey\v2\" -Force
-          $env:PATH = "C:\Program Files\AutoHotkey\v2;$env:PATH"
-          echo "C:\Program Files\AutoHotkey\v2" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          # Проверка наличия choco
+          if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
+            Write-Host "Installing Chocolatey..."
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+            iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+          }
+          
+          # Установка AHK v2 через choco (обходит Cloudflare защиту)
+          choco install autohotkey --version=2.0.18 -y --no-progress
+          
+          # Обновление PATH
+          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+          RefreshEnv.cmd
+          
+          # Проверка установки
+          Get-Command AutoHotkey.exe
         shell: pwsh
 
       - name: Verify AHK installation
         run: |
-          AutoHotkey64.exe /? 
-          AutoHotkey64.exe --version
+          AutoHotkey.exe /? 
+          AutoHotkey.exe --version
         shell: pwsh
 
       - name: Syntax check all AHK files
@@ -46,7 +55,7 @@ jobs:
           $files = Get-ChildItem -Path "ahk-zapret-manager" -Filter "*.ahk" -Recurse
           foreach ($file in $files) {
             Write-Host "Checking: $($file.FullName)"
-            $proc = Start-Process -FilePath "AutoHotkey64.exe" -ArgumentList "/ErrorStdOut", "`"$($file.FullName)`"" -Wait -PassThru -NoNewWindow
+            $proc = Start-Process -FilePath "AutoHotkey.exe" -ArgumentList "/ErrorStdOut", "`"$($file.FullName)`"" -Wait -PassThru -NoNewWindow
             if ($proc.ExitCode -ne 0) {
               Write-Error "Syntax error in $($file.Name)"
               $errorCount++
