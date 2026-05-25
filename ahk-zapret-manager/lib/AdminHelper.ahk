@@ -21,7 +21,7 @@ class AdminHelper
     }
     
     ; Проверка через SID администратора
-    private static CheckAdminViaSid()
+    static CheckAdminViaSid()
     {
         Try
         {
