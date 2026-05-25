@@ -267,7 +267,7 @@ class WinService
     }
     
     ; ── Private helpers ───────────────────────────────────────────────────────
-    private static SetRecoveryPolicy(svc)
+    static SetRecoveryPolicy(svc)
     {
         ; SC_ACTION structure: 8 bytes (4 type + 4 delay)
         actionsSize := 24  ; 3 actions * 8 bytes
@@ -299,7 +299,7 @@ class WinService
             this.Log("SetRecoveryPolicy failed: " . A_LastError)
     }
     
-    private static WaitForState(svc, targetState, timeoutMs)
+    static WaitForState(svc, targetState, timeoutMs)
     {
         startTime := A_TickCount
         while ((A_TickCount - startTime) < timeoutMs)
@@ -316,7 +316,7 @@ class WinService
         return false
     }
     
-    private static Log(msg)
+    static Log(msg)
     {
         ; Простое логирование в файл
         logFile := A_ScriptDir . "\logs\service_" . A_Now . ".log"

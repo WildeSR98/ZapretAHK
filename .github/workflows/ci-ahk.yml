@@ -1,0 +1,122 @@
+name: CI — AHK Build & Test
+
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - 'ahk-zapret-manager/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ahk-zapret-manager/**'
+
+env:
+  AHK_VERSION: '2.0.18'
+
+jobs:
+  build-and-test:
+    name: AHK Build & Test (windows-latest)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup AutoHotkey v2
+        run: |
+          $url = "https://www.autohotkey.com/download/2.0/AutoHotkey_2.0.18.zip"
+          Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\ahk.zip"
+          Expand-Archive -Path "$env:TEMP\ahk.zip" -DestinationPath "$env:TEMP\ahk"
+          Copy-Item -Path "$env:TEMP\ahk\AutoHotkey64.exe" -Destination "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe" -Force
+          New-Item -ItemType Directory -Force -Path "C:\Program Files\AutoHotkey\v2"
+          Copy-Item -Path "$env:TEMP\ahk\*.exe" -Destination "C:\Program Files\AutoHotkey\v2\" -Force
+          $env:PATH = "C:\Program Files\AutoHotkey\v2;$env:PATH"
+          echo "C:\Program Files\AutoHotkey\v2" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        shell: pwsh
+
+      - name: Verify AHK installation
+        run: |
+          AutoHotkey64.exe /? 
+          AutoHotkey64.exe --version
+        shell: pwsh
+
+      - name: Syntax check all AHK files
+        run: |
+          $errorCount = 0
+          $files = Get-ChildItem -Path "ahk-zapret-manager" -Filter "*.ahk" -Recurse
+          foreach ($file in $files) {
+            Write-Host "Checking: $($file.FullName)"
+            $proc = Start-Process -FilePath "AutoHotkey64.exe" -ArgumentList "/ErrorStdOut", "`"$($file.FullName)`"" -Wait -PassThru -NoNewWindow
+            if ($proc.ExitCode -ne 0) {
+              Write-Error "Syntax error in $($file.Name)"
+              $errorCount++
+            }
+          }
+          if ($errorCount -gt 0) {
+            Write-Error "$errorCount file(s) have syntax errors"
+            exit 1
+          }
+          Write-Host "All AHK files passed syntax check"
+        shell: pwsh
+
+      - name: Validate project structure
+        run: |
+          $requiredFiles = @(
+            "ahk-zapret-manager/ZapretManager.ahk",
+            "ahk-zapret-manager/config.json",
+            "ahk-zapret-manager/lib/AppConfig.ahk",
+            "ahk-zapret-manager/lib/Logger.ahk",
+            "ahk-zapret-manager/lib/AdminHelper.ahk"
+          )
+          $missing = @()
+          foreach ($file in $requiredFiles) {
+            if (!(Test-Path $file)) {
+              $missing += $file
+            }
+          }
+          if ($missing.Count -gt 0) {
+            Write-Error "Missing required files: $($missing -join ', ')"
+            exit 1
+          }
+          Write-Host "Project structure validated"
+          
+          # Check for bin, strategies, lists directories
+          $requiredDirs = @("ahk-zapret-manager/bin", "ahk-zapret-manager/strategies", "ahk-zapret-manager/lists")
+          foreach ($dir in $requiredDirs) {
+            if (!(Test-Path $dir)) {
+              Write-Error "Missing required directory: $dir"
+              exit 1
+            }
+          }
+          Write-Host "Required directories present"
+        shell: pwsh
+
+      - name: Compile to EXE (if compiler available)
+        run: |
+          # Try to compile using Ahk2Exe if available
+          $compilerPath = "ahk-zapret-manager\Ahk2Exe\Ahk2Exe.exe"
+          if (Test-Path $compilerPath) {
+            & $compilerPath /in "ahk-zapret-manager/ZapretManager.ahk" /out "ahk-zapret-manager/ZapretManager.exe" /quiet
+            if (Test-Path "ahk-zapret-manager/ZapretManager.exe") {
+              Write-Host "Compilation successful"
+            } else {
+              Write-Warning "Compilation failed but continuing (optional step)"
+            }
+          } else {
+            Write-Host "Ahk2Exe not found, skipping compilation (optional step)"
+          }
+        shell: pwsh
+        continue-on-error: true
+
+      - name: Upload AHK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ahk-zapret-manager
+          path: |
+            ahk-zapret-manager/*.ahk
+            ahk-zapret-manager/**/*.ahk
+            ahk-zapret-manager/config.json
+            ahk-zapret-manager/bin/**
+            ahk-zapret-manager/strategies/**
+            ahk-zapret-manager/lists/**
+          retention-days: 7
