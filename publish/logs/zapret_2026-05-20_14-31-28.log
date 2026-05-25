@@ -1,0 +1,208 @@
+﻿[2026-05-20 14:31:28] [INFO] === ZAPRET MANAGER started ===
+[2026-05-20 14:31:28] [INFO] OS: Microsoft Windows NT 10.0.26200.0 | .NET: 8.0.27
+[2026-05-20 14:31:28] [STEP] ZAPRET AUTO-SETUP
+[2026-05-20 14:31:28] [INFO] Manager: v2.1.0  |  Zapret Core: 1.9.8c
+[2026-05-20 14:31:28] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-20 14:31:28] [INFO] .NET: 8.0.27
+[2026-05-20 14:31:43] [OK] Manager актуален: v2.1.0
+[2026-05-20 14:31:43] [OK] Zapret core актуален: 1.9.8c
+[2026-05-20 14:31:43] [STEP] ТЕСТ СТРАТЕГИЙ И УСТАНОВКА
+[2026-05-20 14:31:45] [INFO] Найдено конфигов: 19
+[2026-05-20 14:31:46] [INFO] IPSet переключён в режим 'any' для тестов
+[2026-05-20 14:31:46] [STEP] Загрузка DPI suite...
+[2026-05-20 14:31:46] [OK] Загружено 36 целей
+[2026-05-20 14:31:46] [WARN] DPI тесты займут несколько минут...
+[2026-05-20 14:31:52] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:32:14] [WARN] Detected possible DPI TCP 16-20 blocking on one or more targets.
+[2026-05-20 14:32:21] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:33:37] [OK] No 16-20KB freeze pattern detected across targets.
+[2026-05-20 14:33:44] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:31] [WARN] Detected possible DPI TCP 16-20 blocking on one or more targets.
+[2026-05-20 14:34:38] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:34:58] [WARN] Detected possible DPI TCP 16-20 blocking on one or more targets.
+[2026-05-20 14:35:05] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:36:06] [WARN] Detected possible DPI TCP 16-20 blocking on one or more targets.
+[2026-05-20 14:36:13] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern for this target.
+[2026-05-20 14:37:29] [OK] No 16-20KB freeze pattern detected across targets.
+[2026-05-20 14:37:36] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s

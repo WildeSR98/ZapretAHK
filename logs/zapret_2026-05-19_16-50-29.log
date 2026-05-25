@@ -1,0 +1,54 @@
+﻿[2026-05-19 16:50:29] [INFO] === ZAPRET AUTO-SETUP started ===
+[2026-05-19 16:50:29] [INFO] PowerShell: 5.1.26100.7705 | OS: Windows_NT | Admin: True
+[2026-05-19 16:50:29] [STEP] HEADER: ZAPRET AUTO-SETUP v2.1
+[2026-05-19 16:50:29] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main
+[2026-05-19 16:50:29] [INFO] PowerShell: 5.1.26100.7705
+[2026-05-19 16:50:29] [STEP] Проверка прав администратора
+[2026-05-19 16:50:29] [OK] Права администратора подтверждены
+[2026-05-19 16:50:31] [STEP] Проверка необходимых файлов
+[2026-05-19 16:50:31] [OK] winws.exe найден
+[2026-05-19 16:50:31] [OK] curl.exe найден
+[2026-05-19 16:50:31] [STEP] Проверка конфликтующих служб
+[2026-05-19 16:50:31] [OK] Конфликтующие службы не найдены
+[2026-05-19 16:50:31] [STEP] Настройка Game Filter
+[2026-05-19 16:50:31] [INFO] Текущий статус: all
+[2026-05-19 16:50:36] [INFO] Game Filter не изменён
+[2026-05-19 16:50:36] [STEP] Включение TCP timestamps
+[2026-05-19 16:50:36] [OK] TCP timestamps включены
+[2026-05-19 16:50:36] [STEP] Загрузка списков IP и доменов с GitHub
+[2026-05-19 16:50:36] [INFO] PROGRESS: Updating lists - Downloading ipset-all.txt... (-1 pct)
+[2026-05-19 16:50:36] [INFO] PROGRESS: Updating lists - Downloading ipset-exclude.txt... (-1 pct)
+[2026-05-19 16:50:36] [INFO] PROGRESS: Updating lists - Downloading list-general.txt... (-1 pct)
+[2026-05-19 16:50:37] [INFO] PROGRESS: Updating lists - Downloading list-google.txt... (-1 pct)
+[2026-05-19 16:50:37] [INFO] PROGRESS: Updating lists - Downloading list-exclude.txt... (-1 pct)
+[2026-05-19 16:50:37] [OK] ipset-all.txt: объединён (30996 строк)
+[2026-05-19 16:50:37] [OK] ipset-exclude.txt: объединён (11 строк)
+[2026-05-19 16:50:37] [OK] list-general.txt: объединён (50 строк)
+[2026-05-19 16:50:37] [OK] list-google.txt: объединён (19 строк)
+[2026-05-19 16:50:37] [OK] list-exclude.txt: объединён (94 строк)
+[2026-05-19 16:50:37] [STEP] Очистка списков (дубликаты, пустые строки, невалидные IP)
+[2026-05-19 16:50:37] [INFO] PROGRESS: Очистка списков - [1/8] ipset-all.txt (12 pct)
+[2026-05-19 16:50:38] [OK] ipset-all.txt: очищен (30994 строк), удалено 1 невалидных
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [2/8] ipset-exclude-user.txt (25 pct)
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [3/8] ipset-exclude.txt (38 pct)
+[2026-05-19 16:50:38] [DEBUG] ipset-exclude.txt: уже чист
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [4/8] list-exclude-user.txt (50 pct)
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [5/8] list-exclude.txt (62 pct)
+[2026-05-19 16:50:38] [OK] list-exclude.txt: очищен (93 строк)
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [6/8] list-general-user.txt (75 pct)
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [7/8] list-general.txt (88 pct)
+[2026-05-19 16:50:38] [OK] list-general.txt: очищен (49 строк)
+[2026-05-19 16:50:38] [INFO] PROGRESS: Очистка списков - [8/8] list-google.txt (100 pct)
+[2026-05-19 16:50:38] [OK] list-google.txt: очищен (18 строк)
+[2026-05-19 16:50:38] [INFO] Очистка завершена за 1.3 сек.
+[2026-05-19 16:50:38] [STEP] Обновление файла hosts
+[2026-05-19 16:50:39] [OK] hosts: all zapret entries present
+[2026-05-19 16:50:39] [STEP] Проверка доступности сайтов БЕЗ обхода
+[2026-05-19 16:50:40] [DEBUG] winws.exe остановлен
+[2026-05-19 16:50:45] [WARN] discord.com - НЕДОСТУПЕН (нужен обход)
+[2026-05-19 16:50:50] [WARN] youtube.com - НЕДОСТУПЕН (нужен обход)
+[2026-05-19 16:50:55] [WARN] gateway.discord - НЕДОСТУПЕН (нужен обход)
+[2026-05-19 16:50:59] [WARN] googlevideo.com - НЕДОСТУПЕН (нужен обход)
+[2026-05-19 16:51:28] [DEBUG] winws.exe остановлен
+[2026-05-19 16:51:51] [DEBUG] winws.exe остановлен
+[2026-05-19 16:52:14] [DEBUG] winws.exe остановлен

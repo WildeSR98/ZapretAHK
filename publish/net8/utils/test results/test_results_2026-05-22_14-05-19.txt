@@ -1,0 +1,135 @@
+﻿Config: general (ALT).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT2).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT3).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT4).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT5).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:ERROR TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:ERROR TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:ERROR TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT6).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT7).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT8).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT9).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT10).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (ALT11).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (FAKE TLS AUTO ALT).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (FAKE TLS AUTO ALT2).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (FAKE TLS AUTO ALT3).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (FAKE TLS AUTO).bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (SIMPLE FAKE ALT).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (SIMPLE FAKE ALT2).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general (SIMPLE FAKE).bat (Type: standard)
+  discord.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  youtube.com : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  gateway.discord : HTTP:OK TLS1.2:OK TLS1.3:OK | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+Config: general.bat (Type: standard)
+  discord.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  youtube.com : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  gateway.discord : HTTP:ERROR TLS1.2:ERROR TLS1.3:ERROR | Ping: Timeout
+  googlevideo.com :  | Ping: Timeout
+
+=== ANALYTICS ===
+general (ALT).bat : HTTP OK: 6, ERR: 3, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT2).bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT3).bat : HTTP OK: 6, ERR: 3, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT4).bat : HTTP OK: 6, ERR: 3, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT5).bat : HTTP OK: 6, ERR: 3, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT6).bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT7).bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT8).bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT9).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT10).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general (ALT11).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general (FAKE TLS AUTO ALT).bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+general (FAKE TLS AUTO ALT2).bat : HTTP OK: 2, ERR: 7, UNSUP: 0, Ping OK: 0, Fail: 4
+general (FAKE TLS AUTO ALT3).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general (FAKE TLS AUTO).bat : HTTP OK: 3, ERR: 6, UNSUP: 0, Ping OK: 0, Fail: 4
+general (SIMPLE FAKE ALT).bat : HTTP OK: 6, ERR: 3, UNSUP: 0, Ping OK: 0, Fail: 4
+general (SIMPLE FAKE ALT2).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general (SIMPLE FAKE).bat : HTTP OK: 9, ERR: 0, UNSUP: 0, Ping OK: 0, Fail: 4
+general.bat : HTTP OK: 0, ERR: 9, UNSUP: 0, Ping OK: 0, Fail: 4
+Best strategy: general (ALT9).bat

@@ -1,0 +1,149 @@
+﻿[2026-05-22 13:49:05] [INFO] === ZAPRET MANAGER started ===
+[2026-05-22 13:49:05] [INFO] OS: Microsoft Windows NT 10.0.26200.0 | .NET: 8.0.27
+[2026-05-22 13:49:05] [INFO] Фоновая проверка обновлений запущена (интервал: каждый час)
+[2026-05-22 13:49:05] [INFO] Фоновая проверка обновлений отключена
+[2026-05-22 13:49:06] [INFO] Tray-процесс запущен
+[2026-05-22 13:49:06] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:49:06] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:49:06] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:49:06] [INFO] .NET: 8.0.27
+[2026-05-22 13:49:09] [OK] Manager актуален: v
+[2026-05-22 13:49:09] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:49:09] [STEP] НАСТРОЙКИ
+[2026-05-22 13:49:14] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:49:14] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:49:14] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:49:14] [INFO] .NET: 8.0.27
+[2026-05-22 13:49:16] [OK] Manager актуален: v
+[2026-05-22 13:49:16] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:49:32] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:49:32] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:49:32] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:49:32] [INFO] .NET: 8.0.27
+[2026-05-22 13:49:34] [OK] Manager актуален: v
+[2026-05-22 13:49:34] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:49:34] [STEP] УДАЛЕНИЕ ZAPRET
+[2026-05-22 13:49:34] [WARN] Будут удалены ВСЕ службы zapret, WinDivert, WinDivert14.
+[2026-05-22 13:49:34] [INFO] Ваши списки в папке lists/ сохранены.
+[2026-05-22 13:49:40] [OK] Служба удалена: zapret
+[2026-05-22 13:49:40] [OK] Служба удалена: zapret
+[2026-05-22 13:49:40] [OK] Служба удалена: WinDivert
+[2026-05-22 13:49:40] [OK] Служба удалена: WinDivert14
+[2026-05-22 13:49:40] [OK] Готово. Списки в папке lists/ сохранены.
+[2026-05-22 13:49:43] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:49:43] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:49:43] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:49:43] [INFO] .NET: 8.0.27
+[2026-05-22 13:49:45] [OK] Manager актуален: v
+[2026-05-22 13:49:45] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:49:45] [STEP] Проверка необходимых файлов
+[2026-05-22 13:49:45] [OK] winws.exe найден
+[2026-05-22 13:49:45] [OK] curl.exe найден
+[2026-05-22 13:49:45] [STEP] Защита файлов от антивируса
+[2026-05-22 13:49:46] [INFO] Added Defender folder exclusion: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:49:47] [INFO] Added Defender folder exclusion: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-22 13:49:47] [INFO] Added Defender process exclusion: winws.exe
+[2026-05-22 13:49:48] [INFO] Added Defender process exclusion: TgWsProxy_windows.exe
+[2026-05-22 13:49:48] [OK] Папка C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8 добавлена в исключения Windows Defender. Все файлы на месте.
+[2026-05-22 13:49:48] [STEP] Проверка TgWsProxy
+[2026-05-22 13:49:48] [OK] TgWsProxy_windows.exe: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\TgWsProxy_windows.exe
+[2026-05-22 13:49:48] [STEP] Проверка конфликтующих служб
+[2026-05-22 13:49:48] [OK] Конфликтующих служб не найдено
+[2026-05-22 13:49:48] [STEP] Настройка Game Filter
+[2026-05-22 13:49:48] [INFO] Текущий статус: выкл
+[2026-05-22 13:49:55] [OK] Game Filter: TCP+UDP
+[2026-05-22 13:49:55] [STEP] Настройка IPSet фильтра
+[2026-05-22 13:49:55] [INFO] Текущий режим: loaded
+[2026-05-22 13:49:59] [OK] IPSet: any (обход всех IP)
+[2026-05-22 13:49:59] [STEP] Настройка режима обновлений
+[2026-05-22 13:49:59] [INFO] Текущий режим: ручной
+[2026-05-22 13:50:01] [OK] Режим обновлений: автоматический
+[2026-05-22 13:50:01] [STEP] Включение TCP timestamps
+[2026-05-22 13:50:02] [OK] TCP timestamps включены
+[2026-05-22 13:50:02] [STEP] Загрузка списков IP и доменов с GitHub
+[2026-05-22 13:50:02] [OK] ipset-all.txt: 30996 строк
+[2026-05-22 13:50:02] [OK] ipset-exclude.txt: 11 строк
+[2026-05-22 13:50:02] [OK] list-exclude.txt: 94 строк
+[2026-05-22 13:50:02] [OK] list-google.txt: 19 строк
+[2026-05-22 13:50:02] [OK] list-general.txt: 50 строк
+[2026-05-22 13:50:02] [STEP] Очистка списков (дубликаты, пустые строки, невалидные IP)
+[2026-05-22 13:50:03] [OK] Списки очищены
+[2026-05-22 13:50:03] [STEP] Обновление файла hosts
+[2026-05-22 13:50:03] [OK] Файл hosts актуален
+[2026-05-22 13:50:03] [OK] Файл hosts актуален
+[2026-05-22 13:50:03] [STEP] Проверка доступности сайтов БЕЗ обхода
+[2026-05-22 13:50:11] [ERROR] [AccessChecker] TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 7 seconds elapsing.
+[2026-05-22 13:50:11] [ERROR] [AccessChecker] TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 7 seconds elapsing.
+[2026-05-22 13:50:11] [ERROR] [AccessChecker] TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 7 seconds elapsing.
+[2026-05-22 13:50:11] [WARN] discord.com: недоступен (нужен обход)
+[2026-05-22 13:50:11] [WARN] youtube.com: недоступен (нужен обход)
+[2026-05-22 13:50:11] [WARN] gateway.discord: недоступен (нужен обход)
+[2026-05-22 13:50:11] [WARN] googlevideo.com: недоступен (нужен обход)
+[2026-05-22 13:50:11] [INFO] Найдено конфигов: 19
+[2026-05-22 13:50:15] [INFO] ParseArgs [general (ALT11).bat]: length=7209
+[2026-05-22 13:50:15] [STEP] Установка службы Windows: general (ALT11).bat
+[2026-05-22 13:50:15] [INFO] Аргументы winws: --wf-tcp=80,443,2053,2083,2087,2096,8443,1024-65535 --wf-udp=443,19294-19344,50000-50100,1024-65535 --filter-udp=443 --hostlist="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-general.txt" --hostlist="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-general-user.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude-user.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake --dpi-desync-repeats=11 --dpi-desync-fake-quic="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\quic_initial_www_google_com.bin" --new --filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\quic_initial_dbankcloud_ru.bin" --dpi-desync-fake-stun="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\quic_initial_dbankcloud_ru.bin" --dpi-desync-repeats=6 --new --filter-tcp=2053,2083,2087,2096,8443 --hostlist-domains=discord.media --dpi-desync=fake,multisplit --dpi-desync-split-seqovl=681 --dpi-desync-split-pos=1 --dpi-desync-fooling=ts --dpi-desync-repeats=8 --dpi-desync-split-seqovl-pattern="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_www_google_com.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_www_google_com.bin" --new --filter-tcp=443 --hostlist="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-google.txt" --ip-id=zero --dpi-desync=fake,multisplit --dpi-desync-split-seqovl=681 --dpi-desync-split-pos=1 --dpi-desync-fooling=ts --dpi-desync-repeats=8 --dpi-desync-split-seqovl-pattern="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_www_google_com.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_www_google_com.bin" --new --filter-tcp=80,443 --hostlist="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-general.txt" --hostlist="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-general-user.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude-user.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake,multisplit --dpi-desync-split-seqovl=664 --dpi-desync-split-pos=1 --dpi-desync-fooling=ts --dpi-desync-repeats=8 --dpi-desync-split-seqovl-pattern="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\stun.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-http="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --new --filter-udp=443 --ipset="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-all.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude-user.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake --dpi-desync-repeats=11 --dpi-desync-fake-quic="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\quic_initial_www_google_com.bin" --new --filter-tcp=80,443,8443 --ipset="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-all.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude.txt" --hostlist-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\list-exclude-user.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake,multisplit --dpi-desync-split-seqovl=664 --dpi-desync-split-pos=1 --dpi-desync-fooling=ts --dpi-desync-repeats=8 --dpi-desync-split-seqovl-pattern="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\stun.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-http="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --new --filter-tcp=1024-65535 --ipset="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-all.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake,multisplit --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n4 --dpi-desync-split-seqovl=664 --dpi-desync-split-pos=1 --dpi-desync-fooling=ts --dpi-desync-repeats=8 --dpi-desync-split-seqovl-pattern="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\stun.bin" --dpi-desync-fake-tls="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --dpi-desync-fake-http="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\tls_clienthello_max_ru.bin" --new --filter-udp=1024-65535 --ipset="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-all.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude.txt" --ipset-exclude="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\lists\ipset-exclude-user.txt" --dpi-desync=fake --dpi-desync-repeats=10 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\bin\quic_initial_dbankcloud_ru.bin" --dpi-desync-cutoff=n4
+[2026-05-22 13:50:15] [INFO] Recovery policy установлена: restart 5s/30s/60s
+[2026-05-22 13:50:15] [OK] Служба установлена и запущена: zapret
+[2026-05-22 13:50:15] [OK] Служба 'zapret' установлена и запущена: general (ALT11).bat
+[2026-05-22 13:50:15] [STEP] Проверка доступности С обходом (ждём 5 сек...)
+[2026-05-22 13:50:26] [OK] discord.com: HTTP 200
+[2026-05-22 13:50:26] [OK] youtube.com: HTTP 200
+[2026-05-22 13:50:26] [WARN] gateway.discord: всё ещё недоступен
+[2026-05-22 13:50:26] [WARN] googlevideo.com: всё ещё недоступен
+[2026-05-22 13:50:26] [WARN] Частично: 2/4. Попробуйте другую стратегию.
+[2026-05-22 13:50:30] [INFO] === Установка завершена ===
+[2026-05-22 13:50:30] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:50:30] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:50:30] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:50:30] [INFO] .NET: 8.0.27
+[2026-05-22 13:50:36] [OK] Manager актуален: v
+[2026-05-22 13:50:36] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:50:36] [STEP] ДИАГНОСТИКА
+[2026-05-22 13:50:36] [STEP] Проверка файлов конфигурации...
+[2026-05-22 13:50:36] [OK] Base Filtering Engine check passed
+[2026-05-22 13:50:36] [OK] Proxy check passed
+[2026-05-22 13:50:36] [OK] TCP timestamps successfully enabled
+[2026-05-22 13:50:36] [OK] Adguard check passed
+[2026-05-22 13:50:36] [OK] Killer check passed
+[2026-05-22 13:50:36] [OK] Intel Connectivity check passed
+[2026-05-22 13:50:36] [OK] Check Point check passed
+[2026-05-22 13:50:36] [OK] SmartByte check passed
+[2026-05-22 13:50:36] [OK] WinDivert64.sys found
+[2026-05-22 13:50:36] [WARN] [?] VPN services found: Adguard VPN Service, MBVpnTunnelService, OpenVPNAccessClient. Some VPNs can conflict with zapret. Make sure all VPNs are disabled
+[2026-05-22 13:50:36] [WARN] [?] Make sure you have configured secure DNS in a browser with some non-default DNS service provider. If you use Windows 11, you can configure encrypted DNS in Settings to hide this warning
+[2026-05-22 13:50:36] [OK] Hosts file check passed
+[2026-05-22 13:50:36] [OK] WinDivert conflict check passed
+[2026-05-22 13:50:36] [OK] Конфликтующих служб не найдено
+[2026-05-22 13:50:36] [STEP] Проверка доступности сайтов...
+[2026-05-22 13:50:42] [OK] discord.com: HTTP 200
+[2026-05-22 13:50:42] [OK] youtube.com: HTTP 200
+[2026-05-22 13:50:42] [WARN] gateway.discord: недоступен
+[2026-05-22 13:50:42] [WARN] googlevideo.com: недоступен
+[2026-05-22 13:50:42] [OK] Все нужные файлы найдены
+[2026-05-22 13:50:42] [STEP] Проверка DNS-резолвинга...
+[2026-05-22 13:50:42] [OK] discord.com: 162.159.135.232, 162.159.128.233, 162.159.136.232, 162.159.138.232, 162.159.137.232 (1 мс)
+[2026-05-22 13:50:42] [OK] www.youtube.com: 142.251.1.198 (0 мс)
+[2026-05-22 13:50:42] [OK] gateway.discord.gg: 162.159.130.234, 162.159.135.234, 162.159.133.234, 162.159.134.234, 162.159.136.234 (0 мс)
+[2026-05-22 13:50:42] [OK] googlevideo.com: 209.85.233.103, 209.85.233.105, 209.85.233.106, 209.85.233.99, 209.85.233.104, 209.85.233.147 (1 мс)
+[2026-05-22 13:50:42] [OK] DNS: 4/4 хостов резолвятся
+[2026-05-22 13:50:47] [STEP] ЭКСПОРТ ОТЧЁТА
+[2026-05-22 13:50:47] [OK] Отчёт сохранён: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\logs\diagnostics_20260522_135047.txt
+[2026-05-22 13:50:47] [OK] JSON отчёт: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\logs\diagnostics_20260522_135047.json
+[2026-05-22 13:50:47] [OK] Сохранён: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8\logs\diagnostics_20260522_135047.txt
+[2026-05-22 13:50:49] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 13:50:49] [INFO] Manager: v3.0.0  |  Zapret Core: 1.9.8c
+[2026-05-22 13:50:49] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\net8
+[2026-05-22 13:50:49] [INFO] .NET: 8.0.27
+[2026-05-22 13:50:52] [OK] Manager актуален: v
+[2026-05-22 13:50:52] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 13:50:59] [STEP] IPSET ФИЛЬТР
+[2026-05-22 13:50:59] [INFO] Текущий режим: loaded
+[2026-05-22 13:50:59] [OK] Переключено в режим 'none'
+[2026-05-22 13:51:02] [STEP] IPSET ФИЛЬТР
+[2026-05-22 13:51:02] [INFO] Текущий режим: none
+[2026-05-22 13:51:02] [OK] Переключено в режим 'any'
+[2026-05-22 13:51:16] [STEP] ПРОФИЛИ
+[2026-05-22 13:51:22] [OK] Профиль сохранён: best → best.json
+[2026-05-22 13:51:22] [OK] Профиль 'best' сохранён
+[2026-05-22 13:51:24] [STEP] ПРОФИЛИ

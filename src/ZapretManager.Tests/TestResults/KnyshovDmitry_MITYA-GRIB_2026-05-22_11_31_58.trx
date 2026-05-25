@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="01788a6f-0ea7-4833-a49e-81265fa8d8b1" name="KnyshovDmitry@MITYA-GRIB 2026-05-22 11:31:58" runUser="AzureAD\KnyshovDmitry" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-05-22T11:31:58.2107513+03:00" queuing="2026-05-22T11:31:58.2107518+03:00" start="2026-05-22T11:31:57.6349174+03:00" finish="2026-05-22T11:31:58.6573119+03:00" />
+  <TestSettings name="default" id="2bf72708-1cbf-45a0-a552-eec6eb6d9320">
+    <Deployment runDeploymentRoot="KnyshovDmitry_MITYA-GRIB_2026-05-22_11_31_58" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c9db3c05-248f-405a-9ba9-cdf411ba7ad5" testId="c45ce7a3-aa7a-5f35-f3b8-a98b72e43537" testName="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_AfterCreate_ReturnsSingleBackup" computerName="MITYA-GRIB" duration="00:00:00.0107165" startTime="2026-05-22T11:31:58.1970612+03:00" endTime="2026-05-22T11:31:58.1970613+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9db3c05-248f-405a-9ba9-cdf411ba7ad5" />
+    <UnitTestResult executionId="a8d62749-edb3-49a9-bbb3-42d505b68233" testId="fdddf065-611f-e0cc-20d6-f4d57251ce38" testName="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_CorrectHash_ReturnsTrue" computerName="MITYA-GRIB" duration="00:00:00.0586282" startTime="2026-05-22T11:31:58.1635693+03:00" endTime="2026-05-22T11:31:58.1635694+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8d62749-edb3-49a9-bbb3-42d505b68233" />
+    <UnitTestResult executionId="e240d4c4-019d-4e4f-b122-9aa305fd14fc" testId="99edc2df-4cab-5be7-30ab-5e9e46355321" testName="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_ReturnsNonNullPath" computerName="MITYA-GRIB" duration="00:00:00.0375439" startTime="2026-05-22T11:31:58.1632641+03:00" endTime="2026-05-22T11:31:58.1632646+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e240d4c4-019d-4e4f-b122-9aa305fd14fc" />
+    <UnitTestResult executionId="a64f8d55-c0ba-4911-b4de-74ba350598f1" testId="3f69f9be-6ad4-fdaa-05e6-192205ca0984" testName="ZapretManager.Tests.Core.AppConfigTests.Load_MissingFile_ReturnsDefaults" computerName="MITYA-GRIB" duration="00:00:00.0014251" startTime="2026-05-22T11:31:58.1717577+03:00" endTime="2026-05-22T11:31:58.1717587+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a64f8d55-c0ba-4911-b4de-74ba350598f1" />
+    <UnitTestResult executionId="047d812b-5988-42c1-adda-9abc08490df1" testId="88e83f7b-0619-6c41-ca20-dfe89482952c" testName="ZapretManager.Tests.Service.BackupManagerTests.RestoreBackup_ValidZip_ReturnsTrueAndRestoresFile" computerName="MITYA-GRIB" duration="00:00:00.0229793" startTime="2026-05-22T11:31:58.2227871+03:00" endTime="2026-05-22T11:31:58.2227876+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="047d812b-5988-42c1-adda-9abc08490df1" />
+    <UnitTestResult executionId="387dbc1e-fb06-440d-b325-b546f7f31458" testId="685732bf-f036-bfe4-7d4e-2827693848b0" testName="ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_PreservesUserAddedEntries" computerName="MITYA-GRIB" duration="00:00:00.0160937" startTime="2026-05-22T11:31:58.1207861+03:00" endTime="2026-05-22T11:31:58.1207863+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="387dbc1e-fb06-440d-b325-b546f7f31458" />
+    <UnitTestResult executionId="afa9f290-a776-464b-bfea-a3b2379fac2a" testId="e4e19066-fd8d-36d1-900c-a4140591004b" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_ExistingFile_PreservesOldLines" computerName="MITYA-GRIB" duration="00:00:00.0118524" startTime="2026-05-22T11:31:58.2140083+03:00" endTime="2026-05-22T11:31:58.2140089+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="afa9f290-a776-464b-bfea-a3b2379fac2a" />
+    <UnitTestResult executionId="b842af04-d1ae-4d60-992a-61724cc616bb" testId="11b46009-150e-368c-de94-341585a5270f" testName="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_CreatesZipFile" computerName="MITYA-GRIB" duration="00:00:00.0151968" startTime="2026-05-22T11:31:58.1634347+03:00" endTime="2026-05-22T11:31:58.1634348+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b842af04-d1ae-4d60-992a-61724cc616bb" />
+    <UnitTestResult executionId="4e449d75-0fc3-4d0d-a207-22e036ebe1b9" testId="909692b3-bbbc-ee15-bd40-64f9deaf29a5" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;v2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" computerName="MITYA-GRIB" duration="00:00:00.0001234" startTime="2026-05-22T11:31:58.1605035+03:00" endTime="2026-05-22T11:31:58.1605035+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e449d75-0fc3-4d0d-a207-22e036ebe1b9" />
+    <UnitTestResult executionId="d298280e-c390-4884-b53e-a4577ee232c2" testId="ac97fe78-eea5-f8ef-10a8-38872c57abcb" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_NewFile_ReturnsNewLines" computerName="MITYA-GRIB" duration="00:00:00.0013387" startTime="2026-05-22T11:31:58.2192030+03:00" endTime="2026-05-22T11:31:58.2192034+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d298280e-c390-4884-b53e-a4577ee232c2" />
+    <UnitTestResult executionId="5523cf20-2f71-419f-8ed0-320e18f28a3b" testId="b112bfc9-0647-33c5-08d7-dd35f42cc3ec" testName="ZapretManager.Tests.Core.AppConfigTests.Load_DiagnosticsConfig_ParsedCorrectly" computerName="MITYA-GRIB" duration="00:00:00.0059779" startTime="2026-05-22T11:31:58.1701756+03:00" endTime="2026-05-22T11:31:58.1701764+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5523cf20-2f71-419f-8ed0-320e18f28a3b" />
+    <UnitTestResult executionId="55f2b4a0-12f1-40e5-9b6b-46e953a072c1" testId="07029d4b-5681-3086-24ea-6e9f26ae5457" testName="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_OrderedNewestFirst" computerName="MITYA-GRIB" duration="00:00:00.1337790" startTime="2026-05-22T11:31:58.3594181+03:00" endTime="2026-05-22T11:31:58.3594186+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55f2b4a0-12f1-40e5-9b6b-46e953a072c1">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected result to contain 2 item(s), but found 1: {C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_890895280a4843e49f1b5440c72bb40c\backups\zapret_backup_2026-05-22_11-31-58.zip}.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+   at FluentAssertions.Collections.GenericCollectionAssertions`3.HaveCount(Int32 expected, String because, Object[] becauseArgs)&#xD;
+   at ZapretManager.Tests.Service.BackupManagerTests.ListBackups_OrderedNewestFirst() in C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Service\BackupManagerTests.cs:line 100&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2732e7cf-0013-418c-bbe6-f788c91190e4" testId="af91dae1-6c42-f97d-4a64-972dd881c0cd" testName="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_RoundTrip_PreservesContent" computerName="MITYA-GRIB" duration="00:00:00.0257684" startTime="2026-05-22T11:31:58.2451394+03:00" endTime="2026-05-22T11:31:58.2451400+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2732e7cf-0013-418c-bbe6-f788c91190e4" />
+    <UnitTestResult executionId="8ebc8258-e12e-4ede-a93a-65806ccd4d61" testId="10262751-b318-5990-0215-15d860562f98" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: null, local: null, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0003077" startTime="2026-05-22T11:31:58.1211559+03:00" endTime="2026-05-22T11:31:58.1211561+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ebc8258-e12e-4ede-a93a-65806ccd4d61" />
+    <UnitTestResult executionId="1bfc27cc-9a14-436f-9e35-90fd4cd5de23" testId="160e1fb2-a6d0-9e87-4c99-a5c3814016d3" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;V2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" computerName="MITYA-GRIB" duration="00:00:00.0000125" startTime="2026-05-22T11:31:58.1606025+03:00" endTime="2026-05-22T11:31:58.1606026+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1bfc27cc-9a14-436f-9e35-90fd4cd5de23" />
+    <UnitTestResult executionId="70c6bf3c-bed7-4f50-8d96-c8590ada3868" testId="c5dab717-ba6c-368e-b26c-acc97d540263" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;3.0.0&quot;, local: &quot;2.5.0&quot;, expected: True)" computerName="MITYA-GRIB" duration="00:00:00.0000039" startTime="2026-05-22T11:31:58.1604429+03:00" endTime="2026-05-22T11:31:58.1604430+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70c6bf3c-bed7-4f50-8d96-c8590ada3868" />
+    <UnitTestResult executionId="4b29c7fe-995d-4093-8687-9e5ec2462fd7" testId="5cf201fd-48b0-e922-3a38-ce8bada57b78" testName="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_WritesWithoutBom" computerName="MITYA-GRIB" duration="00:00:00.0030894" startTime="2026-05-22T11:31:58.2483945+03:00" endTime="2026-05-22T11:31:58.2483952+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b29c7fe-995d-4093-8687-9e5ec2462fd7" />
+    <UnitTestResult executionId="7506c2d3-db00-4153-ae5f-7a6b5e74858e" testId="c37c0ef9-184d-bb5e-6de8-bb8987c0025a" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesInvalidVersions(remote: &quot;2.5.0&quot;, local: &quot;&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0002748" startTime="2026-05-22T11:31:58.1607296+03:00" endTime="2026-05-22T11:31:58.1607296+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7506c2d3-db00-4153-ae5f-7a6b5e74858e" />
+    <UnitTestResult executionId="7dfc4380-a85c-49dc-ab6b-762baad84a6e" testId="19454db4-de16-191f-9c43-9735bdbaa7fe" testName="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_SameContent_SameHash" computerName="MITYA-GRIB" duration="00:00:00.0071235" startTime="2026-05-22T11:31:58.1824004+03:00" endTime="2026-05-22T11:31:58.1824009+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7dfc4380-a85c-49dc-ab6b-762baad84a6e" />
+    <UnitTestResult executionId="37c8db73-b507-4b79-b489-aafe4b0f4b0c" testId="6645c9d4-a101-d474-0e91-21f3aa494d98" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_RemovesDuplicates_CaseInsensitive" computerName="MITYA-GRIB" duration="00:00:00.0035626" startTime="2026-05-22T11:31:58.2177298+03:00" endTime="2026-05-22T11:31:58.2177303+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37c8db73-b507-4b79-b489-aafe4b0f4b0c" />
+    <UnitTestResult executionId="6c709b40-6697-4dc1-8e4a-dbbf54c152f2" testId="457a5a54-d419-b0fe-3939-785a3293e96e" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;2.5.0&quot;, local: &quot;v2.5.0&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0004283" startTime="2026-05-22T11:31:58.1605576+03:00" endTime="2026-05-22T11:31:58.1605577+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c709b40-6697-4dc1-8e4a-dbbf54c152f2" />
+    <UnitTestResult executionId="70aee8e9-0370-496d-ad10-83863fb93588" testId="66e6b8bf-4526-043c-4c9d-a92f441bcc55" testName="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_Rotation_KeepsOnlyN" computerName="MITYA-GRIB" duration="00:00:00.2450897" startTime="2026-05-22T11:31:58.6043064+03:00" endTime="2026-05-22T11:31:58.6043067+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70aee8e9-0370-496d-ad10-83863fb93588">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected result to contain 2 item(s) because only 2 backups should be kept after rotation, but found 1: {C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_fa2c611268c44ae69dc3278d2ae5ab3b\backups\zapret_backup_2026-05-22_11-31-58.zip}.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+   at FluentAssertions.Collections.GenericCollectionAssertions`3.HaveCount(Int32 expected, String because, Object[] becauseArgs)&#xD;
+   at ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_Rotation_KeepsOnlyN() in C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Service\BackupManagerTests.cs:line 119&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9afbf22a-80c2-4929-a151-9374fb01bd6f" testId="522e1b6d-7212-8ac5-8fcc-2d54b3b5057b" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.0&quot;, local: null, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0000064" startTime="2026-05-22T11:31:58.1601053+03:00" endTime="2026-05-22T11:31:58.1601056+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9afbf22a-80c2-4929-a151-9374fb01bd6f" />
+    <UnitTestResult executionId="00c9511f-5ee8-4da7-98dc-3e4c04176e55" testId="33e9f2b5-949a-af0d-b435-cc1d7b980c50" testName="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_WrongHash_ReturnsFalse" computerName="MITYA-GRIB" duration="00:00:00.0049744" startTime="2026-05-22T11:31:58.1747094+03:00" endTime="2026-05-22T11:31:58.1747101+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="00c9511f-5ee8-4da7-98dc-3e4c04176e55" />
+    <UnitTestResult executionId="a21090f5-0f47-4209-a4c1-66b50629713f" testId="fc419844-0d41-63a8-4383-cec71729d42f" testName="ZapretManager.Tests.Core.AppConfigTests.Load_WatchdogConfig_HasSensibleDefaults" computerName="MITYA-GRIB" duration="00:00:00.0038681" startTime="2026-05-22T11:31:58.1636551+03:00" endTime="2026-05-22T11:31:58.1636551+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a21090f5-0f47-4209-a4c1-66b50629713f" />
+    <UnitTestResult executionId="382c74c4-2d15-477b-a411-1c1f30954db6" testId="e30a4341-92c5-808f-6486-e27eac1bd58e" testName="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_EmptyDirectory_ReturnsEmptyArray" computerName="MITYA-GRIB" duration="00:00:00.0087215" startTime="2026-05-22T11:31:58.1633588+03:00" endTime="2026-05-22T11:31:58.1633588+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="382c74c4-2d15-477b-a411-1c1f30954db6" />
+    <UnitTestResult executionId="b8ef7765-a5b4-44b8-ae19-e0c17233d092" testId="55342c5f-6882-d4c0-541c-0528ff0a9c0b" testName="ZapretManager.Tests.Core.AppConfigTests.Load_BrokenJson_ReturnsDefaults" computerName="MITYA-GRIB" duration="00:00:00.0056751" startTime="2026-05-22T11:31:58.1776085+03:00" endTime="2026-05-22T11:31:58.1776091+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b8ef7765-a5b4-44b8-ae19-e0c17233d092" />
+    <UnitTestResult executionId="ac5fe220-19aa-4137-b849-4bb8312264a5" testId="f06cdf60-235b-9a28-767f-4c6cd3acdb9f" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_DeduplicatesComments" computerName="MITYA-GRIB" duration="00:00:00.0042025" startTime="2026-05-22T11:31:58.1986155+03:00" endTime="2026-05-22T11:31:58.1986163+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac5fe220-19aa-4137-b849-4bb8312264a5" />
+    <UnitTestResult executionId="052641f4-ff67-42a1-980a-377566ca894c" testId="29e98d00-8961-6206-9fe4-9fd60c01ce74" testName="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_EmptyExpected_ThrowsArgumentException" computerName="MITYA-GRIB" duration="00:00:00.0124742" startTime="2026-05-22T11:31:58.2016770+03:00" endTime="2026-05-22T11:31:58.2016776+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="052641f4-ff67-42a1-980a-377566ca894c" />
+    <UnitTestResult executionId="75f2d512-e9a0-414b-80a4-debdd8c9df95" testId="2b151007-0d73-6316-9468-859f9e871143" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.0&quot;, local: &quot;2.5.0&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0121945" startTime="2026-05-22T11:31:58.1169379+03:00" endTime="2026-05-22T11:31:58.1169627+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="75f2d512-e9a0-414b-80a4-debdd8c9df95" />
+    <UnitTestResult executionId="fca9a954-8141-447a-911b-fbd644be2b42" testId="d6faa7a6-d3bd-a83e-46f4-918a575f300a" testName="ZapretManager.Tests.Service.BackupManagerTests.RestoreBackup_MissingFile_ReturnsFalse" computerName="MITYA-GRIB" duration="00:00:00.0079195" startTime="2026-05-22T11:31:58.1996406+03:00" endTime="2026-05-22T11:31:58.1996409+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fca9a954-8141-447a-911b-fbd644be2b42" />
+    <UnitTestResult executionId="8ddc26e0-2744-42cb-a961-a0f4ddc6b410" testId="2eb9128c-868c-4b7e-e1cb-0ac2a17d1579" testName="ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_RemovesObsoleteEntries" computerName="MITYA-GRIB" duration="00:00:00.0667946" startTime="2026-05-22T11:31:58.1967204+03:00" endTime="2026-05-22T11:31:58.1967210+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ddc26e0-2744-42cb-a961-a0f4ddc6b410">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected result {"kept.com", "new.com", "old.com"} to not contain "old.com" because entries removed from origin should be dropped.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+   at FluentAssertions.Collections.GenericCollectionAssertions`3.NotContain(T unexpected, String because, Object[] becauseArgs)&#xD;
+   at ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_RemovesObsoleteEntries() in C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Lists\ListMergerTests.cs:line 112&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="46d35f82-cdf7-46ed-8462-dd79fd123df6" testId="d53e95c9-a148-1d0d-4567-56d2a77e7f34" testName="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_ZipContainsExpectedFiles" computerName="MITYA-GRIB" duration="00:00:00.0265569" startTime="2026-05-22T11:31:58.1806918+03:00" endTime="2026-05-22T11:31:58.1806929+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46d35f82-cdf7-46ed-8462-dd79fd123df6" />
+    <UnitTestResult executionId="b5dcad96-25b0-48ef-a59c-cb2148a6e389" testId="a67eda8e-60c9-7fd8-e9ee-000d76167ad7" testName="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_ReturnsLowercaseHex" computerName="MITYA-GRIB" duration="00:00:00.0056956" startTime="2026-05-22T11:31:58.1885811+03:00" endTime="2026-05-22T11:31:58.1885817+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b5dcad96-25b0-48ef-a59c-cb2148a6e389" />
+    <UnitTestResult executionId="38e7da58-af9b-4ca2-bc10-9887dd438130" testId="ecc6e109-045c-98a4-20d9-fadd4e027c5e" testName="ZapretManager.Tests.Core.AppConfigTests.Load_ValidJson_DeserializesCorrectly" computerName="MITYA-GRIB" duration="00:00:00.0648331" startTime="2026-05-22T11:31:58.1635150+03:00" endTime="2026-05-22T11:31:58.1635151+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38e7da58-af9b-4ca2-bc10-9887dd438130" />
+    <UnitTestResult executionId="9590fc93-ac08-406c-ad14-71990f559433" testId="2e77bd0f-3a47-c4be-c627-d56b894dcd2f" testName="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_CreatesParentDirectory" computerName="MITYA-GRIB" duration="00:00:00.0032543" startTime="2026-05-22T11:31:58.2019753+03:00" endTime="2026-05-22T11:31:58.2019756+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9590fc93-ac08-406c-ad14-71990f559433" />
+    <UnitTestResult executionId="f16fd1ac-2cf2-4aba-b569-38ff2f366b0a" testId="408cd4bd-230f-208b-a9a5-ad7cc110282c" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: null, local: &quot;2.5.0&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0000459" startTime="2026-05-22T11:31:58.1213264+03:00" endTime="2026-05-22T11:31:58.1213265+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f16fd1ac-2cf2-4aba-b569-38ff2f366b0a" />
+    <UnitTestResult executionId="706bfe0a-0c6e-4b35-bca6-547a73004aa2" testId="b2ac25fa-d82d-5244-14d4-bef8b4e6ac98" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesInvalidVersions(remote: &quot;&quot;, local: &quot;2.5.0&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0015286" startTime="2026-05-22T11:31:58.1606781+03:00" endTime="2026-05-22T11:31:58.1606781+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="706bfe0a-0c6e-4b35-bca6-547a73004aa2" />
+    <UnitTestResult executionId="29441838-f01f-428c-9eb0-7ff9e6015865" testId="6e069a41-d59e-2718-0274-79f9b30679b7" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.6.0&quot;, local: &quot;2.5.0&quot;, expected: True)" computerName="MITYA-GRIB" duration="00:00:00.0000189" startTime="2026-05-22T11:31:58.1212525+03:00" endTime="2026-05-22T11:31:58.1212526+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="29441838-f01f-428c-9eb0-7ff9e6015865" />
+    <UnitTestResult executionId="b32b3533-bc43-4a96-a42a-4dff9c54fc8c" testId="56d9741f-b9f5-deda-194d-7025b3696f9d" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" computerName="MITYA-GRIB" duration="00:00:00.0000099" startTime="2026-05-22T11:31:58.1603460+03:00" endTime="2026-05-22T11:31:58.1603462+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b32b3533-bc43-4a96-a42a-4dff9c54fc8c" />
+    <UnitTestResult executionId="b201cd7d-0871-4b85-8605-e3742448150a" testId="5a016c64-88c3-4551-dadc-9038d54be89c" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_EmptyLines_NotDuplicated" computerName="MITYA-GRIB" duration="00:00:00.0105407" startTime="2026-05-22T11:31:58.1607695+03:00" endTime="2026-05-22T11:31:58.1607696+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b201cd7d-0871-4b85-8605-e3742448150a" />
+    <UnitTestResult executionId="50bfd2a0-bcaa-4ef2-ac99-a6233d0441b5" testId="bca8db57-aafe-04dd-7d78-dbc99b5946e1" testName="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_DifferentContent_DifferentHash" computerName="MITYA-GRIB" duration="00:00:00.0092864" startTime="2026-05-22T11:31:58.1691603+03:00" endTime="2026-05-22T11:31:58.1691609+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50bfd2a0-bcaa-4ef2-ac99-a6233d0441b5" />
+    <UnitTestResult executionId="60880031-309e-41de-a571-c549133b8d7d" testId="429c9d05-be0c-99fa-43e4-84187a1c1e54" testName="ZapretManager.Tests.Lists.ListMergerTests.Merge_PreservesComments" computerName="MITYA-GRIB" duration="00:00:00.0038534" startTime="2026-05-22T11:31:58.1971368+03:00" endTime="2026-05-22T11:31:58.1971368+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60880031-309e-41de-a571-c549133b8d7d" />
+    <UnitTestResult executionId="d2ca84d6-59d7-4559-9e58-8fbac6bee300" testId="cf8e82d9-9d5d-5fed-050b-04dd9374e9ba" testName="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.4.9&quot;, local: &quot;2.5.0&quot;, expected: False)" computerName="MITYA-GRIB" duration="00:00:00.0000040" startTime="2026-05-22T11:31:58.1604002+03:00" endTime="2026-05-22T11:31:58.1604003+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2ca84d6-59d7-4559-9e58-8fbac6bee300" />
+    <UnitTestResult executionId="dacd91b5-6d83-4866-b322-f65e897e9093" testId="bd35ae35-54d3-d7c4-f120-01356e352ee2" testName="ZapretManager.Tests.Core.AppConfigTests.Load_EmptyJson_ReturnsDefaults" computerName="MITYA-GRIB" duration="00:00:00.0029802" startTime="2026-05-22T11:31:58.1643824+03:00" endTime="2026-05-22T11:31:58.1643825+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dacd91b5-6d83-4866-b322-f65e897e9093" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;v2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="909692b3-bbbc-ee15-bd40-64f9deaf29a5">
+      <Execution id="4e449d75-0fc3-4d0d-a207-22e036ebe1b9" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_HandlesVPrefix" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesInvalidVersions(remote: &quot;2.5.0&quot;, local: &quot;&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="c37c0ef9-184d-bb5e-6de8-bb8987c0025a">
+      <Execution id="7506c2d3-db00-4153-ae5f-7a6b5e74858e" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_HandlesInvalidVersions" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_OrderedNewestFirst" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="07029d4b-5681-3086-24ea-6e9f26ae5457">
+      <Execution id="55f2b4a0-12f1-40e5-9b6b-46e953a072c1" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="ListBackups_OrderedNewestFirst" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;2.5.0&quot;, local: &quot;v2.5.0&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="457a5a54-d419-b0fe-3939-785a3293e96e">
+      <Execution id="6c709b40-6697-4dc1-8e4a-dbbf54c152f2" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_HandlesVPrefix" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_EmptyExpected_ThrowsArgumentException" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="29e98d00-8961-6206-9fe4-9fd60c01ce74">
+      <Execution id="052641f4-ff67-42a1-980a-377566ca894c" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="VerifyAsync_EmptyExpected_ThrowsArgumentException" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_ReturnsNonNullPath" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="99edc2df-4cab-5be7-30ab-5e9e46355321">
+      <Execution id="e240d4c4-019d-4e4f-b122-9aa305fd14fc" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="CreateBackup_ReturnsNonNullPath" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_CreatesZipFile" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="11b46009-150e-368c-de94-341585a5270f">
+      <Execution id="b842af04-d1ae-4d60-992a-61724cc616bb" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="CreateBackup_CreatesZipFile" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_PreservesComments" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="429c9d05-be0c-99fa-43e4-84187a1c1e54">
+      <Execution id="60880031-309e-41de-a571-c549133b8d7d" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_PreservesComments" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.0&quot;, local: &quot;2.5.0&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="2b151007-0d73-6316-9468-859f9e871143">
+      <Execution id="75f2d512-e9a0-414b-80a4-debdd8c9df95" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_PreservesUserAddedEntries" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="685732bf-f036-bfe4-7d4e-2827693848b0">
+      <Execution id="387dbc1e-fb06-440d-b325-b546f7f31458" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="ReplaceWithOrigin_PreservesUserAddedEntries" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: null, local: null, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="10262751-b318-5990-0215-15d860562f98">
+      <Execution id="8ebc8258-e12e-4ede-a93a-65806ccd4d61" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_RemovesDuplicates_CaseInsensitive" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="6645c9d4-a101-d474-0e91-21f3aa494d98">
+      <Execution id="37c8db73-b507-4b79-b489-aafe4b0f4b0c" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_RemovesDuplicates_CaseInsensitive" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_ValidJson_DeserializesCorrectly" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="ecc6e109-045c-98a4-20d9-fadd4e027c5e">
+      <Execution id="38e7da58-af9b-4ca2-bc10-9887dd438130" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_ValidJson_DeserializesCorrectly" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesInvalidVersions(remote: &quot;&quot;, local: &quot;2.5.0&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="b2ac25fa-d82d-5244-14d4-bef8b4e6ac98">
+      <Execution id="706bfe0a-0c6e-4b35-bca6-547a73004aa2" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_HandlesInvalidVersions" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_Rotation_KeepsOnlyN" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="66e6b8bf-4526-043c-4c9d-a92f441bcc55">
+      <Execution id="70aee8e9-0370-496d-ad10-83863fb93588" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="CreateBackup_Rotation_KeepsOnlyN" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_RoundTrip_PreservesContent" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="af91dae1-6c42-f97d-4a64-972dd881c0cd">
+      <Execution id="2732e7cf-0013-418c-bbe6-f788c91190e4" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="WriteUtf8_RoundTrip_PreservesContent" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_MissingFile_ReturnsDefaults" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="3f69f9be-6ad4-fdaa-05e6-192205ca0984">
+      <Execution id="a64f8d55-c0ba-4911-b4de-74ba350598f1" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_MissingFile_ReturnsDefaults" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.0&quot;, local: null, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="522e1b6d-7212-8ac5-8fcc-2d54b3b5057b">
+      <Execution id="9afbf22a-80c2-4929-a151-9374fb01bd6f" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_WrongHash_ReturnsFalse" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="33e9f2b5-949a-af0d-b435-cc1d7b980c50">
+      <Execution id="00c9511f-5ee8-4da7-98dc-3e4c04176e55" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="VerifyAsync_WrongHash_ReturnsFalse" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="56d9741f-b9f5-deda-194d-7025b3696f9d">
+      <Execution id="b32b3533-bc43-4a96-a42a-4dff9c54fc8c" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_AfterCreate_ReturnsSingleBackup" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="c45ce7a3-aa7a-5f35-f3b8-a98b72e43537">
+      <Execution id="c9db3c05-248f-405a-9ba9-cdf411ba7ad5" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="ListBackups_AfterCreate_ReturnsSingleBackup" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_HandlesVPrefix(remote: &quot;V2.5.1&quot;, local: &quot;2.5.0&quot;, expected: True)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="160e1fb2-a6d0-9e87-4c99-a5c3814016d3">
+      <Execution id="1bfc27cc-9a14-436f-9e35-90fd4cd5de23" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_HandlesVPrefix" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.VerifyAsync_CorrectHash_ReturnsTrue" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="fdddf065-611f-e0cc-20d6-f4d57251ce38">
+      <Execution id="a8d62749-edb3-49a9-bbb3-42d505b68233" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="VerifyAsync_CorrectHash_ReturnsTrue" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_WatchdogConfig_HasSensibleDefaults" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="fc419844-0d41-63a8-4383-cec71729d42f">
+      <Execution id="a21090f5-0f47-4209-a4c1-66b50629713f" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_WatchdogConfig_HasSensibleDefaults" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_DiagnosticsConfig_ParsedCorrectly" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="b112bfc9-0647-33c5-08d7-dd35f42cc3ec">
+      <Execution id="5523cf20-2f71-419f-8ed0-320e18f28a3b" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_DiagnosticsConfig_ParsedCorrectly" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_BrokenJson_ReturnsDefaults" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="55342c5f-6882-d4c0-541c-0528ff0a9c0b">
+      <Execution id="b8ef7765-a5b4-44b8-ae19-e0c17233d092" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_BrokenJson_ReturnsDefaults" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_DifferentContent_DifferentHash" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="bca8db57-aafe-04dd-7d78-dbc99b5946e1">
+      <Execution id="50bfd2a0-bcaa-4ef2-ac99-a6233d0441b5" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="ComputeHashAsync_DifferentContent_DifferentHash" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: null, local: &quot;2.5.0&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="408cd4bd-230f-208b-a9a5-ad7cc110282c">
+      <Execution id="f16fd1ac-2cf2-4aba-b569-38ff2f366b0a" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_RemovesObsoleteEntries" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="2eb9128c-868c-4b7e-e1cb-0ac2a17d1579">
+      <Execution id="8ddc26e0-2744-42cb-a961-a0f4ddc6b410" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="ReplaceWithOrigin_RemovesObsoleteEntries" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_WritesWithoutBom" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="5cf201fd-48b0-e922-3a38-ce8bada57b78">
+      <Execution id="4b29c7fe-995d-4093-8687-9e5ec2462fd7" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="WriteUtf8_WritesWithoutBom" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_SameContent_SameHash" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="19454db4-de16-191f-9c43-9735bdbaa7fe">
+      <Execution id="7dfc4380-a85c-49dc-ab6b-762baad84a6e" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="ComputeHashAsync_SameContent_SameHash" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.4.9&quot;, local: &quot;2.5.0&quot;, expected: False)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="cf8e82d9-9d5d-5fed-050b-04dd9374e9ba">
+      <Execution id="d2ca84d6-59d7-4559-9e58-8fbac6bee300" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;2.6.0&quot;, local: &quot;2.5.0&quot;, expected: True)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="6e069a41-d59e-2718-0274-79f9b30679b7">
+      <Execution id="29441838-f01f-428c-9eb0-7ff9e6015865" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Core.AppConfigTests.Load_EmptyJson_ReturnsDefaults" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="bd35ae35-54d3-d7c4-f120-01356e352ee2">
+      <Execution id="dacd91b5-6d83-4866-b322-f65e897e9093" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Core.AppConfigTests" name="Load_EmptyJson_ReturnsDefaults" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.UpdateCheckerTests.IsNewerVersion_ReturnsExpected(remote: &quot;3.0.0&quot;, local: &quot;2.5.0&quot;, expected: True)" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="c5dab717-ba6c-368e-b26c-acc97d540263">
+      <Execution id="70c6bf3c-bed7-4f50-8d96-c8590ada3868" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.UpdateCheckerTests" name="IsNewerVersion_ReturnsExpected" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_EmptyLines_NotDuplicated" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="5a016c64-88c3-4551-dadc-9038d54be89c">
+      <Execution id="b201cd7d-0871-4b85-8605-e3742448150a" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_EmptyLines_NotDuplicated" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.ListBackups_EmptyDirectory_ReturnsEmptyArray" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="e30a4341-92c5-808f-6486-e27eac1bd58e">
+      <Execution id="382c74c4-2d15-477b-a411-1c1f30954db6" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="ListBackups_EmptyDirectory_ReturnsEmptyArray" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.WriteUtf8_CreatesParentDirectory" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="2e77bd0f-3a47-c4be-c627-d56b894dcd2f">
+      <Execution id="9590fc93-ac08-406c-ad14-71990f559433" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="WriteUtf8_CreatesParentDirectory" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_DeduplicatesComments" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="f06cdf60-235b-9a28-767f-4c6cd3acdb9f">
+      <Execution id="ac5fe220-19aa-4137-b849-4bb8312264a5" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_DeduplicatesComments" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_ExistingFile_PreservesOldLines" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="e4e19066-fd8d-36d1-900c-a4140591004b">
+      <Execution id="afa9f290-a776-464b-bfea-a3b2379fac2a" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_ExistingFile_PreservesOldLines" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Updates.HashVerifierTests.ComputeHashAsync_ReturnsLowercaseHex" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="a67eda8e-60c9-7fd8-e9ee-000d76167ad7">
+      <Execution id="b5dcad96-25b0-48ef-a59c-cb2148a6e389" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Updates.HashVerifierTests" name="ComputeHashAsync_ReturnsLowercaseHex" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.RestoreBackup_ValidZip_ReturnsTrueAndRestoresFile" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="88e83f7b-0619-6c41-ca20-dfe89482952c">
+      <Execution id="047d812b-5988-42c1-adda-9abc08490df1" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="RestoreBackup_ValidZip_ReturnsTrueAndRestoresFile" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.RestoreBackup_MissingFile_ReturnsFalse" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="d6faa7a6-d3bd-a83e-46f4-918a575f300a">
+      <Execution id="fca9a954-8141-447a-911b-fbd644be2b42" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="RestoreBackup_MissingFile_ReturnsFalse" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_ZipContainsExpectedFiles" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="d53e95c9-a148-1d0d-4567-56d2a77e7f34">
+      <Execution id="46d35f82-cdf7-46ed-8462-dd79fd123df6" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Service.BackupManagerTests" name="CreateBackup_ZipContainsExpectedFiles" />
+    </UnitTest>
+    <UnitTest name="ZapretManager.Tests.Lists.ListMergerTests.Merge_NewFile_ReturnsNewLines" storage="c:\users\knyshovdmitry\downloads\12345-main\12345-main\src\zapretmanager.tests\bin\release\net8.0-windows\zapretmanager.tests.dll" id="ac97fe78-eea5-f8ef-10a8-38872c57abcb">
+      <Execution id="d298280e-c390-4884-b53e-a4577ee232c2" />
+      <TestMethod codeBase="C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\bin\Release\net8.0-windows\ZapretManager.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="ZapretManager.Tests.Lists.ListMergerTests" name="Merge_NewFile_ReturnsNewLines" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c45ce7a3-aa7a-5f35-f3b8-a98b72e43537" executionId="c9db3c05-248f-405a-9ba9-cdf411ba7ad5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fdddf065-611f-e0cc-20d6-f4d57251ce38" executionId="a8d62749-edb3-49a9-bbb3-42d505b68233" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99edc2df-4cab-5be7-30ab-5e9e46355321" executionId="e240d4c4-019d-4e4f-b122-9aa305fd14fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3f69f9be-6ad4-fdaa-05e6-192205ca0984" executionId="a64f8d55-c0ba-4911-b4de-74ba350598f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="88e83f7b-0619-6c41-ca20-dfe89482952c" executionId="047d812b-5988-42c1-adda-9abc08490df1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="685732bf-f036-bfe4-7d4e-2827693848b0" executionId="387dbc1e-fb06-440d-b325-b546f7f31458" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4e19066-fd8d-36d1-900c-a4140591004b" executionId="afa9f290-a776-464b-bfea-a3b2379fac2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11b46009-150e-368c-de94-341585a5270f" executionId="b842af04-d1ae-4d60-992a-61724cc616bb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="909692b3-bbbc-ee15-bd40-64f9deaf29a5" executionId="4e449d75-0fc3-4d0d-a207-22e036ebe1b9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ac97fe78-eea5-f8ef-10a8-38872c57abcb" executionId="d298280e-c390-4884-b53e-a4577ee232c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b112bfc9-0647-33c5-08d7-dd35f42cc3ec" executionId="5523cf20-2f71-419f-8ed0-320e18f28a3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07029d4b-5681-3086-24ea-6e9f26ae5457" executionId="55f2b4a0-12f1-40e5-9b6b-46e953a072c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="af91dae1-6c42-f97d-4a64-972dd881c0cd" executionId="2732e7cf-0013-418c-bbe6-f788c91190e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="10262751-b318-5990-0215-15d860562f98" executionId="8ebc8258-e12e-4ede-a93a-65806ccd4d61" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="160e1fb2-a6d0-9e87-4c99-a5c3814016d3" executionId="1bfc27cc-9a14-436f-9e35-90fd4cd5de23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5dab717-ba6c-368e-b26c-acc97d540263" executionId="70c6bf3c-bed7-4f50-8d96-c8590ada3868" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5cf201fd-48b0-e922-3a38-ce8bada57b78" executionId="4b29c7fe-995d-4093-8687-9e5ec2462fd7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c37c0ef9-184d-bb5e-6de8-bb8987c0025a" executionId="7506c2d3-db00-4153-ae5f-7a6b5e74858e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19454db4-de16-191f-9c43-9735bdbaa7fe" executionId="7dfc4380-a85c-49dc-ab6b-762baad84a6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6645c9d4-a101-d474-0e91-21f3aa494d98" executionId="37c8db73-b507-4b79-b489-aafe4b0f4b0c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="457a5a54-d419-b0fe-3939-785a3293e96e" executionId="6c709b40-6697-4dc1-8e4a-dbbf54c152f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66e6b8bf-4526-043c-4c9d-a92f441bcc55" executionId="70aee8e9-0370-496d-ad10-83863fb93588" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="522e1b6d-7212-8ac5-8fcc-2d54b3b5057b" executionId="9afbf22a-80c2-4929-a151-9374fb01bd6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="33e9f2b5-949a-af0d-b435-cc1d7b980c50" executionId="00c9511f-5ee8-4da7-98dc-3e4c04176e55" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fc419844-0d41-63a8-4383-cec71729d42f" executionId="a21090f5-0f47-4209-a4c1-66b50629713f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e30a4341-92c5-808f-6486-e27eac1bd58e" executionId="382c74c4-2d15-477b-a411-1c1f30954db6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55342c5f-6882-d4c0-541c-0528ff0a9c0b" executionId="b8ef7765-a5b4-44b8-ae19-e0c17233d092" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f06cdf60-235b-9a28-767f-4c6cd3acdb9f" executionId="ac5fe220-19aa-4137-b849-4bb8312264a5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="29e98d00-8961-6206-9fe4-9fd60c01ce74" executionId="052641f4-ff67-42a1-980a-377566ca894c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b151007-0d73-6316-9468-859f9e871143" executionId="75f2d512-e9a0-414b-80a4-debdd8c9df95" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d6faa7a6-d3bd-a83e-46f4-918a575f300a" executionId="fca9a954-8141-447a-911b-fbd644be2b42" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2eb9128c-868c-4b7e-e1cb-0ac2a17d1579" executionId="8ddc26e0-2744-42cb-a961-a0f4ddc6b410" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d53e95c9-a148-1d0d-4567-56d2a77e7f34" executionId="46d35f82-cdf7-46ed-8462-dd79fd123df6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a67eda8e-60c9-7fd8-e9ee-000d76167ad7" executionId="b5dcad96-25b0-48ef-a59c-cb2148a6e389" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ecc6e109-045c-98a4-20d9-fadd4e027c5e" executionId="38e7da58-af9b-4ca2-bc10-9887dd438130" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e77bd0f-3a47-c4be-c627-d56b894dcd2f" executionId="9590fc93-ac08-406c-ad14-71990f559433" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="408cd4bd-230f-208b-a9a5-ad7cc110282c" executionId="f16fd1ac-2cf2-4aba-b569-38ff2f366b0a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2ac25fa-d82d-5244-14d4-bef8b4e6ac98" executionId="706bfe0a-0c6e-4b35-bca6-547a73004aa2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6e069a41-d59e-2718-0274-79f9b30679b7" executionId="29441838-f01f-428c-9eb0-7ff9e6015865" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56d9741f-b9f5-deda-194d-7025b3696f9d" executionId="b32b3533-bc43-4a96-a42a-4dff9c54fc8c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5a016c64-88c3-4551-dadc-9038d54be89c" executionId="b201cd7d-0871-4b85-8605-e3742448150a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bca8db57-aafe-04dd-7d78-dbc99b5946e1" executionId="50bfd2a0-bcaa-4ef2-ac99-a6233d0441b5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="429c9d05-be0c-99fa-43e4-84187a1c1e54" executionId="60880031-309e-41de-a571-c549133b8d7d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cf8e82d9-9d5d-5fed-050b-04dd9374e9ba" executionId="d2ca84d6-59d7-4559-9e58-8fbac6bee300" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bd35ae35-54d3-d7c4-f120-01356e352ee2" executionId="dacd91b5-6d83-4866-b322-f65e897e9093" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Список результатов" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Все загруженные результаты" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="45" executed="45" passed="42" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.27)&#xD;
+[xUnit.net 00:00:00.06]   Discovering: ZapretManager.Tests&#xD;
+[xUnit.net 00:00:00.09]   Discovered:  ZapretManager.Tests&#xD;
+[xUnit.net 00:00:00.10]   Starting:    ZapretManager.Tests&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [X]  ���� �� ������: /nonexistent/path.zip&#xD;
+[xUnit.net 00:00:00.23]       Expected result {"kept.com", "new.com", "old.com"} to not contain "old.com" because entries removed from origin should be dropped.&#xD;
+[xUnit.net 00:00:00.23]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.23]            at FluentAssertions.Collections.GenericCollectionAssertions`3.NotContain(T unexpected, String because, Object[] becauseArgs)&#xD;
+[xUnit.net 00:00:00.23]         C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Lists\ListMergerTests.cs(112,0): at ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_RemovesObsoleteEntries()&#xD;
+[xUnit.net 00:00:00.23]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.23]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [OK] ����⠭������� �����襭�&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [X]  �訡�� ������: The file 'C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_890895280a4843e49f1b5440c72bb40c\backups\zapret_backup_2026-05-22_11-31-58.zip' already exists.&#xD;
+[xUnit.net 00:00:00.39]       Expected result to contain 2 item(s), but found 1: {C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_890895280a4843e49f1b5440c72bb40c\backups\zapret_backup_2026-05-22_11-31-58.zip}.&#xD;
+[xUnit.net 00:00:00.39]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.39]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.40]            at FluentAssertions.Collections.GenericCollectionAssertions`3.HaveCount(Int32 expected, String because, Object[] becauseArgs)&#xD;
+[xUnit.net 00:00:00.40]         C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Service\BackupManagerTests.cs(100,0): at ZapretManager.Tests.Service.BackupManagerTests.ListBackups_OrderedNewestFirst()&#xD;
+[xUnit.net 00:00:00.40]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.40]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+   [OK] ����� ᮧ���: zapret_backup_2026-05-22_11-31-58.zip&#xD;
+   [X]  �訡�� ������: The file 'C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_fa2c611268c44ae69dc3278d2ae5ab3b\backups\zapret_backup_2026-05-22_11-31-58.zip' already exists.&#xD;
+   [X]  �訡�� ������: The file 'C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_fa2c611268c44ae69dc3278d2ae5ab3b\backups\zapret_backup_2026-05-22_11-31-58.zip' already exists.&#xD;
+   [X]  �訡�� ������: The file 'C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_fa2c611268c44ae69dc3278d2ae5ab3b\backups\zapret_backup_2026-05-22_11-31-58.zip' already exists.&#xD;
+[xUnit.net 00:00:00.64]       Expected result to contain 2 item(s) because only 2 backups should be kept after rotation, but found 1: {C:\Users\KnyshovDmitry\AppData\Local\Temp\zapret_backup_test_fa2c611268c44ae69dc3278d2ae5ab3b\backups\zapret_backup_2026-05-22_11-31-58.zip}.&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.64]            at FluentAssertions.Collections.GenericCollectionAssertions`3.HaveCount(Int32 expected, String because, Object[] becauseArgs)&#xD;
+[xUnit.net 00:00:00.64]         C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager.Tests\Service\BackupManagerTests.cs(119,0): at ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_Rotation_KeepsOnlyN()&#xD;
+[xUnit.net 00:00:00.64]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.64]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.65]   Finished:    ZapretManager.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="MITYA-GRIB" outcome="Error" timestamp="2026-05-22T11:31:58.2215135+03:00">
+        <Text>[xUnit.net 00:00:00.23]     ZapretManager.Tests.Lists.ListMergerTests.ReplaceWithOrigin_RemovesObsoleteEntries [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="MITYA-GRIB" outcome="Error" timestamp="2026-05-22T11:31:58.3582396+03:00">
+        <Text>[xUnit.net 00:00:00.39]     ZapretManager.Tests.Service.BackupManagerTests.ListBackups_OrderedNewestFirst [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="MITYA-GRIB" outcome="Error" timestamp="2026-05-22T11:31:58.6037162+03:00">
+        <Text>[xUnit.net 00:00:00.64]     ZapretManager.Tests.Service.BackupManagerTests.CreateBackup_Rotation_KeepsOnlyN [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

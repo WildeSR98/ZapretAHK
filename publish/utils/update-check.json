@@ -1,0 +1,10 @@
+{
+  "managerRemote": "2.5.0",
+  "managerLocal": "2.5.0",
+  "managerDownloadUrl": "https://github.com/WildeSR98/12345/releases/download/v2.5.0/zapret-manager-v2.5.0-net8-required.zip",
+  "coreRemote": "1.9.8c",
+  "coreLocal": "1.9.8c",
+  "managerUpdateAvailable": false,
+  "coreUpdateAvailable": false,
+  "checkedAt": "2026-05-22T10:11:46.6771382Z"
+}

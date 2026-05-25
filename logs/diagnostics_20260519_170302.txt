@@ -1,0 +1,48 @@
+ZAPRET DIAGNOSTICS REPORT
+Generated: 05/19/2026 17:03:02
+PowerShell: 5.1.26100.7705
+============================================================
+
+--- SERVICES ---
+zapret : NOT INSTALLED
+WinDivert : NOT INSTALLED
+WinDivert14 : NOT INSTALLED
+
+--- PROCESSES ---
+winws.exe : NOT RUNNING
+
+--- CONFLICTS ---
+Found: none
+
+--- TCP ---
+Querying active state...
+
+TCP Global Parameters
+----------------------------------------------
+Receive-Side Scaling State          : enabled 
+Receive Window Auto-Tuning Level    : normal 
+Add-On Congestion Control Provider  : default 
+ECN Capability                      : disabled 
+RFC 1323 Timestamps                 : enabled 
+Initial RTO                         : 1000 
+Receive Segment Coalescing State    : enabled 
+Non Sack Rtt Resiliency             : disabled 
+Max SYN Retransmissions             : 4 
+Fast Open                           : enabled 
+Fast Open Fallback                  : enabled 
+HyStart                             : enabled 
+Proportional Rate Reduction         : enabled 
+Pacing Profile                      : off 
+
+
+
+--- STRATEGY ---
+Installed: none
+
+--- FILES ---
+winws.exe : EXISTS (203776 bytes)
+SHA256    : AFFB4F69D2EA302A7ABCCD5325D81826E140DDAE014F1E070BC4A6C0DD555188
+
+--- RECENT LOG ---
+[2026-05-19 17:03:02] [INFO] === ZAPRET AUTO-SETUP started ===
+[2026-05-19 17:03:02] [INFO] PowerShell: 5.1.26100.7705 | OS: Windows_NT | Admin: True

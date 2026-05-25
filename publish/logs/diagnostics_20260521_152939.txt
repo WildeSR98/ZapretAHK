@@ -1,0 +1,43 @@
+ZAPRET DIAGNOSTICS REPORT
+Generated: 21.05.2026 15:29:39
+.NET: 8.0.27  OS: Microsoft Windows NT 10.0.26200.0
+============================================================
+
+--- SERVICES ---
+zapret: Stopped
+WinDivert: Running
+WinDivert14: NotInstalled
+
+--- PROCESSES ---
+winws.exe: RUNNING (PID=19892)
+
+--- CONFLICTS ---
+Found: none
+
+--- FILES ---
+winws.exe: EXISTS (203776 bytes)
+
+--- STRATEGY (from registry) ---
+Installed: general (ALT11)
+
+--- RECENT LOG ---
+[2026-05-21 15:29:30] [OK] SmartByte check passed
+[2026-05-21 15:29:30] [OK] WinDivert64.sys found
+[2026-05-21 15:29:30] [WARN] [?] VPN services found: Adguard VPN Service, MBVpnTunnelService, OpenVPNAccessClient. Some VPNs can conflict with zapret. Make sure all VPNs are disabled
+[2026-05-21 15:29:30] [WARN] [?] Make sure you have configured secure DNS in a browser with some non-default DNS service provider. If you use Windows 11, you can configure encrypted DNS in Settings to hide this warning
+[2026-05-21 15:29:30] [OK] Hosts file check passed
+[2026-05-21 15:29:30] [OK] WinDivert conflict check passed
+[2026-05-21 15:29:30] [OK] Конфликтующих служб не найдено
+[2026-05-21 15:29:30] [STEP] Проверка доступности ресурсов...
+[2026-05-21 15:29:35] [OK] discord.com: HTTP 200
+[2026-05-21 15:29:35] [OK] youtube.com: HTTP 200
+[2026-05-21 15:29:35] [WARN] gateway.discord: недоступен
+[2026-05-21 15:29:35] [WARN] googlevideo.com: недоступен
+[2026-05-21 15:29:35] [OK] Все критичные файлы на месте
+[2026-05-21 15:29:35] [STEP] Проверка DNS-резолвинга...
+[2026-05-21 15:29:35] [OK] discord.com: 162.159.137.232, 162.159.128.233, 162.159.136.232, 162.159.135.232, 162.159.138.232 (0 мс)
+[2026-05-21 15:29:35] [OK] www.youtube.com: 74.125.205.198 (0 мс)
+[2026-05-21 15:29:35] [OK] gateway.discord.gg: 162.159.135.234, 162.159.130.234, 162.159.134.234, 162.159.133.234, 162.159.136.234 (0 мс)
+[2026-05-21 15:29:35] [OK] googlevideo.com: 74.125.131.105, 74.125.131.106, 74.125.131.104, 74.125.131.99, 74.125.131.147, 74.125.131.103 (0 мс)
+[2026-05-21 15:29:35] [OK] DNS: 4/4 хостов резолвятся
+[2026-05-21 15:29:39] [STEP] ЭКСПОРТ ОТЧЁТА

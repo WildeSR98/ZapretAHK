@@ -1,0 +1,62 @@
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.AssemblyInfoInputs.cache
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.AssemblyInfo.cs
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.csproj.CoreCompileInputs.cache
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.sourcelink.json
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\zapret-manager.exe
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\zapret-manager.deps.json
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\zapret-manager.runtimeconfig.json
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\zapret-manager.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\zapret-manager.pdb
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\System.Diagnostics.EventLog.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\System.ServiceProcess.ServiceController.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.csproj.AssemblyReference.cache
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretMa.9DCAFFBC.Up2Date
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\zapret-manager.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\refint\zapret-manager.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\zapret-manager.pdb
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ZapretManager.genruntimeconfig.cache
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\obj\Release\net8.0-windows\ref\zapret-manager.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT10).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT11).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT3).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT4).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT5).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT6).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT7).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT8).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (ALT9).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (FAKE TLS AUTO ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (FAKE TLS AUTO ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (FAKE TLS AUTO ALT3).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (FAKE TLS AUTO).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (SIMPLE FAKE ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (SIMPLE FAKE ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general (SIMPLE FAKE).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\strategies\general.bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\ipset-all.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\ipset-exclude-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\ipset-exclude.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\list-exclude-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\list-exclude.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\list-general-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\list-general.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\lists\list-google.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\cygwin1.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\quic_initial_dbankcloud_ru.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\quic_initial_www_google_com.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\stun.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\tls_clienthello_4pda_to.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\tls_clienthello_max_ru.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\tls_clienthello_www_google_com.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\WinDivert.dll
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\WinDivert64.sys
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\winws.exe
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\config.json
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\bin\version.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\ZapretManager\bin\Release\net8.0-windows\Spectre.Console.dll

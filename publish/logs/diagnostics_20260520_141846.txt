@@ -1,0 +1,39 @@
+ZAPRET DIAGNOSTICS REPORT
+Generated: 20.05.2026 14:18:46
+.NET: 8.0.27  OS: Microsoft Windows NT 10.0.26200.0
+============================================================
+
+--- SERVICES ---
+zapret: Running
+WinDivert: Running
+WinDivert14: NotInstalled
+
+--- PROCESSES ---
+winws.exe: RUNNING (PID=13152)
+
+--- CONFLICTS ---
+Found: none
+
+--- FILES ---
+winws.exe: EXISTS (203776 bytes)
+
+--- STRATEGY (from registry) ---
+Installed: general (ALT11)
+
+--- RECENT LOG ---
+[2026-05-20 14:18:28] [INFO] === ZAPRET MANAGER started ===
+[2026-05-20 14:18:28] [INFO] OS: Microsoft Windows NT 10.0.26200.0 | .NET: 8.0.27
+[2026-05-20 14:18:28] [STEP] ZAPRET AUTO-SETUP
+[2026-05-20 14:18:28] [INFO] Manager: v2.1.0  |  Zapret Core: 1.9.8c
+[2026-05-20 14:18:28] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-20 14:18:28] [INFO] .NET: 8.0.27
+[2026-05-20 14:18:38] [OK] Manager актуален: v2.1.0
+[2026-05-20 14:18:38] [OK] Zapret core актуален: 1.9.8c
+[2026-05-20 14:18:38] [STEP] ДИАГНОСТИКА
+[2026-05-20 14:18:38] [OK] Конфликтующих служб не найдено
+[2026-05-20 14:18:38] [STEP] Проверка доступности ресурсов...
+[2026-05-20 14:18:44] [OK] discord.com: HTTP 200
+[2026-05-20 14:18:44] [OK] youtube.com: HTTP 200
+[2026-05-20 14:18:44] [WARN] gateway.discord: недоступен
+[2026-05-20 14:18:44] [WARN] googlevideo.com: недоступен
+[2026-05-20 14:18:46] [STEP] ЭКСПОРТ ОТЧЁТА

@@ -1,0 +1,28 @@
+﻿[2026-05-22 10:15:08] [INFO] === ZAPRET MANAGER started ===
+[2026-05-22 10:15:08] [INFO] OS: Microsoft Windows NT 10.0.26200.0 | .NET: 8.0.27
+[2026-05-22 10:15:08] [INFO] Фоновая проверка обновлений запущена (интервал: каждый час)
+[2026-05-22 10:15:08] [INFO] Tray-процесс запущен
+[2026-05-22 10:15:08] [STEP] ZAPRET AUTO-SETUP
+[2026-05-22 10:15:08] [INFO] Manager: v2.5.0  |  Zapret Core: 1.9.8c
+[2026-05-22 10:15:08] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-22 10:15:08] [INFO] .NET: 8.0.27
+[2026-05-22 10:15:19] [OK] Manager актуален: v2.5.0
+[2026-05-22 10:15:19] [OK] Zapret core актуален: 1.9.8c
+[2026-05-22 10:15:19] [STEP] Проверка необходимых файлов
+[2026-05-22 10:15:19] [OK] winws.exe найден
+[2026-05-22 10:15:20] [OK] curl.exe найден
+[2026-05-22 10:15:20] [STEP] Защита файлов от антивируса
+[2026-05-22 10:15:21] [INFO] Added Defender folder exclusion: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-22 10:15:22] [INFO] Added Defender folder exclusion: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main
+[2026-05-22 10:15:22] [INFO] Added Defender process exclusion: winws.exe
+[2026-05-22 10:15:23] [INFO] Added Defender process exclusion: TgWsProxy_windows.exe
+[2026-05-22 10:15:26] [OK] Папка C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish добавлена в исключения Windows Defender. Все файлы на месте.
+[2026-05-22 10:15:26] [STEP] Проверка TgWsProxy
+[2026-05-22 10:15:26] [OK] TgWsProxy_windows.exe: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\TgWsProxy_windows.exe
+[2026-05-22 10:15:26] [STEP] Проверка конфликтующих служб
+[2026-05-22 10:15:26] [OK] Конфликтующих служб не найдено
+[2026-05-22 10:15:26] [STEP] Настройка Game Filter
+[2026-05-22 10:15:26] [INFO] Текущий статус: TCP + UDP
+[2026-05-22 10:15:27] [INFO] Game Filter не изменён
+[2026-05-22 10:15:27] [INFO] === Завершение по Ctrl+C ===
+[2026-05-22 10:15:27] [STEP] Настройка IPSet фильтра

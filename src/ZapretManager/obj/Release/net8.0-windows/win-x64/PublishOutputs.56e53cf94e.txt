@@ -1,0 +1,34 @@
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\zapret-manager.pdb
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT10).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT11).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT3).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT4).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT5).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT6).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT7).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT8).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (ALT9).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (FAKE TLS AUTO ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (FAKE TLS AUTO ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (FAKE TLS AUTO ALT3).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (FAKE TLS AUTO).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (SIMPLE FAKE ALT).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (SIMPLE FAKE ALT2).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general (SIMPLE FAKE).bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\strategies\general.bat
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\ipset-exclude-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\ipset-exclude.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\list-exclude-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\list-exclude.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\list-general-user.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\list-general.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\lists\list-google.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\bin\stun.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\bin\tls_clienthello_4pda_to.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\bin\tls_clienthello_max_ru.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\bin\tls_clienthello_www_google_com.bin
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\bin\version.txt
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\config.json
+C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\standalone\zapret-manager.exe

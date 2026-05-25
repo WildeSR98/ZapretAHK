@@ -1,0 +1,10 @@
+{
+  "managerRemote": "3.0.0",
+  "managerLocal": null,
+  "managerDownloadUrl": "https://github.com/WildeSR98/12345/releases/download/v3.0.0/3.0.zip",
+  "coreRemote": "1.9.8c",
+  "coreLocal": "1.9.8c",
+  "managerUpdateAvailable": false,
+  "coreUpdateAvailable": false,
+  "checkedAt": "2026-05-25T10:28:44.6808539Z"
+}

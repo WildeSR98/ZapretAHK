@@ -1,0 +1,88 @@
+﻿[2026-05-21 15:39:10] [INFO] === ZAPRET MANAGER started ===
+[2026-05-21 15:39:10] [INFO] OS: Microsoft Windows NT 10.0.26200.0 | .NET: 8.0.27
+[2026-05-21 15:39:10] [INFO] Фоновая проверка обновлений запущена (интервал: каждый час)
+[2026-05-21 15:39:10] [STEP] ZAPRET AUTO-SETUP
+[2026-05-21 15:39:10] [INFO] Manager: v2.4.0  |  Zapret Core: 1.9.8c
+[2026-05-21 15:39:10] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-21 15:39:10] [INFO] .NET: 8.0.27
+[2026-05-21 15:39:16] [OK] Manager актуален: v2.4.0
+[2026-05-21 15:39:16] [OK] Zapret core актуален: 1.9.8c
+[2026-05-21 15:39:20] [STEP] ПРОФИЛИ
+[2026-05-21 15:39:32] [STEP] ТЕСТЫ СТРАТЕГИЙ
+[2026-05-21 15:39:32] [WARN] Обнаружен незавершённый тест. Восстановление ipset...
+[2026-05-21 15:39:32] [INFO] IPSet восстановлен из test-backup
+[2026-05-21 15:39:34] [INFO] Найдено конфигов: 19
+[2026-05-21 15:39:36] [OK] Выбрано конфигов: 1
+[2026-05-21 15:39:36] [STEP] Загрузка DPI suite...
+[2026-05-21 15:39:36] [WARN] Тесты займут несколько минут. Пожалуйста, подождите...
+[2026-05-21 15:39:42] [INFO] Выполнение DPI тестов...
+[2026-05-21 15:39:42] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-21 15:40:03] [WARN] Обнаружен паттерн блокировки DPI TCP 16-20KB.
+[2026-05-21 15:40:04] [STEP] DPI АНАЛИТИКА
+[2026-05-21 15:40:04] [OK] Лучший конфиг: general (ALT11).bat
+[2026-05-21 15:40:04] [OK] DPI результаты сохранены: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\utils\test results\test_results_dpi_2026-05-21_15-40-04.txt
+[2026-05-21 15:40:05] [INFO] Перезапуск службы zapret...
+[2026-05-21 15:40:07] [OK] Служба zapret перезапущена
+[2026-05-21 15:40:23] [STEP] ДИАГНОСТИКА
+[2026-05-21 15:40:23] [STEP] Запуск полной диагностики...
+[2026-05-21 15:40:24] [OK] Base Filtering Engine check passed
+[2026-05-21 15:40:24] [OK] Proxy check passed
+[2026-05-21 15:40:24] [OK] TCP timestamps successfully enabled
+[2026-05-21 15:40:24] [OK] Adguard check passed
+[2026-05-21 15:40:24] [OK] Killer check passed
+[2026-05-21 15:40:24] [OK] Intel Connectivity check passed
+[2026-05-21 15:40:24] [OK] Check Point check passed
+[2026-05-21 15:40:24] [OK] SmartByte check passed
+[2026-05-21 15:40:24] [OK] WinDivert64.sys found
+[2026-05-21 15:40:24] [WARN] [?] VPN services found: Adguard VPN Service, MBVpnTunnelService, OpenVPNAccessClient. Some VPNs can conflict with zapret. Make sure all VPNs are disabled
+[2026-05-21 15:40:24] [WARN] [?] Make sure you have configured secure DNS in a browser with some non-default DNS service provider. If you use Windows 11, you can configure encrypted DNS in Settings to hide this warning
+[2026-05-21 15:40:24] [OK] Hosts file check passed
+[2026-05-21 15:40:24] [OK] WinDivert conflict check passed
+[2026-05-21 15:40:24] [OK] Конфликтующих служб не найдено
+[2026-05-21 15:40:24] [STEP] Проверка доступности ресурсов...
+[2026-05-21 15:40:29] [OK] discord.com: HTTP 200
+[2026-05-21 15:40:29] [OK] youtube.com: HTTP 200
+[2026-05-21 15:40:29] [WARN] gateway.discord: недоступен
+[2026-05-21 15:40:29] [WARN] googlevideo.com: недоступен
+[2026-05-21 15:40:29] [OK] Все критичные файлы на месте
+[2026-05-21 15:40:29] [STEP] Проверка DNS-резолвинга...
+[2026-05-21 15:40:29] [OK] discord.com: 162.159.135.232, 162.159.136.232, 162.159.138.232, 162.159.137.232, 162.159.128.233 (1 мс)
+[2026-05-21 15:40:29] [OK] www.youtube.com: 74.125.205.198 (0 мс)
+[2026-05-21 15:40:29] [OK] gateway.discord.gg: 162.159.133.234, 162.159.136.234, 162.159.134.234, 162.159.135.234, 162.159.130.234 (0 мс)
+[2026-05-21 15:40:29] [OK] googlevideo.com: 74.125.205.99, 74.125.205.105, 74.125.205.104, 74.125.205.103, 74.125.205.147, 74.125.205.106 (0 мс)
+[2026-05-21 15:40:29] [OK] DNS: 4/4 хостов резолвятся
+[2026-05-21 15:40:38] [STEP] ZAPRET AUTO-SETUP
+[2026-05-21 15:40:38] [INFO] Manager: v2.4.0  |  Zapret Core: 1.9.8c
+[2026-05-21 15:40:38] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-21 15:40:38] [INFO] .NET: 8.0.27
+[2026-05-21 15:40:40] [OK] Manager актуален: v2.4.0
+[2026-05-21 15:40:40] [OK] Zapret core актуален: 1.9.8c
+[2026-05-21 15:40:40] [STEP] ТЕСТ СТРАТЕГИЙ И УСТАНОВКА
+[2026-05-21 15:40:43] [INFO] Найдено конфигов: 19
+[2026-05-21 15:40:45] [OK] Выбрано конфигов: 1
+[2026-05-21 15:40:45] [INFO] IPSet переключён в режим 'any' для тестов
+[2026-05-21 15:40:45] [INFO] Сохранён snapshot 1 запущенных winws.exe
+[2026-05-21 15:40:45] [STEP] Загрузка DPI suite...
+[2026-05-21 15:40:45] [OK] Загружено 36 целей
+[2026-05-21 15:40:45] [WARN] DPI тесты займут несколько минут...
+[2026-05-21 15:40:51] [INFO] DPI тест: 36 targets, range=0-65535, timeout=5s
+[2026-05-21 15:41:14] [WARN] Обнаружен паттерн блокировки DPI TCP 16-20KB.
+[2026-05-21 15:41:15] [INFO] IPSet восстановлен из test-backup
+[2026-05-21 15:41:15] [INFO] Восстановление ранее запущенных winws.exe...
+[2026-05-21 15:41:16] [OK] Результаты сохранены: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish\utils\test results\dpi_results_2026-05-21_15-41-16.txt
+[2026-05-21 15:41:16] [OK] Лучшая стратегия: general (ALT11).bat
+[2026-05-21 15:41:30] [STEP] Установка службы: general (ALT11).bat
+[2026-05-21 15:41:30] [INFO] ParseArgs [general (ALT11).bat]: length=6959
+[2026-05-21 15:41:33] [INFO] Recovery policy установлена: restart 5s/30s/60s
+[2026-05-21 15:41:33] [OK] Служба установлена и запущена: zapret
+[2026-05-21 15:41:33] [OK] Служба zapret установлена!
+[2026-05-21 15:41:46] [OK] discord.com: HTTP 200
+[2026-05-21 15:41:46] [OK] youtube.com: HTTP 200
+[2026-05-21 15:41:46] [WARN] gateway.discord: недоступен
+[2026-05-21 15:41:46] [WARN] googlevideo.com: недоступен
+[2026-05-21 15:41:47] [STEP] ZAPRET AUTO-SETUP
+[2026-05-21 15:41:47] [INFO] Manager: v2.4.0  |  Zapret Core: 1.9.8c
+[2026-05-21 15:41:47] [INFO] Рабочая папка: C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\publish
+[2026-05-21 15:41:47] [INFO] .NET: 8.0.27
+[2026-05-21 15:41:50] [OK] Manager актуален: v2.4.0
+[2026-05-21 15:41:50] [OK] Zapret core актуален: 1.9.8c

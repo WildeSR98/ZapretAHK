@@ -1,0 +1,2795 @@
+Config: general (ALT).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,6s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,9s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,7s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,5s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=12,9 KB  time=0,4s  status=OK
+    TLS1.2: code=200  up=64 KB  down=12,9 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=12,9 KB  time=0,2s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=0,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.2: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=24,7 KB  time=2,0s  status=OK
+    TLS1.2: code=200  up=64 KB  down=24,7 KB  time=2,1s  status=OK
+    TLS1.3: code=200  up=64 KB  down=24,7 KB  time=1,9s  status=OK
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=404  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,6s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=200  up=64 KB  down=150,8 KB  time=1,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=150,8 KB  time=2,0s  status=OK
+    TLS1.3: code=200  up=64 KB  down=150,8 KB  time=1,7s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=0,8s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,8s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,3s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,2s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=1,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=3,9s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=0,7s  status=OK
+
+Config: general (ALT2).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (ALT3).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,9s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,7s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,4 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=1,9s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+    TLS1.2: code=503  up=64 KB  down=0,5 KB  time=1,0s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (ALT4).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=1,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=2,9s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,6s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,8s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=1,4s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,2s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=1,4s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=1,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,7s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=1,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=1,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=1,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,7s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+    TLS1.2: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.2: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=24,7 KB  time=1,9s  status=OK
+    TLS1.2: code=200  up=64 KB  down=24,7 KB  time=2,1s  status=OK
+    TLS1.3: code=200  up=64 KB  down=24,7 KB  time=2,0s  status=OK
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,1s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=63,8 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+    TLS1.2: code=503  up=64 KB  down=0,5 KB  time=1,0s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=1,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,2s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=0,8s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=0,9s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=0,7s  status=OK
+
+Config: general (ALT5).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,4 KB  time=0,6s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (ALT6).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (ALT7).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+
+Config: general (ALT8).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (ALT9).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=63,8 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,0s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,7s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,7s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=63,8 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=301  up=64 KB  down=0,3 KB  time=0,1s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,1 KB  time=1,2s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,2 KB  time=0,8s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+    TLS1.2: code=200  up=64 KB  down=150,8 KB  time=1,9s  status=OK
+    TLS1.3: code=200  up=64 KB  down=150,8 KB  time=1,7s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,2s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,9s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=0,9s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=1,5s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=1,0s  status=OK
+
+Config: general (ALT10).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=63,8 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,8s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=1,0s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=1,0s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=1,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,9s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,4 KB  time=1,1s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=1,0s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=0 KB  time=1,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=24,7 KB  time=2,5s  status=OK
+    TLS1.2: code=200  up=64 KB  down=24,7 KB  time=2,1s  status=OK
+    TLS1.3: code=200  up=64 KB  down=24,7 KB  time=2,0s  status=OK
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=301  up=64 KB  down=0,3 KB  time=0,1s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=200  up=64 KB  down=233,6 KB  time=4,5s  status=OK
+    TLS1.2: code=200  up=64 KB  down=31,2 KB  time=5,0s  status=FAIL
+    TLS1.3: code=200  up=64 KB  down=233,6 KB  time=3,5s  status=OK
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=0,9s  status=OK
+    TLS1.2: code=503  up=64 KB  down=0,5 KB  time=1,0s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=0,8s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=2,0s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=0,8s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=1,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=1,2s  status=OK
+
+Config: general (ALT11).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=63,8 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,0s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,4s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,9s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,7s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,5s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=200  up=64 KB  down=37,9 KB  time=0,3s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,4 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.2: code=200  up=64 KB  down=0 KB  time=1,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=24,7 KB  time=2,4s  status=OK
+    TLS1.2: code=200  up=64 KB  down=24,7 KB  time=2,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=24,7 KB  time=1,9s  status=OK
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,7s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=1,2s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,1 KB  time=0,5s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=63,8 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=1,4s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=200  up=64 KB  down=150,8 KB  time=1,8s  status=OK
+    TLS1.2: code=200  up=64 KB  down=150,8 KB  time=2,1s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,1s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,4s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=1,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=1,4s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=0,8s  status=OK
+
+Config: general (FAKE TLS AUTO ALT).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (FAKE TLS AUTO ALT2).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (FAKE TLS AUTO ALT3).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,8s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,9s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+    TLS1.2: code=503  up=64 KB  down=0,5 KB  time=1,0s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=0,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (FAKE TLS AUTO).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=1,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+Config: general (SIMPLE FAKE ALT).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.2: code=405  up=63,8 KB  down=0,1 KB  time=0,1s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=1,2s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+    TLS1.3: code=400  up=64 KB  down=19,7 KB  time=1,1s  status=OK
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,2s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=0,8s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,7s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=0,6s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=0,5s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+    TLS1.2: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=15,6 KB  time=0,4s  status=OK
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=12,9 KB  time=0,2s  status=OK
+    TLS1.2: code=200  up=64 KB  down=12,9 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=12,9 KB  time=0,3s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=0,6s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,3 KB  time=0,7s  status=OK
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,2 KB  time=0,3s  status=OK
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,3 KB  time=0,4s  status=OK
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.2: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+    TLS1.3: code=406  up=64 KB  down=0 KB  time=0,5s  status=OK
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.2: code=200  up=64 KB  down=0 KB  time=1,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=200  up=64 KB  down=24,7 KB  time=1,9s  status=OK
+    TLS1.2: code=200  up=64 KB  down=24,7 KB  time=2,1s  status=OK
+    TLS1.3: code=200  up=64 KB  down=24,7 KB  time=2,0s  status=OK
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0,2 KB  time=0,1s  status=OK
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=404  up=64 KB  down=0,8 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,8 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,8 KB  time=0,6s  status=OK
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=0,3s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=3,4s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,5s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=63,8 KB  down=0,2 KB  time=1,3s  status=OK
+    TLS1.2: code=403  up=63,8 KB  down=0,2 KB  time=0,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=2,5s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=0,4s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=200  up=64 KB  down=150,8 KB  time=1,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=150,8 KB  time=2,2s  status=OK
+    TLS1.3: code=200  up=64 KB  down=150,8 KB  time=1,7s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,2s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,6s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=1,3s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,9s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=0,7s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=0,9s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=0,8s  status=OK
+
+Config: general (SIMPLE FAKE ALT2).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=3,6s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=4,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=4,0s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=3,7s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=4,8s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=4,3s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=2,5s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=3,8s  status=OK
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=4,5s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=5,0s  status=OK
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=2,5s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=4,2s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=3,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=200  up=64 KB  down=1,1 KB  time=4,9s  status=OK
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=301  up=64 KB  down=0,3 KB  time=4,5s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,3 KB  time=3,9s  status=OK
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,1 KB  time=3,1s  status=OK
+    TLS1.2: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=2,9s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=403  up=64 KB  down=0,2 KB  time=3,7s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,2 KB  time=3,8s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=2,6s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=302  up=64 KB  down=0 KB  time=3,3s  status=OK
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=2,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=3,8s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=4,6s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=1,7s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=200  up=64 KB  down=34,4 KB  time=5,0s  status=FAIL
+    TLS1.3: code=200  up=64 KB  down=150,8 KB  time=2,8s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=4,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=4,3s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,7s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=64 KB  down=0 KB  time=1,8s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=1,6s  status=FAIL
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=1,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=1,9s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=1,5s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=1,2s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=2,7s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=2,2s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,5s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=2,0s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=2,0s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=1,2s  status=OK
+
+Config: general (SIMPLE FAKE).bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,1 KB  time=0,2s  status=OK
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=400  up=64 KB  down=19,7 KB  time=2,0s  status=OK
+    TLS1.2: code=400  up=64 KB  down=19,7 KB  time=2,5s  status=OK
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=403  up=64 KB  down=0,4 KB  time=0,4s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,4 KB  time=0,3s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,4 KB  time=0,5s  status=OK
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,5s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=0,6s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=301  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,1 KB  time=1,0s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,1 KB  time=0,9s  status=OK
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,5s  status=OK
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=405  up=64 KB  down=0,1 KB  time=0,6s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,1 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,3s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=301  up=64 KB  down=0,2 KB  time=0,7s  status=OK
+    TLS1.2: code=301  up=64 KB  down=0,2 KB  time=1,0s  status=OK
+    TLS1.3: code=301  up=64 KB  down=0,2 KB  time=1,0s  status=OK
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=400  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.2: code=400  up=64 KB  down=0 KB  time=0,7s  status=OK
+    TLS1.3: code=400  up=64 KB  down=0 KB  time=1,0s  status=OK
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=200  up=64 KB  down=66 KB  time=0,9s  status=OK
+    TLS1.2: code=200  up=64 KB  down=66 KB  time=1,4s  status=OK
+    TLS1.3: code=200  up=64 KB  down=66 KB  time=3,7s  status=OK
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=0,4s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,5s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=405  up=64 KB  down=0 KB  time=0,6s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0 KB  time=1,4s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0 KB  time=3,3s  status=OK
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=200  up=64 KB  down=37,9 KB  time=0,8s  status=OK
+    TLS1.2: code=200  up=64 KB  down=37,9 KB  time=1,6s  status=OK
+    TLS1.3: code=200  up=64 KB  down=37,9 KB  time=4,1s  status=OK
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=403  up=64 KB  down=0,3 KB  time=1,6s  status=OK
+    TLS1.2: code=403  up=64 KB  down=0,3 KB  time=5,0s  status=OK
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=405  up=64 KB  down=0,2 KB  time=1,4s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,2 KB  time=4,0s  status=OK
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=400  up=64 KB  down=0,4 KB  time=1,7s  status=OK
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=406  up=64 KB  down=0 KB  time=2,1s  status=OK
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=403  up=64 KB  down=0,1 KB  time=4,2s  status=OK
+    TLS1.3: code=403  up=64 KB  down=0,1 KB  time=0,4s  status=OK
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=403  up=63,8 KB  down=0,2 KB  time=4,1s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=2,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.3: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=64 KB  down=0 KB  time=5,0s  status=LIKELY_BLOCKED
+    TLS1.2: code=302  up=64 KB  down=0 KB  time=2,2s  status=OK
+    TLS1.3: code=302  up=64 KB  down=0 KB  time=0,3s  status=OK
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=404  up=64 KB  down=0,7 KB  time=3,4s  status=OK
+    TLS1.2: code=404  up=64 KB  down=0,7 KB  time=0,5s  status=OK
+    TLS1.3: code=404  up=64 KB  down=0,7 KB  time=0,4s  status=OK
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=503  up=64 KB  down=0,5 KB  time=2,6s  status=OK
+    TLS1.2: code=503  up=64 KB  down=0,5 KB  time=1,0s  status=OK
+    TLS1.3: code=503  up=64 KB  down=0,5 KB  time=1,5s  status=OK
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=200  up=64 KB  down=32,9 KB  time=2,5s  status=OK
+    TLS1.2: code=200  up=64 KB  down=32,9 KB  time=0,7s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=0,1s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=63,8 KB  down=0 KB  time=1,3s  status=FAIL
+    TLS1.2: code=0  up=64 KB  down=0 KB  time=0,3s  status=FAIL
+    TLS1.3: code=0  up=63,8 KB  down=0 KB  time=0,2s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.2: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+    TLS1.3: code=405  up=64 KB  down=0,3 KB  time=0,3s  status=OK
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=200  up=64 KB  down=1587,8 KB  time=1,2s  status=OK
+    TLS1.2: code=200  up=64 KB  down=1587,8 KB  time=2,5s  status=OK
+    TLS1.3: code=200  up=64 KB  down=1587,8 KB  time=1,6s  status=OK
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=405  up=64 KB  down=1 KB  time=0,7s  status=OK
+    TLS1.2: code=405  up=64 KB  down=1 KB  time=2,2s  status=OK
+    TLS1.3: code=405  up=64 KB  down=1 KB  time=1,4s  status=OK
+
+Config: general.bat (Type: dpi)
+  Target: [🧠] US.GH-HPRN (Self check)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇵🇱] PL.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇪] SE.AKM-01 (Akamai)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.AWS-01 (AWS)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CDN77-01 (CDN77)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-01 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.CF-02 (Cloudflare)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-01 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.CNTB-02 (Contabo)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-01 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇬🇧] UK.DO-02 (DigitalOcean)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇨🇦] CA.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FST-01 (Fastly)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-01 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.FTBVM-02 (FT/BuyVM)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇱🇺] LU.GCORE-01 (Gcore)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-01 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.GC-02 (Google Cloud)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-01 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-02 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇮] FI.HE-03 (Hetzner)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=403  up=63,8 KB  down=0,2 KB  time=1,2s  status=OK
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.MBCOM-01 (Melbicom)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.MS-01 (Microsoft/Azure)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇪🇸] ES.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇸🇬] SG.OR-01 (Oracle)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-01 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇫🇷] FR.OVH-02 (OVH)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇳🇱] NL.SW-01 (Scaleway)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇩🇪] DE.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+  Target: [🇺🇸] US.VLTR-01 (Vultr)
+    HTTP: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.2: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+    TLS1.3: code=0  up=0 KB  down=0 KB  time=5,0s  status=FAIL
+
+=== ANALYTICS ===
+general (ALT).bat : OK: 91, FAIL: 14, UNSUP: 0, BLOCKED: 3
+general (ALT2).bat : OK: 0, FAIL: 107, UNSUP: 0, BLOCKED: 1
+general (ALT3).bat : OK: 46, FAIL: 51, UNSUP: 0, BLOCKED: 11
+general (ALT4).bat : OK: 91, FAIL: 14, UNSUP: 0, BLOCKED: 3
+general (ALT5).bat : OK: 17, FAIL: 35, UNSUP: 0, BLOCKED: 56
+general (ALT6).bat : OK: 0, FAIL: 108, UNSUP: 0, BLOCKED: 0
+general (ALT7).bat : OK: 23, FAIL: 14, UNSUP: 0, BLOCKED: 71
+general (ALT8).bat : OK: 0, FAIL: 108, UNSUP: 0, BLOCKED: 0
+general (ALT9).bat : OK: 80, FAIL: 14, UNSUP: 0, BLOCKED: 14
+general (ALT10).bat : OK: 91, FAIL: 15, UNSUP: 0, BLOCKED: 2
+general (ALT11).bat : OK: 82, FAIL: 23, UNSUP: 0, BLOCKED: 3
+general (FAKE TLS AUTO ALT).bat : OK: 0, FAIL: 108, UNSUP: 0, BLOCKED: 0
+general (FAKE TLS AUTO ALT2).bat : OK: 0, FAIL: 108, UNSUP: 0, BLOCKED: 0
+general (FAKE TLS AUTO ALT3).bat : OK: 47, FAIL: 50, UNSUP: 0, BLOCKED: 11
+general (FAKE TLS AUTO).bat : OK: 18, FAIL: 88, UNSUP: 0, BLOCKED: 2
+general (SIMPLE FAKE ALT).bat : OK: 91, FAIL: 14, UNSUP: 0, BLOCKED: 3
+general (SIMPLE FAKE ALT2).bat : OK: 33, FAIL: 39, UNSUP: 0, BLOCKED: 36
+general (SIMPLE FAKE).bat : OK: 61, FAIL: 26, UNSUP: 0, BLOCKED: 21
+general.bat : OK: 1, FAIL: 107, UNSUP: 0, BLOCKED: 0
+Best strategy: general (ALT).bat
