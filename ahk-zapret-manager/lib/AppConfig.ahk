@@ -53,11 +53,11 @@ class AppConfig
         result := {}
         
         ; Извлекаем версию
-        if RegExMatch(json, """version""\s*:\s*""([^""]+)""", m)
+        if RegExMatch(json, '"version"\s*:\s*"([^"]+)"', m)
             result.version := m[1]
         
         ; Извлекаем project.name
-        if RegExMatch(json, """name""\s*:\s*""([^""]+)""", m)
+        if RegExMatch(json, '"name"\s*:\s*"([^"]+)"', m)
             result.project := { name: m[1] }
         
         return result

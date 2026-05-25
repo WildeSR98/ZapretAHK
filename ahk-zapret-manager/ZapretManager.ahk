@@ -103,22 +103,6 @@ CreateMainWindow()
     
     MainWindow.Menu := MenuBar
     
-    ; ── Горячие клавиши ───────────────────────────────────────────────────────
-    HotIf(MainWindow)
-    ^u::CheckUpdates()
-    ^e::ExportReport()
-    ^i::InstallService()
-    ^d::RemoveService()
-    ^t::TestStrategies()
-    ^m::TrafficMonitor()
-    ^b::DoBackup()
-    ^s::OpenSettings()
-    F5::StartService()
-    F6::StopService()
-    F7::RestartService()
-    F9::ShowServiceStatus()
-    HotIf()
-    
     ; ── Основная панель ───────────────────────────────────────────────────────
     Panel := MainWindow.Add("Panel", "x10 y10 w770 h540")
     

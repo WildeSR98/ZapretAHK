@@ -1,51 +1,48 @@
 ```
-# Logs and temp files
-*.log
-*.tmp
-*.swp
+# Compiled and binary files
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.class
 
-# Environment
+# Dependencies
+node_modules/
+venv/
+.venv/
 .env
 .env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
+.env.*
 
 # Build artifacts
 dist/
 build/
 target/
 
-# Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-*.egg-info/
-.Python
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
 
-# Compiled files
-*.pyc
-*.class
-*.o
-*.obj
-*.so
-*.dll
-*.exe
+# Editors and IDE
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
 
 # Coverage
 coverage/
 htmlcov/
 .coverage
 
-# IDE specific
-*.swp
-*.swo
-*~
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.gradle/
 ```

@@ -93,7 +93,7 @@ class HttpService
     }
     
     ; Парсинг заголовков
-    private static ParseHeaders(rawHeaders)
+    static ParseHeaders(rawHeaders)
     {
         headers := {}
         for line in StrSplit(rawHeaders, "`r`n")
