@@ -43,7 +43,7 @@ class Logger
             this.Write("DEBUG", msg)
     }
     
-    private static Write(level, msg)
+    static Write(level, msg)
     {
         Try
         {
