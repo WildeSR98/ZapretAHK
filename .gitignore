@@ -1,13 +1,24 @@
-```
 # Compiled and binary files
 *.pyc
 __pycache__/
 *.o
 *.obj
-*.exe
-*.dll
 *.so
 *.class
+
+# .NET build artifacts
+src/*/bin/
+src/*/obj/
+publish/
+publish-standalone/
+
+# Allow AHK project binaries (winws, TgWsProxy, WinDivert)
+!ahk-zapret-manager/bin/
+!ahk-zapret-manager/bin/**
+!ahk-zapret-manager/TgWsProxy_windows.exe
+
+# Large archive — should not be in git
+.git.zip
 
 # Dependencies
 node_modules/
@@ -45,4 +56,3 @@ htmlcov/
 .mypy_cache/
 .pytest_cache/
 .gradle/
-```

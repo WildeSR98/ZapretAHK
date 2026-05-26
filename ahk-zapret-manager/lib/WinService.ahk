@@ -252,19 +252,11 @@ class WinService
     static GetImagePath(name)
     {
         Try
-        {
-            key := RegOpenKey("HKLM\SYSTEM\CurrentControlSet\Services\" . name)
-            if (key)
-            {
-                val := RegReadKey(key, "ImagePath")
-                RegCloseKey(key)
-                return val
-            }
-        }
+            return RegRead("HKLM\SYSTEM\CurrentControlSet\Services\" . name, "ImagePath")
         Catch
             return ""
-        return ""
     }
+
     
     ; ── Private helpers ───────────────────────────────────────────────────────
     static SetRecoveryPolicy(svc)
