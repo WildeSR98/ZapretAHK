@@ -39,7 +39,9 @@ class DomainManagerGui
                 if FileExist(path)
                     ed.Value := FileRead(path, "UTF-8")
             }
-            Catch as _e {}
+            Catch as _e
+            {
+            }
         }
 
         tab.UseTab()

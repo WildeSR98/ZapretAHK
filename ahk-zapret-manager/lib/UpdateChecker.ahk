@@ -62,7 +62,9 @@ class UpdateChecker
                 }
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         mgrLocal := UpdateChecker.ReadManagerVersion(rootDir)
 
@@ -91,7 +93,9 @@ class UpdateChecker
                 }
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         coreLocal := UpdateChecker.ReadCoreVersion(rootDir)
 
@@ -115,7 +119,9 @@ class UpdateChecker
             FileDelete(cachePath)
             FileAppend(JsonParser.Stringify(result), cachePath, "UTF-8")
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         return result
     }
@@ -153,7 +159,9 @@ class UpdateChecker
             FileDelete(path)
             FileAppend((mode = "auto") ? "auto" : "manual", path, "UTF-8")
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
     }
 
     static ReadManagerVersion(rootDir)

@@ -130,6 +130,8 @@ class StrategyTester
                 lblStatus.Text := "Тестируется: " . lastLine . " (" . done . "/" . total . ")"
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
     }
 }

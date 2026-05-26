@@ -154,7 +154,9 @@ class ListsUpdater
             if !FileExist(path)
                 FileAppend(stubText . "`n", path, "UTF-8")
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
     }
 
     ; Слить новые строки с существующими пользовательскими (начинающимися с #user или содержимым -user файла)

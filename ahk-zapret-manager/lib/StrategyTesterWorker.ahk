@@ -150,7 +150,9 @@ ExitApp(0)
 _KillWinws()
 {
     Try ProcessClose("winws.exe")
-    Catch as _e {}
+    Catch as _e
+    {
+    }
 }
 
 _DoHttp(url)

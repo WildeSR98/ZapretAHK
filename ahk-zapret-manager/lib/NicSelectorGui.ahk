@@ -92,7 +92,9 @@ class NicSelectorGui
                 result.Push({name: nic.Name, type: type, ip: ip, status: status})
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
         return result
     }
 
@@ -111,7 +113,9 @@ class NicSelectorGui
                 }
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
         return "—"
     }
 
@@ -126,7 +130,9 @@ class NicSelectorGui
             if (data is Map) && data.Has("name")
                 return data["name"]
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
         return ""
     }
 
@@ -141,7 +147,9 @@ class NicSelectorGui
             FileDelete(path)
             FileAppend(JsonParser.Stringify(s), path, "UTF-8")
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
     }
 
     static _ClearSelected(utilsDir)

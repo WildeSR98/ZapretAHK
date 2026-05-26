@@ -39,7 +39,9 @@ class IspDetector
                 }
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         ; Fallback: ipinfo.io
         Try
@@ -65,7 +67,9 @@ class IspDetector
                 }
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         ; Вернуть кэш если онлайн недоступен
         cached := IspDetector.LoadCache(utilsDir)
@@ -82,7 +86,9 @@ class IspDetector
             FileDelete(path)
             FileAppend(JsonParser.Stringify(info), path, "UTF-8")
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
     }
 
     ; Загрузить кэш (вернуть Map или "" если устарел)
@@ -104,7 +110,9 @@ class IspDetector
             if (data is Map) && data.Has("Ip")
                 return data
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
         return ""
     }
 
@@ -137,7 +145,9 @@ class IspDetector
                 FileAppend(resp.Body, mapPath, "UTF-8")
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
 
         if !FileExist(mapPath)
             return []
@@ -162,7 +172,9 @@ class IspDetector
                 return (def is Array) ? def : []
             }
         }
-        Catch as _e {}
+        Catch as _e
+        {
+        }
         return []
     }
 
