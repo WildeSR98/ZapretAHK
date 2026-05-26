@@ -58,7 +58,7 @@ class TgProxyGui
         ; Кнопка явно маленькая — используем вместо неё кнопку ниже
 
         ; Кнопки
-        dlg.Add("Text", "x8 y322 w380 h1 +0xEtched")
+        dlg.Add("Text", "x8 y322 w380 h2 +0x10")
         btnStart   := dlg.Add("Button", "x14 y334 w110 h30", isRunning ? "Перезапустить" : "Запустить")
         btnStop    := dlg.Add("Button", "x136 y334 w80 h30", "Остановить")
         btnGenKey  := dlg.Add("Button", "x230 y334 w100 h30", "Новый секрет")

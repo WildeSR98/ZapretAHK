@@ -49,7 +49,7 @@ class StrategyTester
         lblStatus := dlg.Add("Text", "w420", "Статус: ожидание запуска...")
         pgBar := dlg.Add("Progress", "w420 h20 Range0-" . batFiles.Length, 0)
         dlg.Add("Text",, "")
-        btnCancel := dlg.Add("Button", "x14 y Default w100 h30", "Отмена")
+        btnCancel := dlg.Add("Button", "x14 w100 h30 Default", "Отмена")
         dlg.Show("w450 AutoSize")
 
         ; Лог-файл для связи с воркером

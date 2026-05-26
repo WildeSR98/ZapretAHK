@@ -13,7 +13,8 @@ progressFile:= resultsDir . "\worker_progress.txt"
 binDir      := rootDir . "\bin"
 
 DirCreate(resultsDir)
-FileDelete(progressFile)
+if FileExist(progressFile)
+    FileDelete(progressFile)
 
 ; ── Загрузка целей ──────────────────────────────────────────────────────────
 

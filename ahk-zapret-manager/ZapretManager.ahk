@@ -177,13 +177,13 @@ CreateMainWindow()
     updEnabled := FileExist(UtilsDir . "\check_updates.enabled")
 
     MainWindow.Add("Text", "x35 y318 w110 h22", "Watchdog:")
-    MainWindow.Add("Text", "x155 y318 w60 h22 c" . (wdEnabled ? "Green" : "Gray"), wdEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblWatchdog := MainWindow.Add("Text", "x155 y318 w60 h22 c" . (wdEnabled ? "Green" : "Gray"), wdEnabled ? "ВКЛ" : "ВЫКЛ")
 
     MainWindow.Add("Text", "x35 y348 w110 h22", "Игровой фильтр:")
-    MainWindow.Add("Text", "x155 y348 w60 h22 c" . (gfEnabled ? "Green" : "Gray"), gfEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblGameFilter := MainWindow.Add("Text", "x155 y348 w60 h22 c" . (gfEnabled ? "Green" : "Gray"), gfEnabled ? "ВКЛ" : "ВЫКЛ")
 
     MainWindow.Add("Text", "x35 y378 w110 h22", "Обновления:")
-    MainWindow.Add("Text", "x155 y378 w60 h22 c" . (updEnabled ? "Green" : "Gray"), updEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblUpdates := MainWindow.Add("Text", "x155 y378 w60 h22 c" . (updEnabled ? "Green" : "Gray"), updEnabled ? "ВКЛ" : "ВЫКЛ")
 
     ; ── Кнопка выхода ─────────────────────────────────────────────────────────
     BtnExit := MainWindow.Add("Button", "x670 y548 w100 h35", "Выход")
@@ -208,6 +208,21 @@ UpdateStatus()
     StrategyLabel.Text := strategy
 
     UpdateTrayIcon(state)
+}
+
+; ── Обновление панели состояния (вызывается после сохранения настроек) ────────────────
+RefreshStatusPanel()
+{
+    global LblWatchdog, LblGameFilter, LblUpdates, UtilsDir
+    wdEnabled  := FileExist(UtilsDir . "\watchdog.enabled")
+    gfEnabled  := FileExist(UtilsDir . "\game_filter.enabled")
+    updEnabled := FileExist(UtilsDir . "\check_updates.enabled")
+    LblWatchdog.Text  := wdEnabled  ? "ВКЛ" : "ВЫКЛ"
+    LblWatchdog.Opt("c" . (wdEnabled  ? "Green" : "Gray"))
+    LblGameFilter.Text := gfEnabled ? "ВКЛ" : "ВЫКЛ"
+    LblGameFilter.Opt("c" . (gfEnabled ? "Green" : "Gray"))
+    LblUpdates.Text   := updEnabled ? "ВКЛ" : "ВЫКЛ"
+    LblUpdates.Opt("c" . (updEnabled  ? "Green" : "Gray"))
 }
 
 MapServiceState(state)

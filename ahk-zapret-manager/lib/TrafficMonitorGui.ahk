@@ -22,7 +22,7 @@ class TrafficMonitorGui
 
         edContent := dlg.Add("Edit", "x10 y260 w680 h200 ReadOnly +Multi +VScroll")
 
-        dlg.Add("Text", "x10 y470 w680 h1 +0xEtched")
+        dlg.Add("Text", "x10 y470 w680 h2 +0x10")
         btnOpen    := dlg.Add("Button", "x10 y480 w150 h28", "Открыть папку")
         btnClean   := dlg.Add("Button", "x172 y480 w160 h28", "Удалить старые (>5)")
         btnRefresh := dlg.Add("Button", "x344 y480 w100 h28", "Обновить")
@@ -30,6 +30,13 @@ class TrafficMonitorGui
 
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
+        btnOpen.OnEvent("Click", _OpenFolder)
+        btnClean.OnEvent("Click", _Cleanup)
+        btnRefresh.OnEvent("Click", (*) => _LoadFiles())
+        lv.OnEvent("ItemSelect", _OnSelect)
+
+        _LoadFiles()
+        dlg.Show("w700 h520")
 
         _LoadFiles() {
             lv.Delete()
@@ -65,20 +72,18 @@ class TrafficMonitorGui
             }
         }
 
-        lv.OnEvent("ItemSelect", _OnSelect)
-        btnOpen.OnEvent("Click", _OpenFolder)
-        btnClean.OnEvent("Click", _Cleanup)
-        btnRefresh.OnEvent("Click", (*) => _LoadFiles())
-
         _OnSelect(ctrl, row) {
             if (row = 0)
                 return
             fname := lv.GetText(row, 1)
             fpath := resultsDir . "\" . fname
-            Try {
+            Try
+            {
                 content := FileRead(fpath, "UTF-8")
                 edContent.Value := content
-            } Catch {
+            }
+            Catch as _e
+            {
                 edContent.Value := "Ошибка чтения файла"
             }
         }
@@ -121,8 +126,5 @@ class TrafficMonitorGui
             MsgBox("Удалено файлов: " . deleted, "Очистка", 64)
             _LoadFiles()
         }
-
-        _LoadFiles()
-        dlg.Show("w700 h520")
     }
 }
