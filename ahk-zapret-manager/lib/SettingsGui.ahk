@@ -30,7 +30,7 @@ class SettingsGui
         btnSave   := dlg.Add("Button", "x20 y190 w100 h30 Default", "Сохранить")
         btnCancel := dlg.Add("Button", "x270 y190 w100 h30", "Отмена")
 
-        btnSave.OnEvent("Click", _Save)
+        btnSave.OnEvent("Click", (*) => _Save())
         btnCancel.OnEvent("Click", (*) => dlg.Destroy())
         dlg.OnEvent("Close", (*) => dlg.Destroy())
 

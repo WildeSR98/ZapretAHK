@@ -44,15 +44,17 @@ class StrategyEditorGui
         btnCopy   := dlg.Add("Button", "x310 y342 w110 h30", "Копировать")
         btnClose  := dlg.Add("Button", "x430 y342 w80 h30", "Закрыть")
 
-        dlg.OnEvent("Close", (*) => dlg.Destroy())
-        btnClose.OnEvent("Click", (*) => dlg.Destroy())
+        dlg.OnEvent("Close",  (*) => dlg.Destroy())
+        btnClose.OnEvent("Click",  (*) => dlg.Destroy())
 
-        btnApply.OnEvent("Click", _Apply)
-        btnEdit.OnEvent("Click", _Edit)
-        btnCopy.OnEvent("Click", _Copy)
+        ; Fat-arrow wrappers to avoid invalid-callback issue with nested functions
+        btnApply.OnEvent("Click", (*) => _Apply())
+        btnEdit.OnEvent("Click",  (*) => _Edit())
+        btnCopy.OnEvent("Click",  (*) => _Copy())
 
-        dlg.Show("w524 w524")
-        dlg.Show()
+        dlg.Show("w524 h384")
+
+        ; ── Вспомогательные функции ──────────────────────────────────────────
 
         _GetSelected() {
             row := lv.GetNext()
@@ -61,7 +63,7 @@ class StrategyEditorGui
             return lv.GetText(row, 1)
         }
 
-        _Apply(*) {
+        _Apply() {
             fn := _GetSelected()
             if (fn = "")
                 return MsgBox("Выберите стратегию в списке", "Zapret Manager", 48)
@@ -86,26 +88,27 @@ class StrategyEditorGui
             dlg.Destroy()
         }
 
-        _Edit(*) {
+        _Edit() {
             fn := _GetSelected()
             if (fn = "")
                 return MsgBox("Выберите файл", "Zapret Manager", 48)
             Run("notepad.exe `"" . strategiesDir . "\" . fn . "`"")
         }
 
-        _Copy(*) {
+        _Copy() {
             fn := _GetSelected()
             if (fn = "")
                 return MsgBox("Выберите файл для копирования", "Zapret Manager", 48)
 
-            newName := InputBox("Имя новой стратегии (без .bat):", "Копировать стратегию",, StrReplace(fn, ".bat", "") . "_copy").Value
-            if (newName = "")
+            ib := InputBox("Имя новой стратегии (без .bat):", "Копировать стратегию",, StrReplace(fn, ".bat", "") . "_copy")
+            if (ib.Result != "OK" || ib.Value = "")
                 return
 
-            newPath := strategiesDir . "\" . StrReplace(newName, ".bat", "") . ".bat"
+            newName := StrReplace(ib.Value, ".bat", "")
+            newPath := strategiesDir . "\" . newName . ".bat"
             FileCopy(strategiesDir . "\" . fn, newPath)
             Logger_Info("Стратегия скопирована: " . newPath)
-            MsgBox("Создан файл: " . StrReplace(newName, ".bat", "") . ".bat", "Zapret Manager", 64)
+            MsgBox("Создан файл: " . newName . ".bat", "Zapret Manager", 64)
             dlg.Destroy()
             StrategyEditorGui.Show(strategiesDir, rootDir)
         }
@@ -119,7 +122,7 @@ class StrategyEditorGui
             imgPath := RegRead("HKLM\SYSTEM\CurrentControlSet\Services\zapret", "ImagePath")
             return imgPath
         }
-        Catch
+        Catch as _e
             return ""
     }
 

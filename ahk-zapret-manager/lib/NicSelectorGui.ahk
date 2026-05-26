@@ -50,8 +50,8 @@ class NicSelectorGui
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
 
-        btnAuto.OnEvent("Click", _SetAuto)
-        btnSave.OnEvent("Click", _Save)
+        btnAuto.OnEvent("Click", (*) => _SetAuto())
+        btnSave.OnEvent("Click", (*) => _Save())
 
         dlg.Show("w524 h412")
 

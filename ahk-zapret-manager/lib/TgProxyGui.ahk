@@ -68,9 +68,9 @@ class TgProxyGui
 
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
-        btnStart.OnEvent("Click", _Start)
-        btnStop.OnEvent("Click", _Stop)
-        btnGenKey.OnEvent("Click", _GenKey)
+        btnStart.OnEvent("Click",  (*) => _Start())
+        btnStop.OnEvent("Click",   (*) => _Stop())
+        btnGenKey.OnEvent("Click", (*) => _GenKey())
 
         dlg.Show("w404 h374")
 
