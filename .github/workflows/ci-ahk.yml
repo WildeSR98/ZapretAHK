@@ -75,7 +75,23 @@ jobs:
             "ahk-zapret-manager/config.json",
             "ahk-zapret-manager/lib/AppConfig.ahk",
             "ahk-zapret-manager/lib/Logger.ahk",
-            "ahk-zapret-manager/lib/AdminHelper.ahk"
+            "ahk-zapret-manager/lib/AdminHelper.ahk",
+            "ahk-zapret-manager/lib/JsonParser.ahk",
+            "ahk-zapret-manager/lib/IspDetector.ahk",
+            "ahk-zapret-manager/lib/UpdateChecker.ahk",
+            "ahk-zapret-manager/lib/ListsUpdater.ahk",
+            "ahk-zapret-manager/lib/BackupManager.ahk",
+            "ahk-zapret-manager/lib/DiagnosticsRunner.ahk",
+            "ahk-zapret-manager/lib/SettingsGui.ahk",
+            "ahk-zapret-manager/lib/DomainManagerGui.ahk",
+            "ahk-zapret-manager/lib/StrategyEditorGui.ahk",
+            "ahk-zapret-manager/lib/TgProxyGui.ahk",
+            "ahk-zapret-manager/lib/TrafficMonitorGui.ahk",
+            "ahk-zapret-manager/lib/NicSelectorGui.ahk",
+            "ahk-zapret-manager/lib/StrategyTester.ahk",
+            "ahk-zapret-manager/lib/StrategyTesterWorker.ahk",
+            "ahk-zapret-manager/TgWsProxy_windows.exe",
+            "ahk-zapret-manager/utils/targets.txt"
           )
           $missing = @()
           foreach ($file in $requiredFiles) {

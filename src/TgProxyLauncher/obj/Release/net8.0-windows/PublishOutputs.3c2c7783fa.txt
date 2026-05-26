@@ -1,8 +1,0 @@
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\tg-proxy-launcher.exe
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\tg-proxy-launcher.dll
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\tg-proxy-launcher.deps.json
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\tg-proxy-launcher.runtimeconfig.json
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\tg-proxy-launcher.pdb
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\System.CodeDom.dll
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\System.Management.dll
-C:\Users\KnyshovDmitry\Downloads\12345-main\12345-main\src\TgProxyLauncher\publish-out\runtimes\win\lib\net8.0\System.Management.dll
