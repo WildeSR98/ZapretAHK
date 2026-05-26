@@ -35,12 +35,18 @@ class TrafficMonitorGui
         btnClean.OnEvent("Click",   (*) => _Cleanup())
         btnRefresh.OnEvent("Click", (*) => _LoadFiles())
 
-        ; Inline all callback logic to avoid nested-function-in-class-method lookup issues
-        lv.OnEvent("ItemSelect", (ctrl, row, *) =>
-        {
-            if (row = 0)
+        ; Single-expression fat-arrow calling nested function (AHK v2 fat-arrow = one expression only)
+        lv.OnEvent("ItemSelect", (ctrl, item, *) => _OnItemSelect(item))
+
+        _LoadFiles()
+        dlg.Show("w700 h520")
+
+        ; ── Helpers ─────────────────────────────────────────────────────────
+
+        _OnItemSelect(item) {
+            if (item = 0)
                 return
-            fname := lv.GetText(row, 1)
+            fname := lv.GetText(item, 1)
             fpath := resultsDir . "\" . fname
             Try
             {
@@ -51,12 +57,7 @@ class TrafficMonitorGui
             {
                 edContent.Value := "Ошибка чтения файла: " . _e.Message
             }
-        })
-
-        _LoadFiles()
-        dlg.Show("w700 h520")
-
-        ; ── Helpers ─────────────────────────────────────────────────────────
+        }
 
         _LoadFiles() {
             lv.Delete()
