@@ -23,7 +23,8 @@ Loop Read, targetsFile
     line := Trim(A_LoopReadLine)
     if (line = "" || SubStr(line, 1, 1) = "#")
         continue
-    if RegExMatch(line, "^\s*(\w+)\s*=\s*""(.+)""\s*$", &m)
+    q := Chr(34)
+    if RegExMatch(line, "^\\s*(\\w+)\\s*=\\s*" . q . "(.+)" . q . "\\s*$", &m)
     {
         name  := m[1]
         value := m[2]
@@ -149,7 +150,7 @@ ExitApp(0)
 _KillWinws()
 {
     Try ProcessClose("winws.exe")
-    Catch {}
+    Catch as _e {}
 }
 
 _DoHttp(url)
@@ -163,7 +164,7 @@ _DoHttp(url)
         code := whr.Status
         return (code >= 100 && code < 600)
     }
-    Catch
+    Catch as _e
         return false
 }
 
@@ -181,6 +182,6 @@ _DoPing(host)
         }
         return false
     }
-    Catch
+    Catch as _e
         return false
 }

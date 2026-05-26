@@ -154,15 +154,21 @@ class ListsUpdater
             if !FileExist(path)
                 FileAppend(stubText . "`n", path, "UTF-8")
         }
-        Catch {}
+        Catch as _e {}
     }
 
     ; Слить новые строки с существующими пользовательскими (начинающимися с #user или содержимым -user файла)
     static _MergeUserLines(existPath, newPath)
     {
         newContent := ""
-        Try { newContent := FileRead(newPath, "UTF-8") }
-        Catch { return "" }
+        Try
+        {
+            newContent := FileRead(newPath, "UTF-8")
+        }
+        Catch as _e
+        {
+            return ""
+        }
 
         ; Если старый файл не существует — возвращаем только новое
         if !FileExist(existPath)

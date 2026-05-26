@@ -448,7 +448,10 @@ UpdateLists()
     dlgProg.Add("Text",, "Загрузка списков из репозитория...")
     lblProg := dlgProg.Add("Text", "w360", "Подготовка...")
     dlgProg.Show("w380 h80")
-    _cb(fname, ok) { lblProg.Text := (ok ? "OK: " : "ERR: ") . fname }
+    _cb(fname, ok)
+    {
+        lblProg.Text := (ok ? "OK: " : "ERR: ") . fname
+    }
     ListsUpdater.UpdateAll(Config, ListsDir, _cb)
     dlgProg.Destroy()
     MsgBox("Списки обновлены", "Zapret Manager", 64)

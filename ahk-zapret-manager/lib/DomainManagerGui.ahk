@@ -34,10 +34,12 @@ class DomainManagerGui
             editors.Push(ed)
             ; Загрузить содержимое
             path := tabFiles[i]
-            Try {
+            Try
+            {
                 if FileExist(path)
                     ed.Value := FileRead(path, "UTF-8")
-            } Catch {}
+            }
+            Catch as _e {}
         }
 
         tab.UseTab()

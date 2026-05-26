@@ -209,7 +209,7 @@ class TgProxyGui
                         s[key] := val
                 }
             }
-            Catch {}
+            Catch as _e {}
         }
 
         ; Генерировать секрет если пустой
@@ -233,6 +233,6 @@ class TgProxyGui
             FileDelete(path)
             FileAppend(JsonParser.Stringify(settings), path, "UTF-8")
         }
-        Catch {}
+        Catch as _e {}
     }
 }

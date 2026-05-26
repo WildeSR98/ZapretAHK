@@ -62,7 +62,7 @@ class UpdateChecker
                 }
             }
         }
-        Catch {}
+        Catch as _e {}
 
         mgrLocal := UpdateChecker.ReadManagerVersion(rootDir)
 
@@ -91,7 +91,7 @@ class UpdateChecker
                 }
             }
         }
-        Catch {}
+        Catch as _e {}
 
         coreLocal := UpdateChecker.ReadCoreVersion(rootDir)
 
@@ -115,7 +115,7 @@ class UpdateChecker
             FileDelete(cachePath)
             FileAppend(JsonParser.Stringify(result), cachePath, "UTF-8")
         }
-        Catch {}
+        Catch as _e {}
 
         return result
     }
@@ -153,7 +153,7 @@ class UpdateChecker
             FileDelete(path)
             FileAppend((mode = "auto") ? "auto" : "manual", path, "UTF-8")
         }
-        Catch {}
+        Catch as _e {}
     }
 
     static ReadManagerVersion(rootDir)
@@ -170,19 +170,19 @@ class UpdateChecker
 
     ; Сравнение версий: возвращает true если remote > local
     ; Поддерживает форматы: 3.0.0, 1.9.8c, v2.1
-    static IsNewer(remote, local)
+    static IsNewer(remote, localVer)
     {
-        if (remote = "" || local = "")
+        if (remote = "" || localVer = "")
             return false
 
-        remote := LTrim(Trim(remote), "vV")
-        local  := LTrim(Trim(local),  "vV")
+        remote   := LTrim(Trim(remote),   "vV")
+        localVer := LTrim(Trim(localVer), "vV")
 
-        if (remote = local)
+        if (remote = localVer)
             return false
 
-        rParts := StrSplit(remote, [".", "-", "_"])
-        lParts := StrSplit(local,  [".", "-", "_"])
+        rParts := StrSplit(remote,   [".", "-", "_"])
+        lParts := StrSplit(localVer, [".", "-", "_"])
         maxLen := Max(rParts.Length, lParts.Length)
 
         Loop maxLen

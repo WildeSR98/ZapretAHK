@@ -25,15 +25,15 @@ class JsonParser
             content := FileRead(path, "UTF-8")
             return JsonParser.Parse(content)
         }
-        Catch
+        Catch as _e
             return Map()
     }
 
     ; Сериализация Map/Array/primitive → JSON строка
     static Stringify(val, indent := 2, _level := 0)
     {
-        pad  := indent > 0 ? "`n" . _Repeat(" ", indent * _level) : ""
-        pad1 := indent > 0 ? "`n" . _Repeat(" ", indent * (_level + 1)) : ""
+        pad  := indent > 0 ? "`n" . JsonParser._StrRepeat(" ", indent * _level) : ""
+        pad1 := indent > 0 ? "`n" . JsonParser._StrRepeat(" ", indent * (_level + 1)) : ""
         sep  := indent > 0 ? " " : ""
 
         if val is Map
@@ -43,7 +43,7 @@ class JsonParser
             parts := []
             for k, v in val
                 parts.Push(Chr(34) . k . Chr(34) . ":" . sep . JsonParser.Stringify(v, indent, _level + 1))
-            return "{" . pad1 . _Join(parts, "," . pad1) . pad . "}"
+            return "{" . pad1 . JsonParser._StrJoin(parts, "," . pad1) . pad . "}"
         }
         else if val is Array
         {
@@ -52,7 +52,7 @@ class JsonParser
             parts := []
             for v in val
                 parts.Push(JsonParser.Stringify(v, indent, _level + 1))
-            return "[" . pad1 . _Join(parts, "," . pad1) . pad . "]"
+            return "[" . pad1 . JsonParser._StrJoin(parts, "," . pad1) . pad . "]"
         }
         else if (val = true)
             return "true"
@@ -72,20 +72,24 @@ class JsonParser
             s := StrReplace(s,   "`t",  "\t")
             return Chr(34) . s . Chr(34)
         }
+    }
 
-        _Repeat(str, n) {
-            r := ""
-            Loop n
-                r .= str
-            return r
-        }
+    ; Helper: повторить строку n раз
+    static _StrRepeat(str, n)
+    {
+        r := ""
+        Loop n
+            r .= str
+        return r
+    }
 
-        _Join(arr, sep) {
-            r := ""
-            for i, v in arr
-                r .= (i > 1 ? sep : "") . v
-            return r
-        }
+    ; Helper: соединить массив строк через разделитель
+    static _StrJoin(arr, sep)
+    {
+        r := ""
+        for i, v in arr
+            r .= (i > 1 ? sep : "") . v
+        return r
     }
 
     ; ── Вспомогательный парсер-класс ──────────────────────────────────────────
