@@ -30,10 +30,12 @@ class TrafficMonitorGui
 
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
-        btnOpen.OnEvent("Click", _OpenFolder)
-        btnClean.OnEvent("Click", _Cleanup)
+        btnOpen.OnEvent("Click", (*) => _OpenFolder())
+        btnClean.OnEvent("Click", (*) => _Cleanup())
         btnRefresh.OnEvent("Click", (*) => _LoadFiles())
-        lv.OnEvent("ItemSelect", _OnSelect)
+        ; Use fat-arrow wrapper — nested functions aren't directly valid callbacks
+        ; in AHK v2 class method scope without explicit reference
+        lv.OnEvent("ItemSelect", (ctrl, row) => _OnSelect(ctrl, row))
 
         _LoadFiles()
         dlg.Show("w700 h520")
@@ -88,12 +90,12 @@ class TrafficMonitorGui
             }
         }
 
-        _OpenFolder(*) {
+        _OpenFolder() {
             DirCreate(resultsDir)
             Run("explorer.exe `"" . resultsDir . "`"")
         }
 
-        _Cleanup(*) {
+        _Cleanup() {
             if !DirExist(resultsDir)
                 return
             files := []

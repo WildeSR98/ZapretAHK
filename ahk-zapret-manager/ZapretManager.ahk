@@ -418,7 +418,7 @@ RunDiagnostics()
 TestStrategies()
 {
     global Config, RootDir
-    StrategyTester.Run(RootDir, Config)
+    StrategyTester.ShowModeDialog(RootDir, Config)
 }
 
 ManageTgProxy()
@@ -527,22 +527,73 @@ OpenSettings()
 DetectIsp()
 {
     global UtilsDir
-    dlgWait := Gui("+AlwaysOnTop", "Определение провайдера...")
-    dlgWait.Add("Text",, "Запрос к ip-api.com / ipinfo.io...")
-    dlgWait.Show("w280 h55")
-    info := IspDetector.Detect(UtilsDir)
-    dlgWait.Destroy()
-    msg  := IspDetector.Format(info)
-    isp  := (info is Map) && info.Has("Isp") ? info["Isp"] : ""
-    recs := IspDetector.GetRecommendations(UtilsDir, isp)
-    if (recs.Length > 0)
-    {
-        msg .= "`n`nРекомендованные стратегии:"
-        for r in recs
-            msg .= "`n  * " . r
+
+    ; Показываем "загрузка" GUI — он должен отрисоваться ДО блокирующего HTTP
+    dlgWait := Gui("+AlwaysOnTop", "Провайдер — Zapret Manager")
+    dlgWait.MarginX := 16
+    dlgWait.MarginY := 12
+    dlgWait.Add("Text",, "Определение провайдера...")
+    lblStatus := dlgWait.Add("Text", "w300 cGray", "Запрос к ip-api.com...")
+    dlgWait.Show("w340 h75")
+
+    ; SetTimer с задержкой 50мс — GUI успевает отрисоваться, затем делаем HTTP
+    SetTimer(_DoDetect, -50)
+
+    _DoDetect() {
+        global UtilsDir
+        lblStatus.Text := "Подключение..."
+        info := IspDetector.Detect(UtilsDir)
+        dlgWait.Destroy()
+
+        ; Строим информационное окно
+        dlgInfo := Gui("+AlwaysOnTop", "Информация о провайдере")
+        dlgInfo.MarginX := 16
+        dlgInfo.MarginY := 12
+
+        if (info is Map) && info.Has("Ip") && (info["Ip"] != "")
+        {
+            dlgInfo.Add("Text", "w320 cGreen", "✔ Провайдер определён")
+            dlgInfo.Add("Text",, "")
+
+            fields := [
+                ["IP-адрес:",   info.Has("Ip")      ? info["Ip"]      : "—"],
+                ["ISP:",        info.Has("Isp")     ? info["Isp"]     : "—"],
+                ["Организация:",info.Has("Org")     ? info["Org"]     : "—"],
+                ["AS:",         info.Has("As")      ? info["As"]      : "—"],
+                ["Город:",      info.Has("City")    ? info["City"]    : "—"],
+                ["Регион:",     info.Has("Region")  ? info["Region"]  : "—"],
+                ["Страна:",     info.Has("Country") ? info["Country"] : "—"],
+            ]
+            for pair in fields
+            {
+                dlgInfo.Add("Text", "x20 w110 h20 +0x200", pair[1])
+                dlgInfo.Add("Text", "x140 yp w220 h20 cNavy", pair[2])
+            }
+
+            isp := info["Isp"]
+            recs := IspDetector.GetRecommendations(UtilsDir, isp)
+            if (recs.Length > 0)
+            {
+                dlgInfo.Add("Text",, "")
+                dlgInfo.Add("Text", "w320 cTeal", "Рекомендованные стратегии:")
+                for r in recs
+                    dlgInfo.Add("Text", "x20 w300", "• " . r)
+            }
+        }
+        else
+        {
+            dlgInfo.Add("Text", "w320 cRed", "✘ Не удалось определить провайдера")
+            dlgInfo.Add("Text",, "Проверьте интернет-соединение.")
+        }
+
+        dlgInfo.Add("Text",, "")
+        btnOk := dlgInfo.Add("Button", "Default w90", "OK")
+        btnOk.OnEvent("Click", (*) => dlgInfo.Destroy())
+        dlgInfo.OnEvent("Close", (*) => dlgInfo.Destroy())
+        dlgInfo.Show("w360 AutoSize")
     }
-    MsgBox(msg, "Информация о провайдере", 64)
 }
+
 
 ManageDomains()
 {
