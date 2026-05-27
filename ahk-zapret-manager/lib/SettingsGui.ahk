@@ -25,12 +25,12 @@ class SettingsGui
         ddMode := dlg.Add("DropDownList", "x150 y98 w200", ["Вручную", "Автоматически"])
         ddMode.Value := (updMode = "auto") ? 2 : 1
 
-        dlg.Add("Text",  "x8 y178 w360 h1 +0xEtched")
+        dlg.Add("Text",  "x8 y178 w360 h2 +0x10")
 
         btnSave   := dlg.Add("Button", "x20 y190 w100 h30 Default", "Сохранить")
         btnCancel := dlg.Add("Button", "x270 y190 w100 h30", "Отмена")
 
-        btnSave.OnEvent("Click", _Save)
+        btnSave.OnEvent("Click", (*) => _Save())
         btnCancel.OnEvent("Click", (*) => dlg.Destroy())
         dlg.OnEvent("Close", (*) => dlg.Destroy())
 
@@ -63,6 +63,9 @@ class SettingsGui
 
             Logger_Info("Настройки сохранены")
             dlg.Destroy()
+            ; Обновить статус-панель в главном окне
+            if IsSet(RefreshStatusPanel)
+                RefreshStatusPanel()
             MsgBox("Настройки сохранены", "Zapret Manager", 64)
         }
     }

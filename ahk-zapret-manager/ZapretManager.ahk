@@ -58,6 +58,21 @@ Init()
 
     Logger_Init()
     Logger_Info("=== Запуск Zapret Manager AHK ===")
+
+    ; Создать utils/targets.txt с дефолтными целями если не существует
+    targetsFile := UtilsDir . "\targets.txt"
+    if !FileExist(targetsFile)
+    {
+        q        := Chr(34)
+        defaults := "; Targets for strategy testing. Format: Name = " . q . "URL" . q . " or just URL`n"
+                  . "; One target per line. Lines starting with ; are comments`n`n"
+                  . "Discord = " . q . "https://discord.com" . q . "`n"
+                  . "YouTube = " . q . "https://www.youtube.com" . q . "`n"
+                  . "Discord Gateway = " . q . "https://gateway.discord.gg" . q . "`n"
+                  . "Discord CDN = " . q . "https://cdn.discordapp.com" . q . "`n"
+        FileAppend(defaults, targetsFile, "UTF-8")
+        Logger_Info("Создан utils/targets.txt с дефолтными целями")
+    }
 }
 
 ; ── Основное окно ─────────────────────────────────────────────────────────────
@@ -177,13 +192,13 @@ CreateMainWindow()
     updEnabled := FileExist(UtilsDir . "\check_updates.enabled")
 
     MainWindow.Add("Text", "x35 y318 w110 h22", "Watchdog:")
-    MainWindow.Add("Text", "x155 y318 w60 h22 c" . (wdEnabled ? "Green" : "Gray"), wdEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblWatchdog := MainWindow.Add("Text", "x155 y318 w60 h22 c" . (wdEnabled ? "Green" : "Gray"), wdEnabled ? "ВКЛ" : "ВЫКЛ")
 
     MainWindow.Add("Text", "x35 y348 w110 h22", "Игровой фильтр:")
-    MainWindow.Add("Text", "x155 y348 w60 h22 c" . (gfEnabled ? "Green" : "Gray"), gfEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblGameFilter := MainWindow.Add("Text", "x155 y348 w60 h22 c" . (gfEnabled ? "Green" : "Gray"), gfEnabled ? "ВКЛ" : "ВЫКЛ")
 
     MainWindow.Add("Text", "x35 y378 w110 h22", "Обновления:")
-    MainWindow.Add("Text", "x155 y378 w60 h22 c" . (updEnabled ? "Green" : "Gray"), updEnabled ? "ВКЛ" : "ВЫКЛ")
+    global LblUpdates := MainWindow.Add("Text", "x155 y378 w60 h22 c" . (updEnabled ? "Green" : "Gray"), updEnabled ? "ВКЛ" : "ВЫКЛ")
 
     ; ── Кнопка выхода ─────────────────────────────────────────────────────────
     BtnExit := MainWindow.Add("Button", "x670 y548 w100 h35", "Выход")
@@ -208,6 +223,21 @@ UpdateStatus()
     StrategyLabel.Text := strategy
 
     UpdateTrayIcon(state)
+}
+
+; ── Обновление панели состояния (вызывается после сохранения настроек) ────────────────
+RefreshStatusPanel()
+{
+    global LblWatchdog, LblGameFilter, LblUpdates, UtilsDir
+    wdEnabled  := FileExist(UtilsDir . "\watchdog.enabled")
+    gfEnabled  := FileExist(UtilsDir . "\game_filter.enabled")
+    updEnabled := FileExist(UtilsDir . "\check_updates.enabled")
+    LblWatchdog.Text  := wdEnabled  ? "ВКЛ" : "ВЫКЛ"
+    LblWatchdog.Opt("c" . (wdEnabled  ? "Green" : "Gray"))
+    LblGameFilter.Text := gfEnabled ? "ВКЛ" : "ВЫКЛ"
+    LblGameFilter.Opt("c" . (gfEnabled ? "Green" : "Gray"))
+    LblUpdates.Text   := updEnabled ? "ВКЛ" : "ВЫКЛ"
+    LblUpdates.Opt("c" . (updEnabled  ? "Green" : "Gray"))
 }
 
 MapServiceState(state)
@@ -247,10 +277,23 @@ InstallService()
     }
 
     args    := ParseBatArgs(strategyFile)
+    if (args = "")
+    {
+        MsgBox("Не удалось разобрать аргументы из: " . strategyFile . "`nПроверьте формат .bat файла.", "Ошибка", 48)
+        return
+    }
+
     winws   := BinDir . "\winws.exe"
     binPath := Chr(34) . winws . Chr(34) . " " . args
 
     Logger_Info("Установка службы: " . binPath)
+
+    ; Включаем TCP timestamps как оригинальный service.bat (status_zapret → tcp_enable)
+    Try
+        RunWait("netsh interface tcp set global timestamps=enabled",, "Hide")
+    Catch
+    {
+    }
 
     if WinService_Install(ServiceName, "Zapret DPI Bypass", "Обход DPI блокировок", binPath)
     {
@@ -325,38 +368,209 @@ ShowServiceStatus()
 ; ── Вспомогательные функции ───────────────────────────────────────────────────
 SelectStrategyFile()
 {
-    global StrategiesDir
+    global StrategiesDir, Config
 
     if !DirExist(StrategiesDir)
         return ""
 
+    ; Собираем все .bat файлы
     files := []
-    Loop Files, StrategiesDir . "\general*.bat"
-        files.Push(A_LoopFilePath)
+    Loop Files, StrategiesDir . "\*.bat"
+        files.Push(A_LoopFileName)
 
-    return files.Length > 0 ? files[1] : ""
+    if (files.Length = 0)
+        return ""
+
+    ; Если файл только один — берём его без диалога
+    if (files.Length = 1)
+        return StrategiesDir . "\" . files[1]
+
+    ; Сортируем с учётом preferred порядка из конфига
+    preferred := AppConfig.GetArr(Config, "strategies.preferred")
+    sorted := []
+
+    ; Сначала preferred (в порядке приоритета)
+    for pref in preferred
+    {
+        for f in files
+        {
+            if (f = pref)
+            {
+                sorted.Push(f)
+                break
+            }
+        }
+    }
+    ; Затем остальные (не вошедшие в preferred)
+    for f in files
+    {
+        inSorted := false
+        for s in sorted
+            if (s = f)
+            {
+                inSorted := true
+                break
+            }
+        if !inSorted
+            sorted.Push(f)
+    }
+
+    ; Диалог выбора
+    dlg := Gui("+AlwaysOnTop", "Выбор стратегии — Zapret Manager")
+    dlg.MarginX := 14
+    dlg.MarginY := 12
+    dlg.Add("Text", "w440", "Выберите стратегию для установки службы:")
+    dlg.Add("Text", "w440 cGray", "★ = рекомендованные")
+    dlg.Add("Text",, "")
+
+    lb := dlg.Add("ListBox", "w440 r12 vChoice", [])
+    items := []
+    for f in sorted
+    {
+        isPref := false
+        for p in preferred
+            if (p = f)
+            {
+                isPref := true
+                break
+            }
+        items.Push((isPref ? "★ " : "  ") . f)
+    }
+    lb.Delete()
+    for item in items
+        lb.Add([item])
+    lb.Choose(1)
+
+    dlg.Add("Text",, "")
+    btnOk     := dlg.Add("Button", "Default w100 h30", "Выбрать")
+    btnCancel := dlg.Add("Button", "x+8 w100 h30", "Отмена")
+
+    chosen := ""
+    btnOk.OnEvent("Click", _Pick)
+    btnCancel.OnEvent("Click", (*) => dlg.Destroy())
+    dlg.OnEvent("Close", (*) => dlg.Destroy())
+
+    _Pick(*) {
+        idx := lb.Value
+        if (idx >= 1 && idx <= sorted.Length)
+            chosen := sorted[idx]
+        dlg.Destroy()
+    }
+
+    dlg.Show("w468 AutoSize")
+    ; Ждём пока окно закроется
+    WinWaitClose("Выбор стратегии — Zapret Manager")
+
+    return (chosen != "") ? StrategiesDir . "\" . chosen : ""
 }
 
 ParseBatArgs(batFile)
 {
     global BinDir, ListsDir
 
-    content := FileRead(batFile)
+    Try
+        content := FileRead(batFile)
+    Catch
+        return ""
+
+    ; ── Фаза 1: собираем переменные из строк set ──────────────────────────────
+    ; BAT использует set "BIN=%~dp0..\bin\" или set "BIN=%~dp0bin\"
+    vars := Map()
+    vars["BIN"]   := BinDir . "\"
+    vars["LISTS"] := ListsDir . "\"
+    vars["BIN%"]  := BinDir . "\"
+
     for line in StrSplit(content, "`n")
     {
-        if InStr(line, "winws.exe")
+        ln := Trim(line, "`r `t")
+        ; Ищем: set "VARNAME=value" или set VARNAME=value
+        if RegExMatch(ln, "i)^set\s+`"?([A-Z_][A-Z0-9_]*)=(.+?)`"?$", &m)
         {
-            pos := InStr(line, "winws.exe")
-            if pos
-            {
-                args := Trim(SubStr(line, pos + 9))
-                args := StrReplace(args, "%~dp0bin\",   BinDir   . "\")
-                args := StrReplace(args, "%~dp0lists\", ListsDir . "\")
-                return args
-            }
+            varName := m[1]
+            varVal  := Trim(m[2], Chr(34))
+            ; Разворачиваем %~dp0 пути
+            varVal  := StrReplace(varVal, "%~dp0..\\", A_ScriptDir . "\")
+            varVal  := StrReplace(varVal, "%~dp0..\" , A_ScriptDir . "\")
+            varVal  := StrReplace(varVal, "%~dp0"    , A_ScriptDir . "\")
+            ; Разворачиваем ссылки на другие переменные типа %BIN%
+            for vk, vv in vars
+                varVal := StrReplace(varVal, "%" . vk . "%", vv)
+            vars[varName] := varVal
         }
     }
-    return ""
+
+    ; ── Фаза 2: ищем строку с winws.exe ──────────────────────────────────────
+    capture := false
+    fullArgs := ""
+    for line in StrSplit(content, "`n")
+    {
+        ln := Trim(line, "`r `t")
+
+        ; Пропускаем rem/комментарии
+        if (SubStr(ln, 1, 2) = "::" || SubStr(ln, 1, 3) = "rem")
+            continue
+
+        if InStr(ln, "winws.exe")
+        {
+            capture := true
+            ; Вырезаем часть после winws.exe
+            pos := InStr(ln, "winws.exe")
+            ln  := SubStr(ln, pos + 9)
+        }
+
+        if !capture
+            continue
+
+        ; Убираем финальный ^ (продолжение строки bat)
+        ln := RTrim(ln)
+        hasContinue := (SubStr(ln, -1) = "^")
+        if hasContinue
+            ln := RTrim(SubStr(ln, 1, StrLen(ln) - 1))
+
+        fullArgs .= " " . ln
+
+        if !hasContinue
+            break
+    }
+
+    fullArgs := Trim(fullArgs)
+    if (fullArgs = "")
+        return ""
+
+    ; ── Фаза 3: разворачиваем все переменные %VAR% в аргументах ─────────────
+    for vk, vv in vars
+        fullArgs := StrReplace(fullArgs, "%" . vk . "%", vv)
+
+    ; Убираем возможные оставшиеся %...% (GameFilterTCP и т.п. — заменяем дефолтами)
+    fullArgs := StrReplace(fullArgs, "%GameFilterTCP%", "12")
+    fullArgs := StrReplace(fullArgs, "%GameFilterUDP%", "12")
+
+    ; Читаем реальные значения game filter если включён
+    global UtilsDir
+    gfFile := UtilsDir . "\game_filter.enabled"
+    if FileExist(gfFile)
+    {
+        Try
+        {
+            gfContent := Trim(FileRead(gfFile))
+            ; Формат: TCP=12,UDP=12 или просто метка
+            tcpMatch := ""
+            udpMatch := ""
+            if RegExMatch(gfContent, "TCP=(\d+)", &tm)
+                tcpMatch := tm[1]
+            if RegExMatch(gfContent, "UDP=(\d+)", &um)
+                udpMatch := um[1]
+            if (tcpMatch != "")
+                fullArgs := StrReplace(fullArgs, ",12 ", "," . tcpMatch . " ")
+            if (udpMatch != "")
+                fullArgs := StrReplace(fullArgs, ",12 ", "," . udpMatch . " ")
+        }
+        Catch
+        {
+        }
+    }
+
+    return fullArgs
 }
 
 GetCurrentStrategy()
@@ -403,7 +617,7 @@ RunDiagnostics()
 TestStrategies()
 {
     global Config, RootDir
-    StrategyTester.Run(RootDir, Config)
+    StrategyTester.ShowModeDialog(RootDir, Config)
 }
 
 ManageTgProxy()
@@ -512,22 +726,73 @@ OpenSettings()
 DetectIsp()
 {
     global UtilsDir
-    dlgWait := Gui("+AlwaysOnTop", "Определение провайдера...")
-    dlgWait.Add("Text",, "Запрос к ip-api.com / ipinfo.io...")
-    dlgWait.Show("w280 h55")
-    info := IspDetector.Detect(UtilsDir)
-    dlgWait.Destroy()
-    msg  := IspDetector.Format(info)
-    isp  := (info is Map) && info.Has("Isp") ? info["Isp"] : ""
-    recs := IspDetector.GetRecommendations(UtilsDir, isp)
-    if (recs.Length > 0)
-    {
-        msg .= "`n`nРекомендованные стратегии:"
-        for r in recs
-            msg .= "`n  * " . r
+
+    ; Показываем "загрузка" GUI — он должен отрисоваться ДО блокирующего HTTP
+    dlgWait := Gui("+AlwaysOnTop", "Провайдер — Zapret Manager")
+    dlgWait.MarginX := 16
+    dlgWait.MarginY := 12
+    dlgWait.Add("Text",, "Определение провайдера...")
+    lblStatus := dlgWait.Add("Text", "w300 cGray", "Запрос к ip-api.com...")
+    dlgWait.Show("w340 h75")
+
+    ; SetTimer с задержкой 50мс — GUI успевает отрисоваться, затем делаем HTTP
+    SetTimer(_DoDetect, -50)
+
+    _DoDetect() {
+        global UtilsDir
+        lblStatus.Text := "Подключение..."
+        info := IspDetector.Detect(UtilsDir)
+        dlgWait.Destroy()
+
+        ; Строим информационное окно
+        dlgInfo := Gui("+AlwaysOnTop", "Информация о провайдере")
+        dlgInfo.MarginX := 16
+        dlgInfo.MarginY := 12
+
+        if (info is Map) && info.Has("Ip") && (info["Ip"] != "")
+        {
+            dlgInfo.Add("Text", "w320 cGreen", "✔ Провайдер определён")
+            dlgInfo.Add("Text",, "")
+
+            fields := [
+                ["IP-адрес:",   info.Has("Ip")      ? info["Ip"]      : "—"],
+                ["ISP:",        info.Has("Isp")     ? info["Isp"]     : "—"],
+                ["Организация:",info.Has("Org")     ? info["Org"]     : "—"],
+                ["AS:",         info.Has("As")      ? info["As"]      : "—"],
+                ["Город:",      info.Has("City")    ? info["City"]    : "—"],
+                ["Регион:",     info.Has("Region")  ? info["Region"]  : "—"],
+                ["Страна:",     info.Has("Country") ? info["Country"] : "—"],
+            ]
+            for pair in fields
+            {
+                dlgInfo.Add("Text", "x20 w110 h20 +0x200", pair[1])
+                dlgInfo.Add("Text", "x140 yp w220 h20 cNavy", pair[2])
+            }
+
+            isp := info["Isp"]
+            recs := IspDetector.GetRecommendations(UtilsDir, isp)
+            if (recs.Length > 0)
+            {
+                dlgInfo.Add("Text",, "")
+                dlgInfo.Add("Text", "w320 cTeal", "Рекомендованные стратегии:")
+                for r in recs
+                    dlgInfo.Add("Text", "x20 w300", "• " . r)
+            }
+        }
+        else
+        {
+            dlgInfo.Add("Text", "w320 cRed", "✘ Не удалось определить провайдера")
+            dlgInfo.Add("Text",, "Проверьте интернет-соединение.")
+        }
+
+        dlgInfo.Add("Text",, "")
+        btnOk := dlgInfo.Add("Button", "Default w90", "OK")
+        btnOk.OnEvent("Click", (*) => dlgInfo.Destroy())
+        dlgInfo.OnEvent("Close", (*) => dlgInfo.Destroy())
+        dlgInfo.Show("w360 AutoSize")
     }
-    MsgBox(msg, "Информация о провайдере", 64)
 }
+
 
 ManageDomains()
 {

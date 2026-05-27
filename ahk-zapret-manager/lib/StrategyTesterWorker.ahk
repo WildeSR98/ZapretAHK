@@ -13,7 +13,8 @@ progressFile:= resultsDir . "\worker_progress.txt"
 binDir      := rootDir . "\bin"
 
 DirCreate(resultsDir)
-FileDelete(progressFile)
+if FileExist(progressFile)
+    FileDelete(progressFile)
 
 ; ── Загрузка целей ──────────────────────────────────────────────────────────
 
@@ -21,7 +22,7 @@ targets := []
 Loop Read, targetsFile
 {
     line := Trim(A_LoopReadLine)
-    if (line = "" || SubStr(line, 1, 1) = "#")
+    if (line = "" || SubStr(line, 1, 1) = ";" || SubStr(line, 1, 1) = "#")
         continue
     q := Chr(34)
     if RegExMatch(line, "^\\s*(\\w+)\\s*=\\s*" . q . "(.+)" . q . "\\s*$", &m)

@@ -54,9 +54,9 @@ class DomainManagerGui
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
 
-        btnSave.OnEvent("Click", _Save)
-        btnOpen.OnEvent("Click", _OpenNotepad)
-        btnReset.OnEvent("Click", _Reset)
+        btnSave.OnEvent("Click",  (*) => _Save())
+        btnOpen.OnEvent("Click",  (*) => _OpenNotepad())
+        btnReset.OnEvent("Click", (*) => _Reset())
 
         dlg.Show("w700 h492")
 
@@ -65,24 +65,27 @@ class DomainManagerGui
             return tab.Value
         }
 
-        _Save(*) {
+        _Save() {
             tabIdx := tab.Value
             if (tabIdx < 1 || tabIdx > tabFiles.Length)
                 return
             path := tabFiles[tabIdx]
             content := editors[tabIdx].Value
-            Try {
+            Try
+            {
                 DirCreate(listsDir)
                 FileDelete(path)
                 FileAppend(content, path, "UTF-8")
                 Logger_Info("DomainManager: сохранён " . tabFiles[tabIdx])
                 MsgBox("Файл сохранён", "Zapret Manager", 64)
-            } Catch as e {
+            }
+            Catch as e
+            {
                 MsgBox("Ошибка сохранения: " . e.Message, "Ошибка", 16)
             }
         }
 
-        _OpenNotepad(*) {
+        _OpenNotepad() {
             tabIdx := tab.Value
             if (tabIdx < 1 || tabIdx > tabFiles.Length)
                 return
@@ -92,7 +95,7 @@ class DomainManagerGui
             Run("notepad.exe `"" . path . "`"")
         }
 
-        _Reset(*) {
+        _Reset() {
             tabIdx := tab.Value
             if (tabIdx < 1 || tabIdx > tabFiles.Length)
                 return

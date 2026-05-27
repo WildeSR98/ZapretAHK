@@ -56,3 +56,4 @@ htmlcov/
 .mypy_cache/
 .pytest_cache/
 .gradle/
+ahk-zapret-manager/utils/test results/

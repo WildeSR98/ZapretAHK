@@ -15,21 +15,49 @@ class TrafficMonitorGui
         dlg.MarginY := 10
 
         dlg.Add("Text",, "Сохранённые результаты тестирования стратегий:")
-        lv := dlg.Add("ListView", "x10 y30 w680 h220 Grid -Multi", ["Файл", "Дата", "Размер"])
-        lv.ModifyCol(1, 380)
-        lv.ModifyCol(2, 180)
-        lv.ModifyCol(3, 100)
+        lv := dlg.Add("ListView", "x10 y30 w680 h200 Grid -Multi", ["Файл", "Результат", "Дата", "Размер"])
+        lv.ModifyCol(1, 230)
+        lv.ModifyCol(2, 130)
+        lv.ModifyCol(3, 180)
+        lv.ModifyCol(4, 90)
 
-        edContent := dlg.Add("Edit", "x10 y260 w680 h200 ReadOnly +Multi +VScroll")
+        edContent := dlg.Add("Edit", "x10 y240 w680 h220 ReadOnly +Multi +VScroll")
 
-        dlg.Add("Text", "x10 y470 w680 h1 +0xEtched")
+        dlg.Add("Text", "x10 y470 w680 h2 +0x10")
         btnOpen    := dlg.Add("Button", "x10 y480 w150 h28", "Открыть папку")
         btnClean   := dlg.Add("Button", "x172 y480 w160 h28", "Удалить старые (>5)")
         btnRefresh := dlg.Add("Button", "x344 y480 w100 h28", "Обновить")
         btnClose   := dlg.Add("Button", "x600 y480 w90 h28", "Закрыть")
 
         dlg.OnEvent("Close", (*) => dlg.Destroy())
-        btnClose.OnEvent("Click", (*) => dlg.Destroy())
+        btnClose.OnEvent("Click",   (*) => dlg.Destroy())
+        btnOpen.OnEvent("Click",    (*) => _OpenFolder())
+        btnClean.OnEvent("Click",   (*) => _Cleanup())
+        btnRefresh.OnEvent("Click", (*) => _LoadFiles())
+
+        ; Single-expression fat-arrow calling nested function (AHK v2 fat-arrow = one expression only)
+        lv.OnEvent("ItemSelect", (ctrl, item, *) => _OnItemSelect(item))
+
+        _LoadFiles()
+        dlg.Show("w700 h520")
+
+        ; ── Helpers ─────────────────────────────────────────────────────────
+
+        _OnItemSelect(item) {
+            if (item = 0)
+                return
+            fname := lv.GetText(item, 1)
+            fpath := resultsDir . "\" . fname
+            Try
+            {
+                content := FileRead(fpath, "UTF-8")
+                edContent.Value := content
+            }
+            Catch as _e
+            {
+                edContent.Value := "Ошибка чтения файла: " . _e.Message
+            }
+        }
 
         _LoadFiles() {
             lv.Delete()
@@ -39,7 +67,17 @@ class TrafficMonitorGui
 
             files := []
             Loop Files, resultsDir . "\*.txt"
-                files.Push({path: A_LoopFilePath, name: A_LoopFileName, modified: A_LoopFileTimeModified, size: A_LoopFileSize})
+            {
+                ; Пропускаем временный файл прогресса воркера
+                if (A_LoopFileName = "worker_progress.txt")
+                    continue
+                files.Push({
+                    path:     A_LoopFilePath,
+                    name:     A_LoopFileName,
+                    modified: A_LoopFileTimeModified,
+                    size:     A_LoopFileSize
+                })
+            }
 
             ; Сортировка: новые первые
             Loop files.Length - 1
@@ -60,41 +98,49 @@ class TrafficMonitorGui
             {
                 dateStr := SubStr(f.modified, 1, 4) . "-" . SubStr(f.modified, 5, 2) . "-" . SubStr(f.modified, 7, 2)
                         . " " . SubStr(f.modified, 9, 2) . ":" . SubStr(f.modified, 11, 2)
-                sizeStr := Format("{:.1f} KB", f.size / 1024)
-                lv.Add("", f.name, dateStr, sizeStr)
+                sizeStr  := Format("{:.1f} KB", f.size / 1024)
+                scoreStr := _ParseScore(f.path)
+                lv.Add("", f.name, scoreStr, dateStr, sizeStr)
             }
         }
 
-        lv.OnEvent("ItemSelect", _OnSelect)
-        btnOpen.OnEvent("Click", _OpenFolder)
-        btnClean.OnEvent("Click", _Cleanup)
-        btnRefresh.OnEvent("Click", (*) => _LoadFiles())
-
-        _OnSelect(ctrl, row) {
-            if (row = 0)
-                return
-            fname := lv.GetText(row, 1)
-            fpath := resultsDir . "\" . fname
-            Try {
-                content := FileRead(fpath, "UTF-8")
-                edContent.Value := content
-            } Catch {
-                edContent.Value := "Ошибка чтения файла"
+        _ParseScore(path) {
+            Try
+            {
+                content := FileRead(path, "UTF-8")
+                ; Ищем строку "OK: N / M (P%)"
+                if RegExMatch(content, "OK:\s*(\d+)\s*/\s*(\d+)\s*\((\d+)%\)", &m)
+                {
+                    ok    := Integer(m[1])
+                    total := Integer(m[2])
+                    pct   := Integer(m[3])
+                    icon  := (pct >= 70) ? "✔" : (pct >= 40) ? "~" : "✘"
+                    return icon . " " . ok . "/" . total . " (" . pct . "%)"
+                }
             }
+            Catch as _e
+            {
+            }
+            return "—"
         }
 
-        _OpenFolder(*) {
+        _OpenFolder() {
             DirCreate(resultsDir)
             Run("explorer.exe `"" . resultsDir . "`"")
         }
 
-        _Cleanup(*) {
+        _Cleanup() {
             if !DirExist(resultsDir)
                 return
             files := []
             Loop Files, resultsDir . "\*.txt"
+            {
+                if (A_LoopFileName = "worker_progress.txt")
+                    continue
                 files.Push({path: A_LoopFilePath, modified: A_LoopFileTimeModified})
+            }
 
+            ; Сортировка: новые первые
             Loop files.Length - 1
             {
                 Loop files.Length - A_Index
@@ -121,8 +167,5 @@ class TrafficMonitorGui
             MsgBox("Удалено файлов: " . deleted, "Очистка", 64)
             _LoadFiles()
         }
-
-        _LoadFiles()
-        dlg.Show("w700 h520")
     }
 }

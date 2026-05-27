@@ -42,7 +42,7 @@ class NicSelectorGui
         dlg.Add("Text", "x10 y342 w200", "Текущий выбор:")
         lblCurrent := dlg.Add("Text", "x220 y342 w290 cBlue", (saved = "" ? "(Авто)" : saved))
 
-        dlg.Add("Text", "x10 y360 w500 h1 +0xEtched")
+        dlg.Add("Text", "x10 y360 w500 h2 +0x10")
         btnAuto  := dlg.Add("Button", "x10 y372 w100 h30", "Авто (сброс)")
         btnSave  := dlg.Add("Button", "x122 y372 w120 h30 Default", "Сохранить")
         btnClose := dlg.Add("Button", "x402 y372 w108 h30", "Закрыть")
@@ -50,8 +50,8 @@ class NicSelectorGui
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
 
-        btnAuto.OnEvent("Click", _SetAuto)
-        btnSave.OnEvent("Click", _Save)
+        btnAuto.OnEvent("Click", (*) => _SetAuto())
+        btnSave.OnEvent("Click", (*) => _Save())
 
         dlg.Show("w524 h412")
 
