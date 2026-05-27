@@ -63,15 +63,10 @@ Init()
     targetsFile := UtilsDir . "\targets.txt"
     if !FileExist(targetsFile)
     {
-        q        := Chr(34)
-        defaults := "; Targets for strategy testing. Format: Name = " . q . "URL" . q . " or just URL`n"
-                  . "; One target per line. Lines starting with ; are comments`n`n"
-                  . "Discord = " . q . "https://discord.com" . q . "`n"
-                  . "YouTube = " . q . "https://www.youtube.com" . q . "`n"
-                  . "Discord Gateway = " . q . "https://gateway.discord.gg" . q . "`n"
-                  . "Discord CDN = " . q . "https://cdn.discordapp.com" . q . "`n"
-        FileAppend(defaults, targetsFile, "UTF-8")
-        Logger_Info("Создан utils/targets.txt с дефолтными целями")
+        FileAppend("Discord = https://discord.com`n", targetsFile, "UTF-8")
+        FileAppend("YouTube = https://www.youtube.com`n", targetsFile, "UTF-8")
+        FileAppend("Discord Gateway = https://gateway.discord.gg`n", targetsFile, "UTF-8")
+        FileAppend("Discord CDN = https://cdn.discordapp.com`n", targetsFile, "UTF-8")
     }
 }
 
