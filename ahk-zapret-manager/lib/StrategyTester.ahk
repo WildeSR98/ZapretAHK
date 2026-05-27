@@ -57,6 +57,7 @@ class StrategyTester
         btnFull := dlg.Add("Button", "x330 y240 w130 h28", "🔍 Полный тест")
 
         ; История
+        resultsDir := utilsDir . "\" . StrategyTester.RESULTS_DIR
         dlg.Add("Text",, "")
         btnHistory := dlg.Add("Button", "x10 y276 w140 h28", "📋 История тестов")
         btnClose   := dlg.Add("Button", "x350 y276 w120 h28", "Закрыть")
@@ -65,7 +66,7 @@ class StrategyTester
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
         btnQuick.OnEvent("Click", (*) => (dlg.Destroy(), StrategyTester.RunQuick(rootDir, targetsFile)))
         btnFull.OnEvent("Click",  (*) => (dlg.Destroy(), StrategyTester.RunFull(rootDir, targetsFile, batFiles)))
-        btnHistory.OnEvent("Click", (*) => StrategyTester.ShowHistory(utilsDir))
+        btnHistory.OnEvent("Click", (*) => StrategyTester.ShowHistory(resultsDir))
 
         dlg.Show("w480 AutoSize")
     }
@@ -81,18 +82,23 @@ class StrategyTester
         dlg.MarginX := 14
         dlg.MarginY := 12
         dlg.Add("Text",, "⚡ Тестируется текущая стратегия...")
-        lblResult := dlg.Add("Text", "w420 h80 +Multi", "Ожидание...")
+        lblResult := dlg.Add("Text", "w420 h120 +Multi", "Ожидание...")
         dlg.Add("Text",, "")
-        btnClose := dlg.Add("Button", "Default w100 h30", "Закрыть")
+        ; Кнопки появятся после завершения
+        btnClose  := dlg.Add("Button", "w100 h30", "Закрыть")
+        btnOpen   := dlg.Add("Button", "x+8 w120 h30", "📄 Открыть файл")
+        btnOpen.Enabled := false
         btnClose.OnEvent("Click", (*) => dlg.Destroy())
         dlg.OnEvent("Close", (*) => dlg.Destroy())
         dlg.Show("w450 AutoSize")
+
+        outFile := ""
 
         SetTimer(_DoQuick, -100)
 
         _DoQuick() {
             lines := []
-            ; Читаем цели
+            ; Читаем цели (поддержка ; и # как комментариев)
             if !FileExist(targetsFile)
             {
                 lblResult.Text := "Файл целей не найден"
@@ -101,7 +107,7 @@ class StrategyTester
             Loop Read, targetsFile
             {
                 line := Trim(A_LoopReadLine)
-                if (line = "" || SubStr(line, 1, 1) = "#")
+                if (line = "" || SubStr(line, 1, 1) = ";" || SubStr(line, 1, 1) = "#")
                     continue
                 lines.Push(line)
             }
@@ -114,15 +120,15 @@ class StrategyTester
             okCount   := 0
             failCount := 0
             report    := ""
+            q := Chr(34)
             for target in lines
             {
-                ; Разбор строки: name = "URL" или просто URL
+                ; Разбор строки: Name = "URL" или просто URL
                 url  := target
                 name := target
-                q := Chr(34)
-                if RegExMatch(target, "^\s*(\w[\w\s]*)\s*=\s*" . q . "(.+)" . q . "\s*$", &m)
+                if RegExMatch(target, "^\s*(.+?)\s*=\s*" . q . "(.+)" . q . "\s*$", &m)
                 {
-                    name := m[1]
+                    name := Trim(m[1])
                     url  := m[2]
                 }
 
@@ -144,15 +150,18 @@ class StrategyTester
             FileAppend(header . summary, outFile, "UTF-8")
 
             lblResult.Text := summary
+            btnOpen.Enabled := true
+            btnOpen.OnEvent("Click", (*) => Run("notepad.exe `"" . outFile . "`""))
         }
     }
 
     ; ── Full тест — все стратегии через воркер-процесс ────────────────────────
     static RunFull(rootDir, targetsFile, batFiles)
     {
-        utilsDir  := rootDir . "\utils"
-        logFile   := utilsDir . "\" . StrategyTester.RESULTS_DIR . "\worker_progress.txt"
-        DirCreate(utilsDir . "\" . StrategyTester.RESULTS_DIR)
+        utilsDir   := rootDir . "\utils"
+        resultsDir := utilsDir . "\" . StrategyTester.RESULTS_DIR
+        logFile    := resultsDir . "\worker_progress.txt"
+        DirCreate(resultsDir)
 
         dlg := Gui("+AlwaysOnTop", "Полный тест — Zapret Manager")
         dlg.MarginX := 14
@@ -167,7 +176,9 @@ class StrategyTester
         lblStatus := dlg.Add("Text", "w420", "Статус: запуск воркера...")
         pgBar := dlg.Add("Progress", "w420 h20 Range0-" . batFiles.Length, 0)
         dlg.Add("Text",, "")
-        btnCancel := dlg.Add("Button", "x14 w100 h30 Default", "Отмена")
+        btnCancel  := dlg.Add("Button", "x14 w100 h30 Default", "Отмена")
+        btnResults := dlg.Add("Button", "x+8 w140 h30", "📋 Результаты")
+        btnResults.Enabled := false
         dlg.Show("w450 AutoSize")
 
         ; Запуск воркера с захватом PID
@@ -185,10 +196,13 @@ class StrategyTester
         }
 
         cancelled := false
+        lastResultFile := ""
         btnCancel.OnEvent("Click", (*) => _Cancel())
         dlg.OnEvent("Close", (*) => _Cancel())
+        btnResults.OnEvent("Click", (*) => StrategyTester._OpenLastResult(resultsDir))
 
-        timer := ObjBindMethod(StrategyTester, "_PollProgress", dlg, lblStatus, pgBar, logFile, batFiles.Length, &cancelled, &workerPid)
+        timer := ObjBindMethod(StrategyTester, "_PollProgress", dlg, lblStatus, pgBar, logFile,
+                               batFiles.Length, &cancelled, &workerPid, btnCancel, btnResults, resultsDir)
         SetTimer(timer, 2000)
 
         _Cancel() {
@@ -203,10 +217,94 @@ class StrategyTester
         }
     }
 
-    ; Показать историю тестов
-    static ShowHistory(utilsDir)
+    ; ── История тестов ─────────────────────────────────────────────────────────
+    static ShowHistory(resultsDir)
     {
-        TrafficMonitorGui.Show(utilsDir)
+        if !DirExist(resultsDir)
+        {
+            MsgBox("История тестов пуста.`nПапка не найдена: " . resultsDir, "История тестов", 64)
+            return
+        }
+
+        ; Собираем все txt файлы результатов
+        files := []
+        Loop Files, resultsDir . "\*.txt"
+        {
+            if (A_LoopFileName != "worker_progress.txt")
+                files.Push({name: A_LoopFileName, path: A_LoopFilePath, time: A_LoopFileTimeModified})
+        }
+
+        if (files.Length = 0)
+        {
+            MsgBox("История тестов пуста.`nЗапустите хотя бы один тест.", "История тестов", 64)
+            return
+        }
+
+        ; Сортировка по дате (новые первые) — простой bubble sort
+        Loop files.Length - 1
+        {
+            i := A_Index
+            Loop files.Length - i
+            {
+                j := A_Index
+                if (files[j].time < files[j+1].time)
+                {
+                    tmp := files[j]
+                    files[j] := files[j+1]
+                    files[j+1] := tmp
+                }
+            }
+        }
+
+        ; GUI истории
+        dlg := Gui("+AlwaysOnTop", "История тестов — Zapret Manager")
+        dlg.MarginX := 14
+        dlg.MarginY := 12
+        dlg.Add("Text", "w480", "Выберите тест для просмотра:")
+        dlg.Add("Text",, "")
+
+        lb := dlg.Add("ListBox", "w480 r10 vChoice", [])
+        for f in files
+            lb.Add([f.name])
+        lb.Choose(1)
+
+        dlg.Add("Text",, "")
+        btnOpen   := dlg.Add("Button", "Default w120 h30", "📄 Открыть")
+        btnDelete := dlg.Add("Button", "x+8 w120 h30", "🗑 Удалить")
+        btnClose  := dlg.Add("Button", "x+8 w90 h30", "Закрыть")
+
+        btnOpen.OnEvent("Click", _Open)
+        btnDelete.OnEvent("Click", _Delete)
+        btnClose.OnEvent("Click", (*) => dlg.Destroy())
+        dlg.OnEvent("Close", (*) => dlg.Destroy())
+        lb.OnEvent("DoubleClick", _Open)
+
+        _Open(*) {
+            idx := lb.Value
+            if (idx >= 1 && idx <= files.Length)
+                Run("notepad.exe `"" . files[idx].path . "`"")
+        }
+
+        _Delete(*) {
+            idx := lb.Value
+            if (idx < 1 || idx > files.Length)
+                return
+            if MsgBox("Удалить " . files[idx].name . "?", "Подтверждение", 4) = "Yes"
+            {
+                FileDelete(files[idx].path)
+                files.RemoveAt(idx)
+                lb.Delete(idx)
+                if (files.Length > 0)
+                    lb.Choose(Min(idx, files.Length))
+                if (files.Length = 0)
+                {
+                    MsgBox("История очищена.", "История тестов", 64)
+                    dlg.Destroy()
+                }
+            }
+        }
+
+        dlg.Show("w500 AutoSize")
     }
 
     ; ── Вспомогательный HTTP-тест URL ─────────────────────────────────────────
@@ -227,8 +325,29 @@ class StrategyTester
         }
     }
 
+    ; Открыть последний файл результатов
+    static _OpenLastResult(resultsDir)
+    {
+        lastFile := ""
+        lastTime := ""
+        Loop Files, resultsDir . "\*.txt"
+        {
+            if (A_LoopFileName = "worker_progress.txt")
+                continue
+            if (A_LoopFileTimeModified > lastTime)
+            {
+                lastTime := A_LoopFileTimeModified
+                lastFile := A_LoopFilePath
+            }
+        }
+        if (lastFile != "")
+            Run("notepad.exe `"" . lastFile . "`"")
+        else
+            MsgBox("Файл результатов не найден.", "Тест стратегий", 48)
+    }
+
     ; Callback опроса прогресса (каждые 2 сек)
-    static _PollProgress(dlg, lblStatus, pgBar, logFile, total, &cancelled, &pid)
+    static _PollProgress(dlg, lblStatus, pgBar, logFile, total, &cancelled, &pid, btnCancel, btnResults, resultsDir)
     {
         if cancelled
         {
@@ -241,8 +360,10 @@ class StrategyTester
         {
             SetTimer(, 0)
             pgBar.Value := total
-            lblStatus.Text := "✔ Тест завершён! Результаты сохранены."
+            lblStatus.Text := "✔ Тест завершён! Нажмите «Результаты» для просмотра."
             Logger_Info("Тест стратегий завершён")
+            btnCancel.Enabled  := false
+            btnResults.Enabled := true
             return
         }
 

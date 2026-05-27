@@ -12,6 +12,8 @@ class DiagnosticsRunner
         targets     := DiagnosticsRunner._LoadTargets(cfg)
         conflicts   := DiagnosticsRunner._CheckConflicts(cfg)
         svcStatus   := WinService_GetState("zapret")
+        winsWsRunning := ProcessExist("winws.exe") ? true : false
+        winDivertOk := DiagnosticsRunner._CheckWinDivert(rootDir)
 
         ; Создать GUI
         dlg := Gui("+AlwaysOnTop", "Диагностика — Zapret Manager")
@@ -22,6 +24,15 @@ class DiagnosticsRunner
         statusColor := (svcStatus = "Running") ? "00AA00" : "AA0000"
         statusText  := (svcStatus = "Running") ? "✔ Запущена" : "✘ " . MapServiceState(svcStatus)
         dlg.Add("Text", "c" . statusColor, statusText)
+
+        ; Проверка winws.exe процесса
+        dlg.Add("Text", "c" . (winsWsRunning ? "00AA00" : "AA0000"),
+            (winsWsRunning ? "✔ winws.exe запущен" : "✘ winws.exe НЕ запущен"))
+
+        ; Проверка WinDivert.sys
+        dlg.Add("Text", "c" . (winDivertOk ? "00AA00" : "AA0000"),
+            (winDivertOk ? "✔ WinDivert.sys найден" : "✘ WinDivert.sys НЕ найден в bin/"))
+
         dlg.Add("Text",, "")
 
         ; Конфликты
@@ -67,6 +78,10 @@ class DiagnosticsRunner
         dlg2.MarginY := 10
 
         dlg2.Add("Text",, "Служба zapret: " . MapServiceState(svcStatus))
+        dlg2.Add("Text", "c" . (winsWsRunning ? "00AA00" : "AA0000"),
+            (winsWsRunning ? "✔ winws.exe запущен" : "✘ winws.exe НЕ запущен"))
+        dlg2.Add("Text", "c" . (winDivertOk ? "00AA00" : "AA0000"),
+            (winDivertOk ? "✔ WinDivert.sys найден" : "✘ WinDivert.sys НЕ найден в bin/"))
         dlg2.Add("Text",, "")
 
         if (conflicts.Length > 0)
@@ -156,5 +171,18 @@ class DiagnosticsRunner
         for i, v in arr
             r .= (i > 1 ? sep : "") . v
         return r
+    }
+
+    ; Проверка наличия WinDivert.sys в bin/
+    static _CheckWinDivert(rootDir)
+    {
+        binDir := rootDir . "\bin"
+        found  := false
+        Loop Files, binDir . "\*.sys"
+        {
+            found := true
+            break
+        }
+        return found
     }
 }

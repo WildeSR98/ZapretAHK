@@ -1,6 +1,6 @@
 ; ============================================================================
-; UpdateChecker.ahk — Проверка обновлений через GitHub Releases API
-; Manager: WildeSR98/12345 | Core: Flowseal/zapret-discord-youtube
+; UpdateChecker.ahk — Проверка обновлений через GitHub API
+; Manager: WildeSR98/ZapretAHK | Core: Flowseal/zapret-discord-youtube
 ; ============================================================================
 #Requires AutoHotkey v2.0
 
@@ -22,42 +22,72 @@ class UpdateChecker
         coreRemote     := ""
         coreLocal      := ""
 
-        ; ── Manager (WildeSR98/12345) ──────────────────────────────────────
+        ; ── Manager (WildeSR98/ZapretAHK) ──────────────────────────────────
+        ; Репозиторий не имеет releases — используем SHA последнего коммита
         Try
         {
             repos := AppConfig.Get(cfg, "repositories")
-            if (repos is Map) && repos.Has("scripts_12345")
+            repoKey := ""
+            if (repos is Map)
             {
-                r12 := repos["scripts_12345"]
-                if (r12 is Map) && r12.Has("release_api")
-                {
-                    resp := HttpGet(r12["release_api"])
-                    if (resp.Status = 200 && resp.Body != "")
-                    {
-                        data := JsonParser.Parse(resp.Body)
-                        if (data is Map)
-                        {
-                            if data.Has("tag_name")
-                                mgrRemote := LTrim(data["tag_name"], "vV")
+                if repos.Has("scripts_zapretahk")
+                    repoKey := "scripts_zapretahk"
+                else if repos.Has("scripts_12345")
+                    repoKey := "scripts_12345"
+            }
 
-                            ; Найти zip в assets
-                            if data.Has("assets") && (data["assets"] is Array)
+            if (repoKey != "")
+            {
+                rMgr := repos[repoKey]
+                if (rMgr is Map)
+                {
+                    ; Пробуем release_api если есть
+                    if rMgr.Has("release_api")
+                    {
+                        resp := HttpGet(rMgr["release_api"])
+                        if (resp.Status = 200 && resp.Body != "")
+                        {
+                            data := JsonParser.Parse(resp.Body)
+                            if (data is Map) && data.Has("tag_name")
                             {
-                                for asset in data["assets"]
+                                mgrRemote := LTrim(data["tag_name"], "vV")
+                                if data.Has("assets") && (data["assets"] is Array)
                                 {
-                                    if (asset is Map) && asset.Has("name") && asset.Has("browser_download_url")
+                                    for asset in data["assets"]
                                     {
-                                        if InStr(asset["name"], ".zip")
+                                        if (asset is Map) && asset.Has("name") && asset.Has("browser_download_url")
                                         {
-                                            mgrDownloadUrl := asset["browser_download_url"]
-                                            break
+                                            if InStr(asset["name"], ".zip")
+                                            {
+                                                mgrDownloadUrl := asset["browser_download_url"]
+                                                break
+                                            }
                                         }
                                     }
                                 }
+                                if (mgrDownloadUrl = "") && data.Has("zipball_url")
+                                    mgrDownloadUrl := data["zipball_url"]
                             }
-                            if (mgrDownloadUrl = "") && data.Has("zipball_url")
-                                mgrDownloadUrl := data["zipball_url"]
                         }
+                    }
+
+                    ; Если release_api не дал результат — используем commit_api
+                    if (mgrRemote = "") && rMgr.Has("commit_api")
+                    {
+                        resp := HttpGet(rMgr["commit_api"])
+                        if (resp.Status = 200 && resp.Body != "")
+                        {
+                            data := JsonParser.Parse(resp.Body)
+                            ; commit_api возвращает массив объектов
+                            if (data is Array) && data.Length > 0 && (data[1] is Map)
+                            {
+                                commit := data[1]
+                                if commit.Has("sha")
+                                    mgrRemote := SubStr(commit["sha"], 1, 7)  ; короткий SHA
+                            }
+                        }
+                        if rMgr.Has("archive_url")
+                            mgrDownloadUrl := rMgr["archive_url"]
                     }
                 }
             }
@@ -103,14 +133,14 @@ class UpdateChecker
         coreUpdate := UpdateChecker.IsNewer(coreRemote, coreLocal)
 
         result := Map()
-        result["managerRemote"]        := mgrRemote
-        result["managerLocal"]         := mgrLocal
-        result["managerDownloadUrl"]   := mgrDownloadUrl
-        result["coreRemote"]           := coreRemote
-        result["coreLocal"]            := coreLocal
+        result["managerRemote"]          := mgrRemote
+        result["managerLocal"]           := mgrLocal
+        result["managerDownloadUrl"]     := mgrDownloadUrl
+        result["coreRemote"]             := coreRemote
+        result["coreLocal"]              := coreLocal
         result["managerUpdateAvailable"] := mgrUpdate
         result["coreUpdateAvailable"]    := coreUpdate
-        result["checkedAt"]            := FormatTime(, "yyyy-MM-dd'T'HH:mm:ss")
+        result["checkedAt"]              := FormatTime(, "yyyy-MM-dd'T'HH:mm:ss")
 
         ; Сохранить кэш
         Try
@@ -177,7 +207,7 @@ class UpdateChecker
     }
 
     ; Сравнение версий: возвращает true если remote > local
-    ; Поддерживает форматы: 3.0.0, 1.9.8c, v2.1
+    ; Поддерживает форматы: 3.0.0, 1.9.8c, v2.1, short SHA (7 hex chars)
     static IsNewer(remote, localVer)
     {
         if (remote = "" || localVer = "")
@@ -188,6 +218,10 @@ class UpdateChecker
 
         if (remote = localVer)
             return false
+
+        ; SHA-сравнение: если оба 7 символов hex — просто "отличаются" = обновление
+        if (StrLen(remote) = 7 && StrLen(localVer) = 7)
+            return (remote != localVer)
 
         rParts := StrSplit(remote,   [".", "-", "_"])
         lParts := StrSplit(localVer, [".", "-", "_"])

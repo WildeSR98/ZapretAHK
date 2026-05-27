@@ -1,4 +1,4 @@
-﻿{
+{
   "project": {
     "name": "Zapret Autosetup",
     "version": "3.0.0",
@@ -15,12 +15,11 @@
       "hosts_service": "https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/hosts",
       "archive_url": "https://github.com/Flowseal/zapret-discord-youtube/archive/refs/heads/main.zip"
     },
-    "scripts_12345": {
+    "scripts_zapretahk": {
       "owner": "WildeSR98",
-      "repo": "12345",
-      "commit_api": "https://api.github.com/repos/WildeSR98/12345/commits?per_page=1",
-      "release_api": "https://api.github.com/repos/WildeSR98/12345/releases/latest",
-      "archive_url": "https://github.com/WildeSR98/12345/archive/refs/heads/main.zip"
+      "repo": "ZapretAHK",
+      "commit_api": "https://api.github.com/repos/WildeSR98/ZapretAHK/commits?per_page=1",
+      "archive_url": "https://github.com/WildeSR98/ZapretAHK/archive/refs/heads/main.zip"
     }
   },
   "lists": {

@@ -95,14 +95,13 @@ class AppConfig
         repoCore["ipset_service"]:= "https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/refs/heads/main/.service/ipset-service.txt"
         repoCore["archive_url"]  := "https://github.com/Flowseal/zapret-discord-youtube/archive/refs/heads/main.zip"
 
-        repo12345 := Map()
-        repo12345["release_api"] := "https://api.github.com/repos/WildeSR98/12345/releases/latest"
-        repo12345["commit_api"]  := "https://api.github.com/repos/WildeSR98/12345/commits?per_page=1"
-        repo12345["archive_url"] := "https://github.com/WildeSR98/12345/archive/refs/heads/main.zip"
+        repoAHK := Map()
+        repoAHK["commit_api"]  := "https://api.github.com/repos/WildeSR98/ZapretAHK/commits?per_page=1"
+        repoAHK["archive_url"] := "https://github.com/WildeSR98/ZapretAHK/archive/refs/heads/main.zip"
 
         repos := Map()
-        repos["zapret_core"]    := repoCore
-        repos["scripts_12345"]  := repo12345
+        repos["zapret_core"]     := repoCore
+        repos["scripts_zapretahk"] := repoAHK
         d["repositories"] := repos
 
         ; lists

@@ -26,10 +26,8 @@ class HttpService
             
             http.Send()
             
-            if (http.Status = 200)
-                return { Status: http.Status, Body: http.ResponseText, Headers: this.ParseHeaders(http.GetAllResponseHeaders()) }
-            else
-                return { Status: http.Status, Body: "", Error: "HTTP " . http.Status }
+            ; Возвращаем Body для любого статуса (редиректы, ошибки — всё нужно)
+            return { Status: http.Status, Body: http.ResponseText, Headers: this.ParseHeaders(http.GetAllResponseHeaders()) }
         }
         Catch as e
         {

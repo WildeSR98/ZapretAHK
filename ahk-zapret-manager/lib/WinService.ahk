@@ -117,33 +117,78 @@ class WinService
         scm := DllCall("advapi32\OpenSCManagerW", "str", "", "str", "", "uint", this.SC_MANAGER_ALL, "ptr")
         if (scm = 0)
             return false
-        
+
         Try
         {
             svc := DllCall("advapi32\OpenServiceW", "ptr", scm, "str", name, "uint", this.SERVICE_ALL, "ptr")
             if (svc = 0)
             {
                 DllCall("advapi32\CloseServiceHandle", "ptr", scm)
-                return true  ; Уже удалена
+                ; Служба уже удалена — всё равно чистим процессы
+                this._CleanupProcesses()
+                return true
             }
-            
+
             st := Buffer(28, 0)
             DllCall("advapi32\ControlService", "ptr", svc, "uint", this.SERVICE_CONTROL_STOP, "ptr", st)
             Sleep(500)
-            
+
             ok := DllCall("advapi32\DeleteService", "ptr", svc)
             DllCall("advapi32\CloseServiceHandle", "ptr", svc)
             DllCall("advapi32\CloseServiceHandle", "ptr", scm)
-            
+
             if (ok)
                 this.Log("Служба удалена: " . name)
-            
+
+            ; Завершаем winws.exe и чистим WinDivert
+            this._CleanupProcesses()
+
             return ok
         }
         Catch
         {
             DllCall("advapi32\CloseServiceHandle", "ptr", scm)
             return false
+        }
+    }
+
+    ; ── Завершение winws.exe и очистка WinDivert ──────────────────────────────
+    static _CleanupProcesses()
+    {
+        ; Завершаем winws.exe
+        Try
+        {
+            if ProcessExist("winws.exe")
+            {
+                ProcessClose("winws.exe")
+                this.Log("winws.exe завершён")
+            }
+        }
+        Catch as e
+            this.Log("Ошибка завершения winws.exe: " . e.Message)
+
+        ; Останавливаем и удаляем WinDivert
+        for drvName in ["WinDivert", "WinDivert14"]
+        {
+            Try
+            {
+                scm2 := DllCall("advapi32\OpenSCManagerW", "str", "", "str", "", "uint", this.SC_MANAGER_ALL, "ptr")
+                if (scm2 = 0)
+                    continue
+                svc2 := DllCall("advapi32\OpenServiceW", "ptr", scm2, "str", drvName, "uint", this.SERVICE_ALL, "ptr")
+                if (svc2 != 0)
+                {
+                    st2 := Buffer(28, 0)
+                    DllCall("advapi32\ControlService", "ptr", svc2, "uint", this.SERVICE_CONTROL_STOP, "ptr", st2)
+                    Sleep(300)
+                    DllCall("advapi32\DeleteService", "ptr", svc2)
+                    DllCall("advapi32\CloseServiceHandle", "ptr", svc2)
+                    this.Log("Служба " . drvName . " остановлена и удалена")
+                }
+                DllCall("advapi32\CloseServiceHandle", "ptr", scm2)
+            }
+            Catch as e
+                this.Log("Ошибка очистки " . drvName . ": " . e.Message)
         }
     }
     
@@ -310,10 +355,10 @@ class WinService
     
     static Log(msg)
     {
-        ; Простое логирование в файл
-        logFile := A_ScriptDir . "\logs\service_" . A_Now . ".log"
+        ; Единый лог-файл для всех вызовов
+        static logFile := A_ScriptDir . "\logs\winservice.log"
         Try
-            FileAppend(A_Now . " - " . msg . "`n", logFile, "UTF-8")
+            FileAppend(FormatTime(, "yyyy-MM-dd HH:mm:ss") . " - " . msg . "`n", logFile, "UTF-8")
         Catch
             return
     }

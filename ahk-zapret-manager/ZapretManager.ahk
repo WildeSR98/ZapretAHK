@@ -58,6 +58,21 @@ Init()
 
     Logger_Init()
     Logger_Info("=== Запуск Zapret Manager AHK ===")
+
+    ; Создать utils/targets.txt с дефолтными целями если не существует
+    targetsFile := UtilsDir . "\targets.txt"
+    if !FileExist(targetsFile)
+    {
+        q        := Chr(34)
+        defaults := "; Targets for strategy testing. Format: Name = " . q . "URL" . q . " or just URL`n"
+                  . "; One target per line. Lines starting with ; are comments`n`n"
+                  . "Discord = " . q . "https://discord.com" . q . "`n"
+                  . "YouTube = " . q . "https://www.youtube.com" . q . "`n"
+                  . "Discord Gateway = " . q . "https://gateway.discord.gg" . q . "`n"
+                  . "Discord CDN = " . q . "https://cdn.discordapp.com" . q . "`n"
+        FileAppend(defaults, targetsFile, "UTF-8")
+        Logger_Info("Создан utils/targets.txt с дефолтными целями")
+    }
 }
 
 ; ── Основное окно ─────────────────────────────────────────────────────────────
@@ -262,10 +277,23 @@ InstallService()
     }
 
     args    := ParseBatArgs(strategyFile)
+    if (args = "")
+    {
+        MsgBox("Не удалось разобрать аргументы из: " . strategyFile . "`nПроверьте формат .bat файла.", "Ошибка", 48)
+        return
+    }
+
     winws   := BinDir . "\winws.exe"
     binPath := Chr(34) . winws . Chr(34) . " " . args
 
     Logger_Info("Установка службы: " . binPath)
+
+    ; Включаем TCP timestamps как оригинальный service.bat (status_zapret → tcp_enable)
+    Try
+        RunWait("netsh interface tcp set global timestamps=enabled",, "Hide")
+    Catch
+    {
+    }
 
     if WinService_Install(ServiceName, "Zapret DPI Bypass", "Обход DPI блокировок", binPath)
     {
@@ -340,38 +368,209 @@ ShowServiceStatus()
 ; ── Вспомогательные функции ───────────────────────────────────────────────────
 SelectStrategyFile()
 {
-    global StrategiesDir
+    global StrategiesDir, Config
 
     if !DirExist(StrategiesDir)
         return ""
 
+    ; Собираем все .bat файлы
     files := []
-    Loop Files, StrategiesDir . "\general*.bat"
-        files.Push(A_LoopFilePath)
+    Loop Files, StrategiesDir . "\*.bat"
+        files.Push(A_LoopFileName)
 
-    return files.Length > 0 ? files[1] : ""
+    if (files.Length = 0)
+        return ""
+
+    ; Если файл только один — берём его без диалога
+    if (files.Length = 1)
+        return StrategiesDir . "\" . files[1]
+
+    ; Сортируем с учётом preferred порядка из конфига
+    preferred := AppConfig.GetArr(Config, "strategies.preferred")
+    sorted := []
+
+    ; Сначала preferred (в порядке приоритета)
+    for pref in preferred
+    {
+        for f in files
+        {
+            if (f = pref)
+            {
+                sorted.Push(f)
+                break
+            }
+        }
+    }
+    ; Затем остальные (не вошедшие в preferred)
+    for f in files
+    {
+        inSorted := false
+        for s in sorted
+            if (s = f)
+            {
+                inSorted := true
+                break
+            }
+        if !inSorted
+            sorted.Push(f)
+    }
+
+    ; Диалог выбора
+    dlg := Gui("+AlwaysOnTop", "Выбор стратегии — Zapret Manager")
+    dlg.MarginX := 14
+    dlg.MarginY := 12
+    dlg.Add("Text", "w440", "Выберите стратегию для установки службы:")
+    dlg.Add("Text", "w440 cGray", "★ = рекомендованные")
+    dlg.Add("Text",, "")
+
+    lb := dlg.Add("ListBox", "w440 r12 vChoice", [])
+    items := []
+    for f in sorted
+    {
+        isPref := false
+        for p in preferred
+            if (p = f)
+            {
+                isPref := true
+                break
+            }
+        items.Push((isPref ? "★ " : "  ") . f)
+    }
+    lb.Delete()
+    for item in items
+        lb.Add([item])
+    lb.Choose(1)
+
+    dlg.Add("Text",, "")
+    btnOk     := dlg.Add("Button", "Default w100 h30", "Выбрать")
+    btnCancel := dlg.Add("Button", "x+8 w100 h30", "Отмена")
+
+    chosen := ""
+    btnOk.OnEvent("Click", _Pick)
+    btnCancel.OnEvent("Click", (*) => dlg.Destroy())
+    dlg.OnEvent("Close", (*) => dlg.Destroy())
+
+    _Pick(*) {
+        idx := lb.Value
+        if (idx >= 1 && idx <= sorted.Length)
+            chosen := sorted[idx]
+        dlg.Destroy()
+    }
+
+    dlg.Show("w468 AutoSize")
+    ; Ждём пока окно закроется
+    WinWaitClose("Выбор стратегии — Zapret Manager")
+
+    return (chosen != "") ? StrategiesDir . "\" . chosen : ""
 }
 
 ParseBatArgs(batFile)
 {
     global BinDir, ListsDir
 
-    content := FileRead(batFile)
+    Try
+        content := FileRead(batFile)
+    Catch
+        return ""
+
+    ; ── Фаза 1: собираем переменные из строк set ──────────────────────────────
+    ; BAT использует set "BIN=%~dp0..\bin\" или set "BIN=%~dp0bin\"
+    vars := Map()
+    vars["BIN"]   := BinDir . "\"
+    vars["LISTS"] := ListsDir . "\"
+    vars["BIN%"]  := BinDir . "\"
+
     for line in StrSplit(content, "`n")
     {
-        if InStr(line, "winws.exe")
+        ln := Trim(line, "`r `t")
+        ; Ищем: set "VARNAME=value" или set VARNAME=value
+        if RegExMatch(ln, "i)^set\s+`"?([A-Z_][A-Z0-9_]*)=(.+?)`"?$", &m)
         {
-            pos := InStr(line, "winws.exe")
-            if pos
-            {
-                args := Trim(SubStr(line, pos + 9))
-                args := StrReplace(args, "%~dp0bin\",   BinDir   . "\")
-                args := StrReplace(args, "%~dp0lists\", ListsDir . "\")
-                return args
-            }
+            varName := m[1]
+            varVal  := Trim(m[2], Chr(34))
+            ; Разворачиваем %~dp0 пути
+            varVal  := StrReplace(varVal, "%~dp0..\\", A_ScriptDir . "\")
+            varVal  := StrReplace(varVal, "%~dp0..\" , A_ScriptDir . "\")
+            varVal  := StrReplace(varVal, "%~dp0"    , A_ScriptDir . "\")
+            ; Разворачиваем ссылки на другие переменные типа %BIN%
+            for vk, vv in vars
+                varVal := StrReplace(varVal, "%" . vk . "%", vv)
+            vars[varName] := varVal
         }
     }
-    return ""
+
+    ; ── Фаза 2: ищем строку с winws.exe ──────────────────────────────────────
+    capture := false
+    fullArgs := ""
+    for line in StrSplit(content, "`n")
+    {
+        ln := Trim(line, "`r `t")
+
+        ; Пропускаем rem/комментарии
+        if (SubStr(ln, 1, 2) = "::" || SubStr(ln, 1, 3) = "rem")
+            continue
+
+        if InStr(ln, "winws.exe")
+        {
+            capture := true
+            ; Вырезаем часть после winws.exe
+            pos := InStr(ln, "winws.exe")
+            ln  := SubStr(ln, pos + 9)
+        }
+
+        if !capture
+            continue
+
+        ; Убираем финальный ^ (продолжение строки bat)
+        ln := RTrim(ln)
+        hasContinue := (SubStr(ln, -1) = "^")
+        if hasContinue
+            ln := RTrim(SubStr(ln, 1, StrLen(ln) - 1))
+
+        fullArgs .= " " . ln
+
+        if !hasContinue
+            break
+    }
+
+    fullArgs := Trim(fullArgs)
+    if (fullArgs = "")
+        return ""
+
+    ; ── Фаза 3: разворачиваем все переменные %VAR% в аргументах ─────────────
+    for vk, vv in vars
+        fullArgs := StrReplace(fullArgs, "%" . vk . "%", vv)
+
+    ; Убираем возможные оставшиеся %...% (GameFilterTCP и т.п. — заменяем дефолтами)
+    fullArgs := StrReplace(fullArgs, "%GameFilterTCP%", "12")
+    fullArgs := StrReplace(fullArgs, "%GameFilterUDP%", "12")
+
+    ; Читаем реальные значения game filter если включён
+    global UtilsDir
+    gfFile := UtilsDir . "\game_filter.enabled"
+    if FileExist(gfFile)
+    {
+        Try
+        {
+            gfContent := Trim(FileRead(gfFile))
+            ; Формат: TCP=12,UDP=12 или просто метка
+            tcpMatch := ""
+            udpMatch := ""
+            if RegExMatch(gfContent, "TCP=(\d+)", &tm)
+                tcpMatch := tm[1]
+            if RegExMatch(gfContent, "UDP=(\d+)", &um)
+                udpMatch := um[1]
+            if (tcpMatch != "")
+                fullArgs := StrReplace(fullArgs, ",12 ", "," . tcpMatch . " ")
+            if (udpMatch != "")
+                fullArgs := StrReplace(fullArgs, ",12 ", "," . udpMatch . " ")
+        }
+        Catch
+        {
+        }
+    }
+
+    return fullArgs
 }
 
 GetCurrentStrategy()
